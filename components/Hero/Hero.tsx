@@ -1,5 +1,6 @@
 import Image from "next/image";
 import ScrollIndicator from "@/components/ScrollIndicator/ScrollIndicator";
+import BookingLink from "@/components/BookingLink/BookingLink";
 import styles from "./Hero.module.css";
 
 export default function Hero() {
@@ -26,14 +27,11 @@ export default function Hero() {
           >
             센터 위치 찾기
           </a>
-          <a
-            href="http://pf.kakao.com/_xkzxfbn/chat"
-            target="_blank"
-            rel="noopener noreferrer"
+          <BookingLink
             className={`${styles.btnSub} sr sr-d2`}
           >
             상담 예약하기
-          </a>
+          </BookingLink>
         </div>
       </div>
       <ScrollIndicator />
