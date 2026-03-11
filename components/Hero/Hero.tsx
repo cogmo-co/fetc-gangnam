@@ -1,4 +1,5 @@
 import Image from "next/image";
+import ScrollIndicator from "@/components/ScrollIndicator/ScrollIndicator";
 import styles from "./Hero.module.css";
 
 export default function Hero() {
@@ -35,6 +36,7 @@ export default function Hero() {
           </a>
         </div>
       </div>
+      <ScrollIndicator />
     </div>
   );
 }
