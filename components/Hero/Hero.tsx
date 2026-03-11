@@ -25,12 +25,12 @@ export default function Hero() {
             rel="noopener noreferrer"
             className={`${styles.btnSub} sr sr-d1`}
           >
-            센터 위치 찾기
+            센터 위치
           </a>
           <BookingLink
             className={`${styles.btnSub} sr sr-d2`}
           >
-            상담 예약하기
+            상담 예약
           </BookingLink>
         </div>
       </div>

@@ -3,6 +3,7 @@ import { Oswald, Noto_Sans_KR } from "next/font/google";
 import localFont from "next/font/local";
 import AppShell from "@/components/AppShell/AppShell";
 import Footer from "@/components/Footer/Footer";
+import KakaoFloat from "@/components/KakaoFloat/KakaoFloat";
 import "./globals.css";
 
 const oswald = Oswald({
@@ -65,6 +66,7 @@ export default function RootLayout({
       >
         <AppShell>{children}</AppShell>
         <Footer />
+        <KakaoFloat />
       </body>
     </html>
   );

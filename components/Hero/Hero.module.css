@@ -92,7 +92,7 @@
 .btnSub{
   display:inline-flex;align-items:center;gap:8px;
   padding:13px 30px;
-  font-family:var(--font-pretendard),sans-serif;font-size:13px;font-weight:500;
+  font-family:var(--font-pretendard),sans-serif;font-size:18px;font-weight:500;
   background:rgba(255,255,255,0.1);color:rgba(255,255,255,0.85);border:1px solid rgba(255,255,255,0.28);
   transition:background 0.2s,color 0.2s,border-color 0.2s;cursor:pointer;
 }
