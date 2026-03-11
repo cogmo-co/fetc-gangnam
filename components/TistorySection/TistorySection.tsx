@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { fetchTistoryPosts } from "@/lib/tistory";
+import SlidesNav from "@/components/SlidesNav/SlidesNav";
 import styles from "./TistorySection.module.css";
 
 export default async function TistorySection() {
@@ -34,30 +35,28 @@ export default async function TistorySection() {
           </div>
         </div>
 
-        <div className={styles.slidesWrap}>
-          <div className={styles.slidesRow}>
-            {posts.map((post) => (
-              <a
-                key={post.link}
-                href={post.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.card}
-              >
-                {post.thumbnail ? (
-                  <Image
-                    src={post.thumbnail}
-                    alt=""
-                    width={320}
-                    height={200}
-                  />
-                ) : (
-                  <div className={styles.noImage} />
-                )}
-              </a>
-            ))}
-          </div>
-        </div>
+        <SlidesNav bgColor="#181818">
+          {posts.map((post) => (
+            <a
+              key={post.link}
+              href={post.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.card}
+            >
+              {post.thumbnail ? (
+                <Image
+                  src={post.thumbnail}
+                  alt=""
+                  width={320}
+                  height={200}
+                />
+              ) : (
+                <div className={styles.noImage} />
+              )}
+            </a>
+          ))}
+        </SlidesNav>
       </div>
     </div>
   );

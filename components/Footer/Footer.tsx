@@ -37,7 +37,7 @@ export default function Footer() {
         <span className={styles.sep}>|</span>
         <span>대표자명: 기능운동재활협회</span>
         <span className={styles.sep}>|</span>
-        <span>대표번호: 010-3375-9911</span>
+        <span>대표번호: <a href="tel:010-3375-9911">010-3375-9911</a></span>
         <span className={styles.sep}>|</span>
         <span>주소: 서울특별시 강남구 도곡로7길 6, 한은빌딩 4층</span>
         <br />

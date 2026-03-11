@@ -28,23 +28,6 @@
   transition:color 0.2s;
 }
 .iconLink:hover{color:#fff;}
-.slidesWrap{
-  position:relative;
-}
-.slidesWrap::after{
-  content:'';position:absolute;right:0;top:0;bottom:0;width:60px;
-  background:linear-gradient(to left,#181818 0%,transparent 100%);
-  pointer-events:none;z-index:2;
-}
-.slidesRow{
-  display:flex;gap:10px;
-  overflow-x:auto;padding-bottom:10px;
-  scrollbar-width:thin;scrollbar-color:rgba(255,255,255,0.3) rgba(255,255,255,0.06);
-}
-.slidesRow::-webkit-scrollbar{height:6px;}
-.slidesRow::-webkit-scrollbar-track{background:rgba(255,255,255,0.06);border-radius:3px;}
-.slidesRow::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.3);border-radius:3px;}
-.slidesRow::-webkit-scrollbar-thumb:hover{background:rgba(255,255,255,0.5);}
 .card{
   flex:0 0 auto;
   width:260px;height:240px;

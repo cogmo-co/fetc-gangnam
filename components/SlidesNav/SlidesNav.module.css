@@ -1,0 +1,26 @@
+.slidesWrap{
+  position:relative;
+}
+.slidesRow{
+  display:flex;gap:10px;
+  overflow-x:auto;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+}
+.slidesRow::-webkit-scrollbar{display:none;}
+
+/* Nav zones – fade + click to scroll */
+.navZone{
+  position:absolute;top:0;bottom:0;width:55px;
+  z-index:3;
+  border:none;
+  cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+  color:rgba(255,255,255,0.45);
+  transition:color 0.2s;
+  padding:0;
+}
+.navZone:hover{color:rgba(255,255,255,0.8);}
+.navZone svg{width:28px;height:28px;}
+.navLeft{left:0;}
+.navRight{right:0;}

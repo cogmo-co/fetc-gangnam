@@ -1,4 +1,5 @@
 import Image from "next/image";
+import SlidesNav from "@/components/SlidesNav/SlidesNav";
 import styles from "./MediaSection.module.css";
 
 const SHORTS = [
@@ -46,27 +47,25 @@ export default function MediaSection() {
           </div>
         </div>
 
-        <div className={styles.slidesWrap}>
-          <div className={styles.slidesRow}>
-            {SHORTS.map((short) => (
-              <a
-                key={short.id}
-                href={`https://www.youtube.com/watch?v=${short.id}&list=PLuGIOSk72jfjKlsio7r4X_244PUN0yXlA`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={styles.card}
-              >
-                <Image
-                  src={`https://img.youtube.com/vi/${short.id}/hqdefault.jpg`}
-                  alt=""
-                  width={195}
-                  height={346}
-                />
-                <div className={styles.ytTitle}>{short.title}</div>
-              </a>
-            ))}
-          </div>
-        </div>
+        <SlidesNav>
+          {SHORTS.map((short) => (
+            <a
+              key={short.id}
+              href={`https://www.youtube.com/watch?v=${short.id}&list=PLuGIOSk72jfjKlsio7r4X_244PUN0yXlA`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.card}
+            >
+              <Image
+                src={`https://img.youtube.com/vi/${short.id}/hqdefault.jpg`}
+                alt=""
+                width={195}
+                height={346}
+              />
+              <div className={styles.ytTitle}>{short.title}</div>
+            </a>
+          ))}
+        </SlidesNav>
       </div>
     </div>
   );
