@@ -1,36 +1,52 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FETC 강남점 홈페이지
 
-## Getting Started
+FE Training Center 강남점 공식 홈페이지
+https://fetc.co.kr
 
-First, run the development server:
+## 페이지 구성
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **홈** — 메인 화면
+- **소개** — 센터 소개
+- **퍼포먼스 트레이닝** — Flowtics Method 프로그램
+- **종목별 트레이닝** — 종목별 맞춤 훈련
+- **재활 트레이닝** — 부상 재활 프로그램
+- **오시는 길** — 위치 및 연락처
+
+## 기술 스택
+
+- Next.js 16 (App Router)
+- React 19
+- TypeScript
+- CSS Modules
+
+## 프로젝트 구조
+
+```
+app/
+  page.tsx              # 홈
+  about/page.tsx        # 소개
+  performance/page.tsx  # 퍼포먼스 트레이닝
+  training/page.tsx     # 종목별 트레이닝
+  rehabilitation/page.tsx # 재활 트레이닝
+  contact/page.tsx      # 오시는 길
+  sitemap.ts            # 검색엔진용 사이트 지도
+  robots.ts             # 검색엔진 접근 설정
+components/             # 화면 구성 요소
+public/
+  fonts/                # Pretendard 폰트
+  images/               # 이미지 파일
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 실행 방법
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm install     # 처음 한 번만
+npm run dev     # 개발 서버 실행 → http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 배포용 빌드
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run build   # 빌드
+npm start       # 실행
+```

@@ -1,66 +1,61 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+import Hero from "@/components/Hero/Hero";
+import FullSection from "@/components/FullSection/FullSection";
+import MediaSection from "@/components/MediaSection/MediaSection";
+import LocationSection from "@/components/LocationSection/LocationSection";
+import BranchGrid from "@/components/BranchGrid/BranchGrid";
 
 export default function Home() {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
-      </main>
-    </div>
+    <>
+      <Hero />
+
+      <FullSection
+        bgColor="#1c1c1c"
+        bgLabel="PERFORMANCE"
+        text="PERFORMANCE"
+        body={
+          <>
+            선수의 운동능력, 단계에 맞춰 프로그램을 설계합니다.<br />
+            기초 컨디셔닝부터 경기력 준비까지,<br className="mobile-br" />{" "}
+            최고의 퍼포먼스를 발휘할 수 있도록<br />
+            각 시기에 필요한 훈련과 관리를 체계적으로 제공합니다.
+          </>
+        }
+        href="/performance"
+      />
+
+      <FullSection
+        bgColor="#181818"
+        bgLabel="TRAINING"
+        text="TRAINING"
+        body={
+          <>
+            FETC만의 Flowtics method를 통해<br className="mobile-br" />{" "}
+            트레이닝의 시작과 끝을 연결합니다.<br />
+            평가 기반의 체계적인 훈련으로 진짜 변화를 만들어갑니다.
+          </>
+        }
+        href="/training"
+      />
+
+      <FullSection
+        bgColor="#141414"
+        bgLabel="REHABILITATION"
+        text="REHABILITATION"
+        body={
+          <>
+            단계별 맞춤 재활 프로그램을 통해<br className="mobile-br" />{" "}
+            통증 조절부터 기능 회복까지 체계적으로 관리합니다.<br />
+            개인의 신체에 최적화된 회복 솔루션을 통해<br className="mobile-br" />{" "}
+            일상생활 및 현장으로의 완전한 복귀를 완성합니다.
+          </>
+        }
+        href="/rehabilitation"
+      />
+
+      <MediaSection />
+      <LocationSection />
+      <BranchGrid />
+    </>
   );
 }

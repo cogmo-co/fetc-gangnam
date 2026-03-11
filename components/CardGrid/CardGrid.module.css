@@ -1,0 +1,38 @@
+.wrapper{padding:80px 5%;background:#222;}
+.eyebrow{
+  font-size:11px;font-weight:700;letter-spacing:0.3em;
+  color:rgba(255,255,255,0.28);text-transform:uppercase;margin-bottom:20px;
+}
+.title{
+  font-family:var(--font-oswald),'Oswald',sans-serif;
+  font-size:clamp(28px,3.5vw,40px);font-weight:700;letter-spacing:-0.5px;
+  color:#fff;margin-bottom:28px;
+}
+.grid{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:3px;margin-top:4px;
+}
+.card{
+  background:#1c1c1c;padding:48px 44px;
+  border:1px solid rgba(255,255,255,0.04);
+  transition:background 0.25s;
+}
+.card:hover{background:#252525;}
+.cardNum{
+  font-family:var(--font-oswald),'Oswald',sans-serif;font-size:52px;font-weight:700;letter-spacing:-2px;
+  -webkit-text-stroke:1px rgba(255,255,255,0.25);color:transparent;
+  line-height:1;margin-bottom:20px;
+}
+.cardTitle{
+  font-family:var(--font-oswald),'Oswald',sans-serif;font-size:22px;font-weight:600;letter-spacing:0.5px;
+  color:#fff;margin-bottom:18px;
+}
+.divider{width:28px;height:1.5px;background:#13264B;margin-bottom:16px;}
+.cardBody{
+  font-size:14px;font-weight:300;letter-spacing:-0.3px;line-height:1.85;
+  color:rgba(238,238,238,0.5);
+  font-family:var(--font-pretendard),sans-serif;
+}
+
+@media(max-width:960px){
+  .grid{grid-template-columns:1fr;}
+}
