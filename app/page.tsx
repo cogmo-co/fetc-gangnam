@@ -1,5 +1,6 @@
 import Hero from "@/components/Hero/Hero";
 import FullSection from "@/components/FullSection/FullSection";
+import TistorySection from "@/components/TistorySection/TistorySection";
 import MediaSection from "@/components/MediaSection/MediaSection";
 import LocationSection from "@/components/LocationSection/LocationSection";
 import BranchGrid from "@/components/BranchGrid/BranchGrid";
@@ -53,6 +54,7 @@ export default function Home() {
         href="/rehabilitation"
       />
 
+      <TistorySection />
       <MediaSection />
       <LocationSection />
       <BranchGrid />

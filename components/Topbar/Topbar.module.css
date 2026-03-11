@@ -81,3 +81,17 @@
   color:#222;
   border-color:#f5f5f5;
 }
+
+/* Call button: text on desktop, icon on mobile */
+.callIcon{
+  display:none;
+  color:rgba(255,255,255,0.85);
+  transition:color 0.2s;
+}
+.callIcon:hover{color:#fff;}
+
+@media(max-width:640px){
+  .callText{display:none;}
+  .callIcon{display:flex;align-items:center;}
+  .right{gap:25px;}
+}
