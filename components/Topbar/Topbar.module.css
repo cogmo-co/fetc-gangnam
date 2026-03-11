@@ -72,6 +72,7 @@
   letter-spacing:-0.3px;
   color:rgba(255,255,255,0.85);
   padding:7px 15px;
+  background:rgba(255,255,255,0.1);
   border:1px solid rgba(255,255,255,0.28);
   transition:background 0.2s,color 0.2s,border-color 0.2s;
   white-space:nowrap;
@@ -93,5 +94,6 @@
 @media(max-width:640px){
   .callText{display:none;}
   .callIcon{display:flex;align-items:center;}
-  .right{gap:25px;}
+  .callIcon svg{width:20px;height:20px;}
+  .right{gap:18px;}
 }
