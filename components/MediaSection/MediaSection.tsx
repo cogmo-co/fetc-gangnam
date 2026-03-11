@@ -2,24 +2,27 @@ import Image from "next/image";
 import SlidesNav from "@/components/SlidesNav/SlidesNav";
 import styles from "./MediaSection.module.css";
 
-const SHORTS = [
-  { id: "h6eBDb5nML0", title: "투수의 회전과 스키어의 점프가 다른 이유" },
-  { id: "_vs7WZkOzmc", title: "ACL재활, 언제 뛰어도 될까? 단계별 복귀 기준" },
-  { id: "mFARAtLQkig", title: "남들이 쉬는 그 때, 격차는 벌어집니다." },
-  { id: "pWsqbAjretw", title: "무릎만 2번의 수술 후, 스케이트보드 선수의 비수술 복귀 과정" },
-  { id: "ewoeUXs5WDQ", title: "종목별 트레이닝이 달라야 하는 이유" },
-  { id: "wZAMrt3gekc", title: "아무리 운동해도 몸이 안 변해요?" },
-  { id: "oK3KqOHaBXg", title: "십자인대 파열? 수술 없이 복귀했습니다." },
-  { id: "XIgL4VmEYFs", title: "화려한 무대와 조명 뒤, 아티스트의 몸을 관리하는 시간" },
-  { id: "Wu9tGnxQxW0", title: "미래의 국가대표,기본기부터 달라야 합니다." },
-  { id: "bD4iaKNUwuA", title: "2번의 수술 후에도 반복되는 무릎통증" },
-  { id: "TlgocsrN3b0", title: "십자인대 파열 비수술 재활, 걷기부터 점프까지" },
-  { id: "2hYsp4KE77o", title: "FETC X FEARA X BE academy #2" },
-  { id: "pyo8j_2AdKg", title: "FETC X FEARA X BE academy #1" },
-  { id: "WtQnJmaRZjA", title: "서울고등학교 야구부 트레이닝" },
-];
+const PLAYLIST_ID = process.env.YOUTUBE_PLAYLIST_ID;
 
-export default function MediaSection() {
+async function getShorts() {
+  const key = process.env.YOUTUBE_API_KEY;
+  if (!key || !PLAYLIST_ID) return [];
+  const res = await fetch(
+    `https://www.googleapis.com/youtube/v3/playlistItems?part=snippet&playlistId=${PLAYLIST_ID}&maxResults=15&key=${key}`,
+    { next: { revalidate: 3600 } },
+  );
+  if (!res.ok) return [];
+  const data = await res.json();
+  return (data.items ?? [])
+    .filter((item: any) => !["Private video", "Deleted video"].includes(item.snippet.title))
+    .map((item: any) => ({
+      id: item.snippet.resourceId.videoId as string,
+      title: item.snippet.title as string,
+    }));
+}
+
+export default async function MediaSection() {
+  const shorts = await getShorts();
   return (
     <div className={styles.section}>
       <div className={styles.inner}>
@@ -48,7 +51,7 @@ export default function MediaSection() {
         </div>
 
         <SlidesNav>
-          {SHORTS.map((short) => (
+          {shorts.map((short: { id: string; title: string }) => (
             <a
               key={short.id}
               href={`https://www.youtube.com/watch?v=${short.id}&list=PLuGIOSk72jfjKlsio7r4X_244PUN0yXlA`}
