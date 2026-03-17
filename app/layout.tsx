@@ -34,24 +34,24 @@ const pretendard = localFont({
 
 export const metadata: Metadata = {
   title: {
-    default: "FE Training Center 강남점",
-    template: "%s | FE Training Center 강남점",
+    default: "FE트레이닝센터 강남점",
+    template: "%s | FE트레이닝센터 강남점",
   },
-  description: "TRAIN BEYOND LIMITS — FE트레이닝센터 강남점",
+  description: "국가대표 선수가 선택한 재활, 퍼포먼스",
   metadataBase: new URL("https://fetc.co.kr"),
   openGraph: {
     type: "website",
     locale: "ko_KR",
-    siteName: "FE Training Center 강남점",
-    title: "FE Training Center 강남점",
-    description: "TRAIN BEYOND LIMITS — FE트레이닝센터 강남점",
-    images: [{ url: "/images/hero.jpg", width: 1200, height: 630, alt: "FE Training Center 강남점" }],
+    siteName: "FE트레이닝센터 강남점",
+    title: "FE트레이닝센터 강남점",
+    description: "국가대표 선수가 선택한 재활, 퍼포먼스",
+    images: [{ url: "/images/hero-bw.jpg", width: 1200, height: 630, alt: "FE트레이닝센터 강남점" }],
   },
   twitter: {
     card: "summary_large_image",
-    title: "FE Training Center 강남점",
-    description: "TRAIN BEYOND LIMITS — FE트레이닝센터 강남점",
-    images: ["/images/hero.jpg"],
+    title: "FE트레이닝센터 강남점",
+    description: "국가대표 선수가 선택한 재활, 퍼포먼스",
+    images: ["/images/hero-bw.jpg"],
   },
 };
 
