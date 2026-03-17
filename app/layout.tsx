@@ -45,13 +45,13 @@ export const metadata: Metadata = {
     siteName: "FE트레이닝센터 강남점",
     title: "FE트레이닝센터 강남점",
     description: "국가대표 선수가 선택한 재활, 퍼포먼스",
-    images: [{ url: "/images/hero-bw.jpg", width: 1200, height: 630, alt: "FE트레이닝센터 강남점" }],
+    images: [{ url: "/images/meta-image.png", width: 2060, height: 1159, alt: "FE트레이닝센터 강남점" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "FE트레이닝센터 강남점",
     description: "국가대표 선수가 선택한 재활, 퍼포먼스",
-    images: ["/images/hero-bw.jpg"],
+    images: ["/images/meta-image.png"],
   },
 };
 
