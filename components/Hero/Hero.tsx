@@ -1,6 +1,7 @@
 import Image from "next/image";
 import ScrollIndicator from "@/components/ScrollIndicator/ScrollIndicator";
 import BookingLink from "@/components/BookingLink/BookingLink";
+import PlaceLink from "./PlaceLink";
 import styles from "./Hero.module.css";
 
 export default function Hero() {
@@ -19,20 +20,7 @@ export default function Hero() {
           <span className={`${styles.bgTextSpan} ${styles.bgTextD2}`}>LIMITS</span>
         </span>
         <div className={styles.btns}>
-          <a
-            href="https://map.naver.com/p/entry/place/1961624906"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={`${styles.btnSub} sr sr-d1`}
-            onClick={(e) => {
-              if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
-                e.preventDefault();
-                window.open("https://m.place.naver.com/place/1961624906", "_blank");
-              }
-            }}
-          >
-            센터 위치
-          </a>
+          <PlaceLink className={`${styles.btnSub} sr sr-d1`} />
           <BookingLink
             className={`${styles.btnSub} sr sr-d2`}
           >
