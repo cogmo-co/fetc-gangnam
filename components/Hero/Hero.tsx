@@ -20,10 +20,16 @@ export default function Hero() {
         </span>
         <div className={styles.btns}>
           <a
-            href="https://map.naver.com/p/search/fe%ED%8A%B8%EB%A0%88%EC%9D%B4%EB%8B%9D%EC%84%BC%ED%84%B0%20%EA%B0%95%EB%82%A8/place/1961624906"
+            href="https://map.naver.com/p/entry/place/1961624906"
             target="_blank"
             rel="noopener noreferrer"
             className={`${styles.btnSub} sr sr-d1`}
+            onClick={(e) => {
+              if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
+                e.preventDefault();
+                window.open("https://m.place.naver.com/place/1961624906", "_blank");
+              }
+            }}
           >
             센터 위치
           </a>
