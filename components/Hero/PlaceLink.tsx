@@ -1,23 +1,32 @@
 "use client";
 
-const PC_URL = "https://map.naver.com/p/entry/place/1961624906";
-const MOBILE_URL = "https://m.place.naver.com/place/1961624906";
+interface Props {
+  placeId?: string;
+  className?: string;
+  children?: React.ReactNode;
+}
 
-export default function PlaceLink({ className }: { className?: string }) {
+const DEFAULT_PLACE_ID = "1961624906";
+
+export default function PlaceLink({ placeId, className, children }: Props) {
+  const id = placeId || DEFAULT_PLACE_ID;
+  const pcUrl = `https://map.naver.com/p/entry/place/${id}`;
+  const mobileUrl = `https://m.place.naver.com/place/${id}`;
+
   return (
     <a
-      href={PC_URL}
+      href={pcUrl}
       target="_blank"
       rel="noopener noreferrer"
       className={className}
       onClick={(e) => {
         if (/Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
           e.preventDefault();
-          window.open(MOBILE_URL, "_blank");
+          window.open(mobileUrl, "_blank");
         }
       }}
     >
-      센터 위치
+      {children || "센터 위치"}
     </a>
   );
 }
