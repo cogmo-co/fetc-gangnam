@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 import Link from "next/link";
 import BookingLink from "@/components/BookingLink/BookingLink";
 import styles from "./Topbar.module.css";
@@ -11,16 +12,19 @@ interface TopbarProps {
 }
 
 export default function Topbar({ menuOpen, onToggleMenu }: TopbarProps) {
+  const pathname = usePathname();
   const [solid, setSolid] = useState(false);
+  const alwaysSolid = pathname.startsWith("/admin");
 
   useEffect(() => {
+    if (alwaysSolid) return;
     const handler = () => setSolid(window.scrollY > 10);
     window.addEventListener("scroll", handler, { passive: true });
     return () => window.removeEventListener("scroll", handler);
-  }, []);
+  }, [alwaysSolid]);
 
   return (
-    <header className={`${styles.topbar} ${solid ? styles.solid : ""}`}>
+    <header className={`${styles.topbar} ${alwaysSolid || solid ? styles.solid : ""}`}>
       <button
         className={`${styles.hamburger} ${menuOpen ? styles.hamburgerOpen : ""}`}
         aria-label="메뉴"

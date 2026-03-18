@@ -1,0 +1,117 @@
+.wrap{
+  min-height:100vh;background:#f5f5f5;
+  padding:120px 20px 40px;
+  font-family:var(--font-pretendard),sans-serif;color:#222;
+}
+.inner{max-width:720px;margin:0 auto;}
+.title{font-size:24px;font-weight:700;}
+
+/* 로그인 */
+.loginBox{
+  background:#fff;padding:32px;border-radius:8px;
+  box-shadow:0 1px 4px rgba(0,0,0,0.1);max-width:360px;margin:0 auto;
+}
+.loginTitle{font-size:20px;font-weight:700;margin-bottom:20px;text-align:center;}
+.field{margin-bottom:16px;}
+.field label{display:block;font-size:13px;font-weight:500;margin-bottom:4px;color:#555;}
+.field input{
+  width:100%;padding:10px 12px;border:1px solid #ddd;border-radius:6px;
+  font-size:15px;box-sizing:border-box;
+}
+.field input:focus{outline:none;border-color:#333;}
+.btnPrimary{
+  padding:10px 24px;background:#222;color:#fff;border:none;
+  border-radius:6px;font-size:14px;font-weight:600;cursor:pointer;
+}
+.btnPrimary:hover{background:#444;}
+.btnPrimary:disabled{background:#999;cursor:not-allowed;}
+.error{color:#e53e3e;font-size:13px;margin-top:8px;text-align:center;}
+
+/* 목록 */
+.toolbar{
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:20px;
+}
+.btnNew{
+  padding:10px 20px;background:#222;color:#fff;border:none;
+  border-radius:6px;font-size:14px;font-weight:600;cursor:pointer;
+}
+.btnNew:hover{background:#444;}
+.postList{display:flex;flex-direction:column;gap:10px;}
+.postItem{
+  display:flex;align-items:center;gap:14px;padding:14px;
+  background:#fff;border-radius:8px;box-shadow:0 1px 3px rgba(0,0,0,0.08);
+}
+.postThumb{
+  width:72px;height:90px;border-radius:6px;object-fit:cover;
+  background:#eee;flex-shrink:0;
+}
+.postInfo{flex:1;min-width:0;}
+.postTitle{font-size:15px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.postDate{font-size:12px;color:#888;margin-top:4px;}
+.postBadge{
+  font-size:11px;padding:3px 10px;border-radius:10px;font-weight:600;
+  flex-shrink:0;
+}
+.published{background:#c6f6d5;color:#276749;}
+.draft{background:#fed7d7;color:#9b2c2c;}
+.postActions{display:flex;gap:6px;flex-shrink:0;}
+.btnEdit,.btnDelete{
+  padding:6px 12px;border:1px solid #ddd;border-radius:4px;
+  font-size:12px;cursor:pointer;background:#fff;
+}
+.btnEdit:hover{background:#f0f0f0;}
+.btnDelete{color:#e53e3e;border-color:#e53e3e;}
+.btnDelete:hover{background:#fff5f5;}
+
+/* 폼 */
+.formBox{
+  background:#fff;padding:28px;border-radius:8px;
+  box-shadow:0 1px 4px rgba(0,0,0,0.1);
+}
+.formTitle{font-size:18px;font-weight:700;margin-bottom:24px;}
+.textarea{
+  width:100%;min-height:180px;padding:10px 12px;border:1px solid #ddd;
+  border-radius:6px;font-size:14px;resize:vertical;box-sizing:border-box;
+  font-family:inherit;
+}
+.textarea:focus{outline:none;border-color:#333;}
+.checkbox{display:flex;align-items:center;gap:8px;margin-bottom:16px;}
+.checkbox input{width:18px;height:18px;}
+.checkbox label{font-size:14px;font-weight:500;}
+
+/* 이미지 섹션 */
+.imageSection{margin-bottom:20px;}
+.imageSection > label{display:block;font-size:13px;font-weight:500;margin-bottom:8px;color:#555;}
+.imageRow{display:flex;gap:8px;align-items:flex-start;flex-wrap:wrap;}
+.addImageBtn{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:80px;height:100px;border:2px dashed #ccc;border-radius:4px;
+  color:#999;font-size:24px;cursor:pointer;flex-shrink:0;
+  transition:border-color 0.2s,color 0.2s;
+}
+.addImageBtn:hover{border-color:#666;color:#666;}
+.previewItem{position:relative;display:inline-block;flex-shrink:0;}
+.previewImg{
+  width:80px;height:100px;object-fit:cover;border-radius:4px;
+  border:1px solid #eee;display:block;
+}
+.removeImg{
+  position:absolute;top:-6px;right:-6px;
+  width:20px;height:20px;border-radius:50%;
+  background:#e53e3e;color:#fff;border:none;
+  font-size:14px;line-height:1;cursor:pointer;
+  display:flex;align-items:center;justify-content:center;
+}
+
+.formActions{display:flex;gap:8px;justify-content:flex-end;margin-top:24px;}
+.btnCancel{
+  padding:10px 24px;background:#fff;color:#222;border:1px solid #ddd;
+  border-radius:6px;font-size:14px;cursor:pointer;
+}
+.btnCancel:hover{background:#f5f5f5;}
+.empty{text-align:center;color:#888;padding:40px 0;font-size:15px;}
+.loading{text-align:center;padding:40px 0;color:#888;}
+
+/* 로그인 전용 */
+.loginBox .btnPrimary{width:100%;padding:12px;}

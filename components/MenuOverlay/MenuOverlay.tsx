@@ -13,6 +13,7 @@ const MENU_ITEMS = [
   { label: "PERFORMANCE", href: "/performance" },
   { label: "TRAINING", href: "/training" },
   { label: "REHABILITATION", href: "/rehabilitation" },
+  { label: "NEWS", href: "/news" },
   { label: "CONTACT", href: "/contact" },
 ];
 
