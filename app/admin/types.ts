@@ -10,6 +10,13 @@ export interface Post {
 
 export type View = "loading" | "login" | "list" | "create" | "edit";
 
+export interface PaginatedPosts {
+  posts: Post[];
+  total: number;
+  page: number;
+  limit: number;
+}
+
 export interface ImageItem {
   id: string;
   src: string;

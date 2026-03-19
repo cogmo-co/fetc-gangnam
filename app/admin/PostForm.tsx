@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import {
   DndContext,
   closestCenter,
@@ -16,6 +17,7 @@ import {
 } from "@dnd-kit/sortable";
 import type { ImageItem } from "./types";
 import SortableImage from "./SortableImage";
+import { MAX_IMAGES_PER_POST } from "@/lib/constants";
 import styles from "./admin.module.css";
 
 interface Props {
@@ -25,6 +27,7 @@ interface Props {
   published: boolean;
   imageItems: ImageItem[];
   loading: boolean;
+  loadingMsg: string;
   error: string;
   onTitleChange: (v: string) => void;
   onBodyChange: (v: string) => void;
@@ -41,6 +44,7 @@ export default function PostForm({
   published,
   imageItems,
   loading,
+  loadingMsg,
   error,
   onTitleChange,
   onBodyChange,
@@ -54,9 +58,25 @@ export default function PostForm({
     useSensor(TouchSensor, { activationConstraint: { delay: 150, tolerance: 5 } })
   );
 
+  // 컴포넌트 언마운트 시 미리보기 URL 메모리 해제
+  useEffect(() => {
+    return () => {
+      imageItems
+        .filter((it) => it.type === "new")
+        .forEach((it) => URL.revokeObjectURL(it.src));
+    };
+  }, [imageItems]);
+
   function handleAddFiles(e: React.ChangeEvent<HTMLInputElement>) {
     const newFiles = Array.from(e.target.files || []);
-    const newItems: ImageItem[] = newFiles.map((f, i) => ({
+    const remaining = MAX_IMAGES_PER_POST - imageItems.length;
+    if (remaining <= 0) {
+      alert(`이미지는 최대 ${MAX_IMAGES_PER_POST}장까지 가능합니다`);
+      e.target.value = "";
+      return;
+    }
+    const sliced = newFiles.slice(0, remaining);
+    const newItems: ImageItem[] = sliced.map((f, i) => ({
       id: `new-${Date.now()}-${i}`,
       src: URL.createObjectURL(f),
       type: "new",
@@ -127,6 +147,7 @@ export default function PostForm({
                     <input
                       type="file"
                       accept="image/*"
+                      multiple
                       onChange={handleAddFiles}
                       style={{ display: "none" }}
                     />
@@ -153,7 +174,7 @@ export default function PostForm({
               onClick={onSubmit}
               disabled={loading}
             >
-              {loading ? "저장 중..." : "저장"}
+              {loading ? (loadingMsg || "저장 중...") : "저장"}
             </button>
           </div>
         </div>

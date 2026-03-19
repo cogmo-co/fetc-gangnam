@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
+import { del } from "@vercel/blob";
 import { verifyToken, checkCsrf } from "@/lib/auth";
-import { deleteByPrefix } from "@/lib/blob";
 import { supabase } from "@/lib/supabase";
 
 /** 게시물 수정 */
@@ -68,13 +68,9 @@ export async function DELETE(
       return NextResponse.json({ error: "게시물 없음" }, { status: 404 });
     }
 
-    // Blob 이미지 삭제
+    // Blob 이미지 삭제 (모든 URL 직접 삭제)
     if (post.image_urls?.length > 0) {
-      const firstUrl = post.image_urls[0];
-      const match = firstUrl.match(/images\/[^/]+\//);
-      if (match) {
-        await deleteByPrefix(match[0]);
-      }
+      await del(post.image_urls).catch(() => {});
     }
 
     // DB 삭제 (likes도 CASCADE로 자동 삭제)

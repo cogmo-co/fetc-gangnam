@@ -16,12 +16,31 @@ export interface NewsPost {
 }
 
 interface Props {
-  posts: NewsPost[];
+  initialPosts: NewsPost[];
+  initialCursor: string | null;
 }
 
-export default function NewsGrid({ posts }: Props) {
+export default function NewsGrid({ initialPosts, initialCursor }: Props) {
   const router = useRouter();
+  const [posts, setPosts] = useState<NewsPost[]>(initialPosts);
+  const [cursor, setCursor] = useState<string | null>(initialCursor);
+  const [loadingMore, setLoadingMore] = useState(false);
   const [selected, setSelected] = useState<NewsPost | null>(null);
+
+  async function loadMore() {
+    if (!cursor || loadingMore) return;
+    setLoadingMore(true);
+    try {
+      const res = await fetch(`/api/posts?cursor=${encodeURIComponent(cursor)}`);
+      const data = await res.json();
+      setPosts((prev) => [...prev, ...data.posts]);
+      setCursor(data.nextCursor);
+    } catch {
+      // 조용히 실패
+    } finally {
+      setLoadingMore(false);
+    }
+  }
 
   function openPost(post: NewsPost) {
     if (window.innerWidth <= 640) {
@@ -79,6 +98,16 @@ export default function NewsGrid({ posts }: Props) {
           </div>
         ))}
       </div>
+
+      {cursor && (
+        <button
+          className={styles.loadMore}
+          onClick={loadMore}
+          disabled={loadingMore}
+        >
+          {loadingMore ? "불러오는 중..." : "+ 더보기"}
+        </button>
+      )}
 
       {selected && (
         <NewsModal post={selected} onClose={closePost} />

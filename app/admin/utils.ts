@@ -2,7 +2,9 @@
 export async function resizeToWebP(file: File): Promise<Blob> {
   return new Promise((resolve, reject) => {
     const img = new Image();
+    const objectUrl = URL.createObjectURL(file);
     img.onload = () => {
+      URL.revokeObjectURL(objectUrl);
       const canvas = document.createElement("canvas");
       canvas.width = 1080;
       canvas.height = 1350;
@@ -19,7 +21,10 @@ export async function resizeToWebP(file: File): Promise<Blob> {
         0.8
       );
     };
-    img.onerror = reject;
-    img.src = URL.createObjectURL(file);
+    img.onerror = () => {
+      URL.revokeObjectURL(objectUrl);
+      reject(new Error("이미지 로드 실패"));
+    };
+    img.src = objectUrl;
   });
 }

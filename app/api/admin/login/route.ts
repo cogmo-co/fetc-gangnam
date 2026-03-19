@@ -5,6 +5,10 @@ export async function POST(req: Request) {
   try {
     const { id, password } = await req.json();
 
+    if (typeof id !== "string" || typeof password !== "string") {
+      return NextResponse.json({ error: "잘못된 요청" }, { status: 400 });
+    }
+
     if (!validateCredentials(id, password)) {
       return NextResponse.json({ error: "인증 실패" }, { status: 401 });
     }

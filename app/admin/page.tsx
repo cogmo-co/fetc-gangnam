@@ -11,7 +11,10 @@ import styles from "./admin.module.css";
 export default function AdminPage() {
   const [view, setView] = useState<View>("loading");
   const [posts, setPosts] = useState<Post[]>([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
   const [loading, setLoading] = useState(false);
+  const [loadingMsg, setLoadingMsg] = useState("");
   const [error, setError] = useState("");
 
   const [loginId, setLoginId] = useState("");
@@ -23,11 +26,13 @@ export default function AdminPage() {
   const [formPublished, setFormPublished] = useState(true);
   const [imageItems, setImageItems] = useState<ImageItem[]>([]);
 
-  async function loadPosts() {
+  async function loadPosts(page = 1) {
     setLoading(true);
     try {
-      const data = await api.fetchPosts();
-      setPosts(data);
+      const data = await api.fetchPosts(page);
+      setPosts(data.posts);
+      setCurrentPage(data.page);
+      setTotalPages(Math.ceil(data.total / data.limit));
     } catch (e: unknown) {
       if (e instanceof Error && e.message === "UNAUTHORIZED") {
         setView("login");
@@ -91,7 +96,10 @@ export default function AdminPage() {
         return;
       }
 
-      const uploadedUrls = await api.uploadImages(imageItems);
+      const uploadedUrls = await api.uploadImages(imageItems, (cur, total) =>
+        setLoadingMsg(`이미지 업로드 중 (${cur}/${total})...`)
+      );
+      setLoadingMsg("저장 중...");
       const allUrls = api.buildImageUrls(imageItems, uploadedUrls);
 
       if (view === "create") {
@@ -100,13 +108,16 @@ export default function AdminPage() {
         await api.updatePost(editId, formTitle, formBody, formPublished, allUrls);
       }
 
-      await api.revalidateNews();
+      await api.revalidateNews().catch(() =>
+        setError("저장 완료, 데이터 갱신 실패 ─ 60초 후 자동 갱신됩니다.")
+      );
       await loadPosts();
       setView("list");
     } catch {
       setError("저장 실패");
     } finally {
       setLoading(false);
+      setLoadingMsg("");
     }
   }
 
@@ -126,9 +137,11 @@ export default function AdminPage() {
 
   useEffect(() => {
     api
-      .fetchPosts()
+      .fetchPosts(1)
       .then((data) => {
-        setPosts(data);
+        setPosts(data.posts);
+        setCurrentPage(data.page);
+        setTotalPages(Math.ceil(data.total / data.limit));
         setView("list");
       })
       .catch(() => setView("login"));
@@ -165,6 +178,7 @@ export default function AdminPage() {
         published={formPublished}
         imageItems={imageItems}
         loading={loading}
+        loadingMsg={loadingMsg}
         error={error}
         onTitleChange={setFormTitle}
         onBodyChange={setFormBody}
@@ -180,6 +194,9 @@ export default function AdminPage() {
     <PostList
       posts={posts}
       loading={loading}
+      currentPage={currentPage}
+      totalPages={totalPages}
+      onPageChange={loadPosts}
       onEdit={openEdit}
       onDelete={handleDelete}
       onCreate={openCreate}

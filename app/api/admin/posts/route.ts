@@ -1,23 +1,31 @@
 import { NextResponse } from "next/server";
 import { verifyToken, checkCsrf } from "@/lib/auth";
 import { supabase } from "@/lib/supabase";
+import { ADMIN_PAGE_SIZE, MAX_IMAGES_PER_POST } from "@/lib/constants";
 
-/** 게시물 목록 */
-export async function GET() {
+/** 게시물 목록 (페이징) */
+export async function GET(req: Request) {
   if (!(await verifyToken())) {
     return NextResponse.json({ error: "인증 필요" }, { status: 401 });
   }
 
-  const { data, error } = await supabase
+  const { searchParams } = new URL(req.url);
+  const page = Math.max(1, Number(searchParams.get("page")) || 1);
+  const limit = ADMIN_PAGE_SIZE;
+  const from = (page - 1) * limit;
+  const to = from + limit - 1;
+
+  const { data, error, count } = await supabase
     .from("posts")
-    .select("*")
-    .order("created_at", { ascending: false });
+    .select("*", { count: "exact" })
+    .order("created_at", { ascending: false })
+    .range(from, to);
 
   if (error) {
     return NextResponse.json({ error: "목록 조회 실패" }, { status: 500 });
   }
 
-  return NextResponse.json(data);
+  return NextResponse.json({ posts: data, total: count, page, limit });
 }
 
 /** 게시물 생성 */
@@ -35,6 +43,29 @@ export async function POST(req: Request) {
     if (!title || !image_urls || image_urls.length === 0) {
       return NextResponse.json(
         { error: "제목과 이미지는 필수입니다" },
+        { status: 400 }
+      );
+    }
+
+    if (image_urls.length > MAX_IMAGES_PER_POST) {
+      return NextResponse.json(
+        { error: `이미지는 최대 ${MAX_IMAGES_PER_POST}장까지 가능합니다` },
+        { status: 400 }
+      );
+    }
+
+    // Vercel Blob URL만 허용
+    const isValidUrl = (url: string) => {
+      try {
+        const { hostname } = new URL(url);
+        return hostname.endsWith(".public.blob.vercel-storage.com");
+      } catch {
+        return false;
+      }
+    };
+    if (!image_urls.every(isValidUrl)) {
+      return NextResponse.json(
+        { error: "허용되지 않는 이미지 URL입니다" },
         { status: 400 }
       );
     }

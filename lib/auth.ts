@@ -35,7 +35,7 @@ export function validateCredentials(id: string, password: string): boolean {
 export async function checkCsrf(): Promise<boolean> {
   const headerStore = await headers();
   const origin = headerStore.get("origin");
-  if (!origin) return true;
+  if (!origin) return false;
   return ALLOWED_ORIGINS.includes(origin);
 }
 
