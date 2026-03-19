@@ -87,14 +87,17 @@
   overflow-y:auto;
 }
 .postTitle{
-  font-size:18px;font-weight:700;
-  color:#111;margin-bottom:16px;
+  font-size:1.25rem;font-weight:800;
+  color:#111;margin-bottom:0;
+  padding-bottom:1.25rem;
+  border-bottom:1px solid #ddd;
 }
 .postBodyWrap{
+  margin-top:1.25rem;
   margin-bottom:16px;
 }
 .postBody{
-  font-size:14px;color:#444;
+  font-size:1rem;color:#444;
   line-height:1.7;white-space:pre-wrap;
 }
 .postBodyClamped{
