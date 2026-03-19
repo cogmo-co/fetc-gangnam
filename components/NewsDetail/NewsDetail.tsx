@@ -182,23 +182,27 @@ export default function NewsDetail({ post }: Props) {
             </div>
           </div>
 
-          <div className={styles.postTitle}>{post.title}</div>
-          {post.body && (
-            <div className={styles.postBodyWrap}>
-              <div className={`${styles.postBody} ${!expanded ? styles.postBodyClamped : ""}`}>
-                {post.body}
+          <div className={styles.titleArea}>
+            <div className={styles.postTitle}>{post.title}</div>
+          </div>
+          <div className={styles.scrollArea}>
+            {post.body && (
+              <div className={styles.postBodyWrap}>
+                <div className={`${styles.postBody} ${!expanded ? styles.postBodyClamped : ""}`}>
+                  {post.body}
+                </div>
+                {post.body.length > 80 && (
+                  <button
+                    className={styles.moreBtn}
+                    onClick={() => setExpanded(!expanded)}
+                  >
+                    {expanded ? "접기" : "... 더보기"}
+                  </button>
+                )}
               </div>
-              {post.body.length > 80 && (
-                <button
-                  className={styles.moreBtn}
-                  onClick={() => setExpanded(!expanded)}
-                >
-                  {expanded ? "접기" : "... 더보기"}
-                </button>
-              )}
-            </div>
-          )}
-          <div className={styles.postDate}>{dateStr}</div>
+            )}
+            <div className={styles.postDate}>{dateStr}</div>
+          </div>
 
           <div className={styles.likeRowPC}>
             <button className={styles.shareBtn} onClick={handleShare}>

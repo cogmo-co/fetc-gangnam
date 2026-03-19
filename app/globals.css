@@ -15,6 +15,16 @@ a{color:inherit;text-decoration:none;}
 button{cursor:pointer;border:none;background:none;font-family:inherit;color:inherit;}
 
 /* ============================================
+   RESPONSIVE HELPERS
+   ============================================ */
+.mobile-only{display:none;}
+.pc-only{display:block;}
+@media(max-width:640px){
+  .mobile-only{display:block;}
+  .pc-only{display:none;}
+}
+
+/* ============================================
    SUB PAGE
    ============================================ */
 .sub-page{padding-top:84px;}

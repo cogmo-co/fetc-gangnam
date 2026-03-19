@@ -18,14 +18,22 @@ export interface NewsPost {
 interface Props {
   initialPosts: NewsPost[];
   initialCursor: string | null;
+  autoOpenPost?: NewsPost;
 }
 
-export default function NewsGrid({ initialPosts, initialCursor }: Props) {
+export default function NewsGrid({ initialPosts, initialCursor, autoOpenPost }: Props) {
   const router = useRouter();
   const [posts, setPosts] = useState<NewsPost[]>(initialPosts);
   const [cursor, setCursor] = useState<string | null>(initialCursor);
   const [loadingMore, setLoadingMore] = useState(false);
   const [selected, setSelected] = useState<NewsPost | null>(null);
+
+  // PC에서 공유 링크 직접 접속 시 모달 자동 열기
+  useEffect(() => {
+    if (autoOpenPost && window.innerWidth > 640) {
+      setSelected(autoOpenPost);
+    }
+  }, [autoOpenPost]);
 
   async function loadMore() {
     if (!cursor || loadingMore) return;

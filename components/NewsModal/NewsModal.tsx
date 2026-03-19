@@ -199,9 +199,13 @@ export default function NewsModal({ post, onClose }: Props) {
             </div>
           </div>
 
-          {/* 본문 (PC에서 스크롤) */}
-          <div className={styles.scrollArea}>
+          {/* 제목 (상단 고정) */}
+          <div className={styles.titleArea}>
             <div className={styles.postTitle}>{post.title}</div>
+          </div>
+
+          {/* 본문 (스크롤) */}
+          <div className={styles.scrollArea}>
             {post.body && (
               <div className={styles.postBodyWrap}>
                 <div className={`${styles.postBody} ${!expanded ? styles.postBodyClamped : ""}`}>
