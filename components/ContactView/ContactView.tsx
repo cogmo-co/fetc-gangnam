@@ -1,5 +1,6 @@
 import Image from "next/image";
 import BookingLink from "@/components/BookingLink/BookingLink";
+import { PHONE } from "@/lib/constants";
 import styles from "./ContactView.module.css";
 
 export default function ContactView() {
@@ -12,8 +13,8 @@ export default function ContactView() {
       <div className={styles.bgText}>CONTACT</div>
       <div className={`${styles.title} sr`}>CONTACT</div>
       <div className={styles.btns}>
-        <a href="tel:010-3375-9911" className={`${styles.btn} sr sr-d1`}>
-          <span className={styles.icon}>📞</span>전화 문의 · 010-3375-9911
+        <a href={`tel:${PHONE}`} className={`${styles.btn} sr sr-d1`}>
+          <span className={styles.icon}>📞</span>전화 문의 · {PHONE}
         </a>
         <BookingLink className={`${styles.btn} sr sr-d2`}>
           <span className={styles.icon}>📆</span>네이버 상담예약

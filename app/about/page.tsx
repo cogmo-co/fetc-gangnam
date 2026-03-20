@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
+import { headers } from "next/headers";
 import SubHero from "@/components/SubHero/SubHero";
 import CoachRow from "@/components/CoachRow/CoachRow";
 import LocationInfoSection from "@/components/LocationInfoSection/LocationInfoSection";
 import BranchGrid from "@/components/BranchGrid/BranchGrid";
+import { isMobileUA } from "@/lib/device";
 import styles from "./about.module.css";
 
 export const metadata: Metadata = {
@@ -11,7 +13,9 @@ export const metadata: Metadata = {
     "FE트레이닝센터 강남점 소개. 퍼포먼스 향상을 위한 과학적 트레이닝을 설계합니다.",
 };
 
-export default function AboutPage() {
+export default async function AboutPage() {
+  const ua = (await headers()).get("user-agent") ?? "";
+  const isMobile = isMobileUA(ua);
   return (
     <div className="sub-page">
       <SubHero title="ABOUT FETC" image="/images/about-hero.jpg" />
@@ -32,7 +36,7 @@ export default function AboutPage() {
       <CoachRow />
       <div className={styles.spacer} />
 
-      <LocationInfoSection />
+      <LocationInfoSection isMobile={isMobile} />
       <BranchGrid />
     </div>
   );

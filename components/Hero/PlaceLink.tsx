@@ -1,4 +1,5 @@
 import { headers } from "next/headers";
+import { isMobileUA } from "@/lib/device";
 
 interface Props {
   placeId?: string;
@@ -14,7 +15,7 @@ export default async function PlaceLink({ placeId, className, children }: Props)
   const mobileUrl = `https://m.place.naver.com/place/${id}`;
 
   const ua = (await headers()).get("user-agent") ?? "";
-  const isMobile = /Android|iPhone|iPad|iPod/i.test(ua);
+  const isMobile = isMobileUA(ua);
 
   return (
     <a

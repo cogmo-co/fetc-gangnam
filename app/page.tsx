@@ -1,11 +1,15 @@
+import { headers } from "next/headers";
 import Hero from "@/components/Hero/Hero";
 import FullSection from "@/components/FullSection/FullSection";
 import TistorySection from "@/components/TistorySection/TistorySection";
 import MediaSection from "@/components/MediaSection/MediaSection";
 import LocationInfoSection from "@/components/LocationInfoSection/LocationInfoSection";
 import BranchGrid from "@/components/BranchGrid/BranchGrid";
+import { isMobileUA } from "@/lib/device";
 
-export default function Home() {
+export default async function Home() {
+  const ua = (await headers()).get("user-agent") ?? "";
+  const isMobile = isMobileUA(ua);
   return (
     <>
       <Hero />
@@ -56,7 +60,7 @@ export default function Home() {
 
       <TistorySection />
       <MediaSection />
-      <LocationInfoSection />
+      <LocationInfoSection isMobile={isMobile} />
       <BranchGrid />
     </>
   );

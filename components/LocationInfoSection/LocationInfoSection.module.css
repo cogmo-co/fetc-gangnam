@@ -32,8 +32,10 @@
 }
 
 .title {
+  position: relative;
+  z-index: 2;
   font-family: var(--font-oswald);
-  font-size: 2rem;
+  font-size: clamp(40px, 5.5vw, 64px);
   font-weight: 700;
   color: #fff;
   margin-bottom: 24px;
@@ -42,7 +44,7 @@
 
 .container {
   display: flex;
-  gap: 24px;
+  gap: 2rem;
   border-radius: 8px;
   overflow: hidden;
 }
@@ -191,7 +193,7 @@
 /* 모바일 */
 @media (max-width: 640px) {
   .section {
-    padding: 60px 4%;
+    padding: 60px 5%;
   }
   .container {
     flex-direction: column;
