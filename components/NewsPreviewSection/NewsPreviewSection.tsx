@@ -1,44 +1,23 @@
-import Link from "next/link";
-import Image from "next/image";
 import { supabase } from "@/lib/supabase";
-import SlidesNav from "@/components/SlidesNav/SlidesNav";
-import styles from "./NewsPreviewSection.module.css";
+import NewsPreviewClient from "./NewsPreviewClient";
 
 const PREVIEW_COUNT = 4;
 
 export default async function NewsPreviewSection() {
   const { data } = await supabase
     .from("posts")
-    .select("id, title, image_urls")
+    .select("id, title, body, image_urls, created_at, likes(count)")
     .eq("published", true)
     .order("created_at", { ascending: false })
     .limit(PREVIEW_COUNT);
 
-  const posts = data ?? [];
+  const posts = (data ?? []).map((post) => ({
+    ...post,
+    like_count: post.likes?.[0]?.count ?? 0,
+    likes: undefined,
+  }));
+
   if (posts.length === 0) return null;
 
-  return (
-    <section className={styles.section}>
-      <div className={styles.header}>
-        <h2 className={styles.title}>FETC NEWS</h2>
-        <Link href="/news" className={styles.more}>
-          더보기
-        </Link>
-      </div>
-      <SlidesNav bgColor="#181818">
-        {posts.map((post) => (
-          <Link key={post.id} href={`/news/${post.id}`} className={styles.cell}>
-            {post.image_urls?.[0] && (
-              <Image
-                src={post.image_urls[0]}
-                alt={post.title}
-                fill
-                sizes="(max-width:640px) 50vw, 25vw"
-              />
-            )}
-          </Link>
-        ))}
-      </SlidesNav>
-    </section>
-  );
+  return <NewsPreviewClient posts={posts} />;
 }
