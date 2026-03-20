@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import SubHero from "@/components/SubHero/SubHero";
 import CoachRow from "@/components/CoachRow/CoachRow";
-import LocationSection from "@/components/LocationSection/LocationSection";
+import LocationInfoSection from "@/components/LocationInfoSection/LocationInfoSection";
 import BranchGrid from "@/components/BranchGrid/BranchGrid";
 import styles from "./about.module.css";
 
@@ -32,7 +32,7 @@ export default function AboutPage() {
       <CoachRow />
       <div className={styles.spacer} />
 
-      <LocationSection />
+      <LocationInfoSection />
       <BranchGrid />
     </div>
   );

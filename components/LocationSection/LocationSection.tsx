@@ -1,3 +1,4 @@
+// TODO: LocationInfoSection으로 완전 교체 후 승인받으면 이 컴포넌트 삭제 예정
 import Image from "next/image";
 import styles from "./LocationSection.module.css";
 

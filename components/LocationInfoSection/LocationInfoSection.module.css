@@ -1,0 +1,202 @@
+.section {
+  position: relative;
+  width: 100%;
+  min-height: 0;
+  padding: 90px 5%;
+}
+
+/* 배경 이미지 */
+.bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+.bg img {
+  object-fit: cover;
+  opacity: 0.55;
+  filter: grayscale(100%);
+}
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.6) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.inner {
+  position: relative;
+  z-index: 2;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.title {
+  font-family: var(--font-oswald);
+  font-size: 2rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 24px;
+  letter-spacing: 2px;
+}
+
+.container {
+  display: flex;
+  gap: 24px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* 지도 영역 */
+.mapArea {
+  flex: 1 1 55%;
+  min-height: 380px;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* 지도 내부 하단 오버레이 */
+.mapOverlay {
+  background: rgba(255, 255, 255, 0.95);
+  padding: 10px 16px;
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid #eee;
+}
+
+.mapOverlayBtns {
+  display: flex;
+  gap: 8px;
+}
+
+.mapBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: 1px solid #cbcbcb;
+  font-size: 1rem;
+  font-weight: 500;
+  text-decoration: none;
+  color: #333;
+  background: transparent;
+  transition: background 0.2s;
+  line-height: 1;
+}
+.mapBtn svg {
+  flex-shrink: 0;
+}
+.mapBtn:hover {
+  background: rgba(3, 199, 90, 0.08);
+}
+
+.mapBtnPrimary {
+  background: #03c75a;
+  color: #fff;
+  border-color: #03c75a;
+}
+.mapBtnPrimary:hover {
+  background: #02b350;
+}
+
+/* 정보 카드 */
+.infoCard {
+  flex: 1 1 45%;
+  background: rgba(43, 43, 43, 0.8);
+  border-radius: 8px;
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+.infoRow {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.infoIcon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  padding: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.subInfo {
+  margin-top: 4px;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.line2 {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #3cb44a;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.lineShin {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 6px;
+  height: 18px;
+  border-radius: 9px;
+  background: #a71e31;
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.scheduleGrid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 16px;
+}
+
+.divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.phoneLink {
+  color: rgba(255, 255, 255, 0.85);
+  text-decoration: none;
+}
+.phoneLink:hover {
+  color: #fff;
+  text-decoration: underline;
+}
+
+/* 모바일 */
+@media (max-width: 640px) {
+  .section {
+    padding: 60px 4%;
+  }
+  .container {
+    flex-direction: column;
+  }
+  .mapArea {
+    min-height: 280px;
+  }
+}
