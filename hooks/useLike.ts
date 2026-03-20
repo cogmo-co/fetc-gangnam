@@ -26,6 +26,13 @@ export function useLike(postId: string, initialCount: number) {
     const uid = localStorage.getItem("uid");
     if (!uid) return;
 
+    // 낙관적 업데이트: 즉시 UI 반영
+    const prevLiked = liked;
+    const prevCount = likeCount;
+    const newLiked = !liked;
+    setLiked(newLiked);
+    setLikeCount(newLiked ? prevCount + 1 : prevCount - 1);
+
     fetch(`/api/posts/${postId}/like`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
@@ -33,10 +40,17 @@ export function useLike(postId: string, initialCount: number) {
     })
       .then((res) => res.json())
       .then((data) => {
-        setLiked(data.liked);
-        setLikeCount((c) => (data.liked ? c + 1 : c - 1));
+        // 서버 결과가 다르면 보정
+        if (data.liked !== newLiked) {
+          setLiked(data.liked);
+          setLikeCount(data.liked ? prevCount + 1 : prevCount - 1);
+        }
       })
-      .catch(() => {});
+      .catch(() => {
+        // 실패 시 되돌림
+        setLiked(prevLiked);
+        setLikeCount(prevCount);
+      });
   }
 
   return { liked, likeCount, handleLike };
