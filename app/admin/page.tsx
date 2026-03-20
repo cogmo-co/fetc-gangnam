@@ -108,9 +108,11 @@ export default function AdminPage() {
         await api.updatePost(editId, formTitle, formBody, formPublished, allUrls);
       }
 
-      await api.revalidateNews().catch(() =>
-        setError("저장 완료, 데이터 갱신 실패 ─ 60초 후 자동 갱신됩니다.")
-      );
+      for (let i = 0; i < 3; i++) {
+        try { await api.revalidateNews(); break; } catch {
+          if (i === 2) setError("저장 완료, NEWS 목록 캐시 갱신 실패 ─ 최대 1시간 후 반영됩니다.");
+        }
+      }
       await loadPosts();
       setView("list");
     } catch {

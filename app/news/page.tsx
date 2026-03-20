@@ -1,9 +1,9 @@
 import SubHero from "@/components/SubHero/SubHero";
 import NewsGrid from "@/components/NewsGrid/NewsGrid";
 import { supabase } from "@/lib/supabase";
-import { NEWS_PAGE_SIZE } from "@/lib/constants";
+import { NEWS_PAGE_SIZE, REVALIDATE_INTERVAL } from "@/lib/constants";
 
-export const revalidate = 60;
+export const revalidate = REVALIDATE_INTERVAL;
 
 const LIMIT = NEWS_PAGE_SIZE;
 

@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { revalidatePath } from "next/cache";
 import { verifyToken, checkCsrf } from "@/lib/auth";
 import { supabase } from "@/lib/supabase";
 import { ADMIN_PAGE_SIZE, MAX_IMAGES_PER_POST } from "@/lib/constants";
@@ -85,6 +86,7 @@ export async function POST(req: Request) {
       return NextResponse.json({ error: "게시물 저장 실패" }, { status: 500 });
     }
 
+    revalidatePath("/sitemap.xml");
     return NextResponse.json(data, { status: 201 });
   } catch (e) {
     console.error("게시물 생성 실패:", e);
