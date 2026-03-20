@@ -75,7 +75,7 @@ export default async function NewsPostPage({
     <>
       {/* PC: 그리드 + 모달 자동 열기 */}
       <div className="sub-page pc-only">
-        <SubHero title="FETC NEWS" image="/images/news-hero.png" />
+        <SubHero title="FETC NEWS" image="/images/news-hero.png" half />
         <NewsGrid
           initialPosts={formattedList}
           initialCursor={hasMore ? formattedList[formattedList.length - 1].created_at : null}

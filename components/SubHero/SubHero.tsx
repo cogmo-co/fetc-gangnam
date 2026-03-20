@@ -5,11 +5,12 @@ interface SubHeroProps {
   title: string;
   bgLabel?: string;
   image?: string;
+  half?: boolean;
 }
 
-export default function SubHero({ title, bgLabel, image }: SubHeroProps) {
+export default function SubHero({ title, bgLabel, image, half }: SubHeroProps) {
   return (
-    <div className={styles.subHero}>
+    <div className={`${styles.subHero} ${half ? styles.half : ""}`}>
       <div className={styles.bg}>
         {image ? (
           <Image src={image} alt={bgLabel || title} fill sizes="100vw" />
