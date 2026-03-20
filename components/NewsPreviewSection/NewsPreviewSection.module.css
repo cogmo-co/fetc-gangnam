@@ -1,0 +1,77 @@
+.section {
+  background: #181818;
+  padding: 90px 5% 80px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.title {
+  font-family: var(--font-oswald);
+  font-size: clamp(40px, 5.5vw, 64px);
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 2px;
+}
+
+.more {
+  padding: 0.5rem 1.2rem;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.more:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* PC: 그리드 레이아웃, 화살표/그림자 숨김 */
+.section [class*="navZone"] {
+  display: none;
+}
+.section [class*="slidesRow"] {
+  overflow: visible;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+.cell {
+  position: relative;
+  aspect-ratio: 4/5;
+  border-radius: 4px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.cell img {
+  object-fit: cover;
+  transition: transform 0.3s;
+}
+.cell:hover img {
+  transform: scale(1.03);
+}
+
+/* 모바일: SlidesNav 기본 동작 (flex + 화살표) */
+@media (max-width: 640px) {
+  .section {
+    padding: 60px 5% 60px;
+  }
+  .section [class*="navZone"] {
+    display: flex;
+  }
+  .section [class*="slidesRow"] {
+    display: flex;
+    overflow-x: auto;
+  }
+  .cell {
+    flex: 0 0 50%;
+  }
+}
