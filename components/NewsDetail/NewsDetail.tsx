@@ -1,9 +1,13 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import type { NewsPost } from "@/components/NewsGrid/NewsGrid";
+import { useLike } from "@/hooks/useLike";
+import { useCarousel } from "@/hooks/useCarousel";
+import { sharePost } from "@/lib/share";
+import { formatDate } from "@/lib/format";
 import styles from "./NewsDetail.module.css";
 
 interface Props {
@@ -12,35 +16,10 @@ interface Props {
 
 export default function NewsDetail({ post }: Props) {
   const router = useRouter();
-  const [current, setCurrent] = useState(0);
-  const [liked, setLiked] = useState(false);
-  const [likeCount, setLikeCount] = useState(post.like_count);
-  const [expanded, setExpanded] = useState(false);
-  const touchStartX = useRef(0);
-  const touchDeltaX = useRef(0);
   const total = post.image_urls.length;
-
-  const prev = useCallback(() => setCurrent((c) => Math.max(0, c - 1)), []);
-  const next = useCallback(
-    () => setCurrent((c) => Math.min(total - 1, c + 1)),
-    [total]
-  );
-
-  useEffect(() => {
-    let uid = localStorage.getItem("uid");
-    if (!uid) {
-      uid = crypto.randomUUID();
-      localStorage.setItem("uid", uid);
-    }
-
-    fetch(`/api/posts/${post.id}/like?user_id=${uid}`)
-      .then((res) => res.json())
-      .then((data) => {
-        if (data.liked !== undefined) setLiked(data.liked);
-        if (data.count !== undefined) setLikeCount(data.count);
-      })
-      .catch(() => {});
-  }, [post.id]);
+  const { current, setCurrent, prev, next, handleTouchStart, handleTouchMove, handleTouchEnd } = useCarousel(total);
+  const { liked, likeCount, handleLike } = useLike(post.id, post.like_count);
+  const [expanded, setExpanded] = useState(false);
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -51,47 +30,7 @@ export default function NewsDetail({ post }: Props) {
     return () => window.removeEventListener("keydown", handler);
   }, [prev, next]);
 
-  function handleTouchStart(e: React.TouchEvent) {
-    touchStartX.current = e.touches[0].clientX;
-    touchDeltaX.current = 0;
-  }
-
-  function handleTouchMove(e: React.TouchEvent) {
-    touchDeltaX.current = e.touches[0].clientX - touchStartX.current;
-  }
-
-  function handleTouchEnd() {
-    if (touchDeltaX.current > 50) prev();
-    else if (touchDeltaX.current < -50) next();
-  }
-
-  async function handleLike() {
-    const uid = localStorage.getItem("uid");
-    if (!uid) return;
-
-    try {
-      const res = await fetch(`/api/posts/${post.id}/like`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ user_id: uid }),
-      });
-      const data = await res.json();
-      setLiked(data.liked);
-      setLikeCount((c) => (data.liked ? c + 1 : c - 1));
-    } catch {}
-  }
-
-  async function handleShare() {
-    const url = window.location.href;
-    if (navigator.share) {
-      try {
-        await navigator.share({ title: post.title, url });
-      } catch {}
-    } else {
-      await navigator.clipboard.writeText(url);
-      alert("링크가 복사되었습니다");
-    }
-  }
+  const handleShare = () => sharePost(post.title, post.id);
 
   const dots =
     total > 1
@@ -104,11 +43,7 @@ export default function NewsDetail({ post }: Props) {
         ))
       : null;
 
-  const dateStr = new Date(post.created_at).toLocaleDateString("ko-KR", {
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  });
+  const dateStr = formatDate(post.created_at);
 
   return (
     <div className={styles.page}>

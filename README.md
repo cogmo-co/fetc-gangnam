@@ -11,6 +11,7 @@ https://fetc.co.kr
 - **종목별 트레이닝** — 종목별 맞춤 훈련
 - **재활 트레이닝** — 부상 재활 프로그램
 - **오시는 길** — 위치 및 연락처
+- **NEWS** — 센터 소식
 
 ## 기술 스택
 
@@ -18,23 +19,29 @@ https://fetc.co.kr
 - React 19
 - TypeScript
 - CSS Modules
+- Supabase (DB — posts, likes)
+- Vercel Blob (이미지 저장, Client Upload)
 
 ## 프로젝트 구조
 
 ```
 app/
-  page.tsx              # 홈
-  about/page.tsx        # 소개
-  performance/page.tsx  # 퍼포먼스 트레이닝
-  training/page.tsx     # 종목별 트레이닝
+  page.tsx                # 홈
+  about/page.tsx          # 소개
+  performance/page.tsx    # 퍼포먼스 트레이닝
+  training/page.tsx       # 종목별 트레이닝
   rehabilitation/page.tsx # 재활 트레이닝
-  contact/page.tsx      # 오시는 길
-  sitemap.ts            # 검색엔진용 사이트 지도
-  robots.ts             # 검색엔진 접근 설정
-components/             # 화면 구성 요소
+  contact/page.tsx        # 오시는 길
+  news/page.tsx           # NEWS 피드
+  news/[id]/page.tsx      # NEWS 상세 (공유 링크)
+  sitemap.ts              # 검색엔진용 사이트 지도
+  robots.ts               # 검색엔진 접근 설정
+components/               # 화면 구성 요소
+hooks/                    # 공용 React hooks (useLike, useCarousel)
+lib/                      # 공용 유틸 (auth, supabase, share, format, constants)
 public/
-  fonts/                # Pretendard 폰트
-  images/               # 이미지 파일
+  fonts/                  # Pretendard 폰트
+  images/                 # 이미지 파일
 ```
 
 ## 실행 방법

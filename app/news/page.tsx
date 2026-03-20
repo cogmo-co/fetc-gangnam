@@ -1,9 +1,11 @@
 import SubHero from "@/components/SubHero/SubHero";
 import NewsGrid from "@/components/NewsGrid/NewsGrid";
 import { supabase } from "@/lib/supabase";
-import { NEWS_PAGE_SIZE, REVALIDATE_INTERVAL } from "@/lib/constants";
+import { NEWS_PAGE_SIZE } from "@/lib/constants";
 
-export const revalidate = REVALIDATE_INTERVAL;
+// Next.js segment config는 빌드 시 정적 분석으로 값을 읽으므로 리터럴만 허용 (변수 참조 불가)
+// lib/constants.ts의 REVALIDATE_INTERVAL과 동기화 필요
+export const revalidate = 3600;
 
 const LIMIT = NEWS_PAGE_SIZE;
 
