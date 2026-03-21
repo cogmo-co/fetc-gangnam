@@ -5,7 +5,7 @@ import { useEffect, useRef, useState } from "react";
 import { PHONE } from "@/lib/constants";
 import styles from "./LocationInfoSection.module.css";
 
-const MAP_CENTER = { lat: 37.491134, lng: 127.035130 };
+const MAP_CENTER = { lat: 37.491092, lng: 127.035055 };
 const NAVER_PLACE_URL = "https://map.naver.com/p/entry/place/1961624906";
 const DIRECTIONS_PC = "https://map.naver.com/index.nhn?elng=127.035130&elat=37.491134&etext=FE%ED%8A%B8%EB%A0%88%EC%9D%B4%EB%8B%9D%EC%84%BC%ED%84%B0%EA%B0%95%EB%82%A8%EC%A0%90&menu=route";
 const DIRECTIONS_MOBILE = "https://m.map.naver.com/route.nhn?ename=FE%ED%8A%B8%EB%A0%88%EC%9D%B4%EB%8B%9D%EC%84%BC%ED%84%B0%EA%B0%95%EB%82%A8%EC%A0%90&ex=127.035130&ey=37.491134&pathType=0&showMap=true";
@@ -23,6 +23,13 @@ export default function NaverMapClient({ isMobile }: Props) {
   const directionsUrl = isMobile ? DIRECTIONS_MOBILE : DIRECTIONS_PC;
   const bookingUrl = isMobile ? BOOKING_MOBILE : BOOKING_PC;
 
+  // 스크립트가 이미 로드되어 있으면 바로 초기화
+  useEffect(() => {
+    if ((window as any).naver?.maps) {
+      setMapLoaded(true);
+    }
+  }, []);
+
   useEffect(() => {
     if (!mapLoaded || !mapRef.current) return;
     const naver = (window as any).naver;
@@ -30,12 +37,12 @@ export default function NaverMapClient({ isMobile }: Props) {
 
     const map = new naver.maps.Map(mapRef.current, {
       center: new naver.maps.LatLng(MAP_CENTER.lat, MAP_CENTER.lng),
-      zoom: 15,
+      zoom: 16,
       zoomControl: false,
       scaleControl: false,
       logoControl: true,
       logoControlOptions: {
-        position: naver.maps.Position.BOTTOM_LEFT,
+        position: naver.maps.Position.TOP_RIGHT,
       },
       mapDataControl: false,
     });

@@ -197,8 +197,18 @@
   }
   .container {
     flex-direction: column;
+    /* gap: 16px; */
   }
   .mapArea {
     min-height: 280px;
+  }
+  .infoRow {
+    gap: 16px;
+    font-size: 0.9rem;
+  }
+  .subInfo {
+    flex-wrap: nowrap;
+    white-space: nowrap;
+    font-size: 0.8rem;
   }
 }
