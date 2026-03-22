@@ -37,14 +37,15 @@
 }
 .btns{
   display:flex;flex-direction:column;gap:12px;
-  width:100%;max-width:400px;
+  width:100%;max-width:320px;
   position:relative;z-index:10;
 }
 .btn{
-  display:inline-flex;align-items:center;justify-content:center;gap:10px;
+  display:grid;grid-template-columns:24px 1fr;gap:25px;
+  align-items:center;
   width:100%;padding:16px 24px;
-  font-family:var(--font-pretendard),sans-serif;font-size:13px;font-weight:700;
-  letter-spacing:-0.3px;
+  font-family:var(--font-pretendard),sans-serif;font-size:0.95rem;font-weight:700;
+  letter-spacing:-0.3px;text-align:left;
   background:rgba(0,0,0,0.4);color:rgba(255,255,255,0.9);
   border:1.5px solid rgba(255,255,255,0.3);
   transition:background 0.2s,color 0.2s,border-color 0.2s;
@@ -55,4 +56,4 @@
 .navy:hover{background:#f5f5f5;color:#222;border-color:#f5f5f5;}
 .kakao{background:#FEE500;border-color:#FEE500;color:#222;}
 .kakao:hover{background:#f5f5f5;color:#222;border-color:#f5f5f5;}
-.icon{font-size:17px;line-height:1;}
+.icon{display:flex;align-items:center;justify-content:center;width:24px;}
