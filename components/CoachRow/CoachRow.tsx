@@ -5,6 +5,7 @@ const COACHES = [
   {
     role: "Head Coach",
     name: "한석규",
+    img: "coach-한석규.png",
     spec: [
       "FE트레이닝센터 강남점 헤드코치",
       "기능운동재활협회 FEARA 대표",
@@ -19,6 +20,7 @@ const COACHES = [
   {
     role: "PCC / MANAGER",
     name: "강민구",
+    img: "coach-강민구.png",
     spec: [
       "인하대학교 스포츠과학대학 석사",
       "인하대학교 스포츠재활연구소 연구원",
@@ -32,7 +34,36 @@ const COACHES = [
   },
   {
     role: "PCC",
+    name: "임운상",
+    img: "coach-임운상.jpg",
+    spec: [
+      "Sports performance coach, Louisiana Tech University",
+      "Sports performance coach, University South Dakota",
+      "Intern sports performance coach, California State University: Sacramento",
+      "Outside event educator, Lululemon",
+      "인턴체력코치, 태릉선수촌",
+      "크로스핏 코치, Reebok Crossfit Sentinel"
+    ],
+  },
+  {
+    role: "PCC",
+    name: "박두희",
+    img: "coach-박두희.jpg",
+    spec: [
+      "前 하늘병원 컨디셔닝센터: 배구, 핸드볼, 아이스하키, 수영, 유소년 축구, 야구선수 케어",
+      "몽골 BE Academy 유소년 트레이닝",
+      "몽골 체육회 체육지도자 퍼포먼스 트레이닝",
+      "前 스노보드 프리스타일 국가대표팀 트레이너",
+      "\u00A0\u00A0- 22/23 FIS Nor-Am Cup, World Championships, European Cup, World Cup",
+      "\u00A0\u00A0- 23/24 FIS World Cup, 강원 Youth Olympic Winter Games",
+      "\u00A0\u00A0- 24/25 FIS World Cup, Asian Winter Games",
+      "\u00A0\u00A0- 26 Milano Olympic Winter Games",
+    ],
+  },
+  {
+    role: "PCC",
     name: "임우찬",
+    img: "coach-임우찬.png",
     spec: [
       "물리치료사",
       "FE트레이닝센터 강남점 코치",
@@ -42,6 +73,21 @@ const COACHES = [
       "2024 강원청소년동계올림픽 기술임원",
       "2024 프리스타일 스키 국가대표 상비군 체력훈련",
       "2024 대한서핑국가대표 체력측정 지원",
+    ],
+  },
+  {
+    role: "PCC",
+    name: "강나연",
+    img: "coach-강나연.jpg",
+    spec: [
+      "2025 World Lacrosse Men’s U20 Championship 트레이너",
+      "APLU U16 Championship 트레이너",
+      "APLU U14 & U12 Festival 트레이너",
+      "2025 Lacrosse Asia-Pacific Championship 국가대표팀 트레이너", 
+      "스노보드, 알파인스키 국가대표 상비군 하계∙동계 합숙훈련 피지컬 트레이너, 선수 컨디셔닝",
+      "2025/26 Triple H 스키팀 AT", 
+      "2024/25 넥센 스노보드 실업팀 AT", 
+      "2023/24 알펜시아 스키학교 강사",
     ],
   },
 ];
@@ -54,7 +100,7 @@ export default function CoachRow() {
         {COACHES.map((coach, i) => (
           <div key={coach.name} className={`${styles.card} sr sr-d${i + 1}`}>
             <div className={styles.photo}>
-              <Image src={`/images/coach-${coach.name}.png`} alt={coach.name} width={360} height={460} />
+              <Image src={`/images/${coach.img}`} alt={coach.name} width={360} height={460} />
             </div>
             <div className={styles.info}>
               <div className={styles.role}>{coach.role}</div>
