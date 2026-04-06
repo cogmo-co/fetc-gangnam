@@ -10,7 +10,7 @@ export default function ContactView() {
         <Image src="/images/contact.jpg" alt="Contact" fill sizes="100vw" />
       </div>
       <div className={styles.overlay} />
-      <div className={styles.bgText}>CONTACT</div>
+      {/* <div className={styles.bgText}>CONTACT</div> */}
       <div className={`${styles.title} sr`}>CONTACT</div>
       <div className={styles.btns}>
         <a href={`tel:${PHONE}`} className={`${styles.btn} sr sr-d1`}>
@@ -33,13 +33,14 @@ export default function ContactView() {
             <svg width="22" height="22" viewBox="0 0 24 24" fill="#3C1E1E"><path d="M12 3C6.48 3 2 6.58 2 10.94c0 2.8 1.86 5.27 4.66 6.67-.15.53-.96 3.41-.99 3.63 0 0-.02.17.09.24.11.06.24.01.24.01.32-.04 3.7-2.44 4.28-2.86.56.08 1.14.12 1.72.12 5.52 0 10-3.58 10-7.81C22 6.58 17.52 3 12 3z"/></svg>
           </span>카카오톡 채널 문의
         </a>
+        {/* TODO: Contact Form으로 전환 */}
         <a
           href="mailto:official@feara.co.kr"
           className={`${styles.btn} sr sr-d4`}
         >
           <span className={`${styles.icon} ${styles.iconEmail}`}>
             <svg width="20" height="20" viewBox="0 0 24 24" fill="#fff"><path fill="none" d="M0 0h24v24H0z"/><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
-          </span>협업 문의
+          </span>협업 문의 · official@feara.co.kr
         </a>
       </div>
     </div>
