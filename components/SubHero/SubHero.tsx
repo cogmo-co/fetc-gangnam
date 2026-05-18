@@ -3,12 +3,13 @@ import styles from "./SubHero.module.css";
 
 interface SubHeroProps {
   title: string;
+  subtitle?: string;
   bgLabel?: string;
   image?: string;
   half?: boolean;
 }
 
-export default function SubHero({ title, bgLabel, image, half }: SubHeroProps) {
+export default function SubHero({ title, subtitle, bgLabel, image, half }: SubHeroProps) {
   return (
     <div className={`${styles.subHero} ${half ? styles.half : ""}`}>
       <div className={styles.bg}>
@@ -20,7 +21,8 @@ export default function SubHero({ title, bgLabel, image, half }: SubHeroProps) {
       </div>
       <div className={styles.overlay} />
       <div className={styles.content}>
-        <div className={styles.bgText}>{title}</div>
+        {subtitle && <h1 className={styles.subtitle}>{subtitle}</h1>}
+        <div className={styles.bgText} aria-hidden="true">{title}</div>
       </div>
     </div>
   );

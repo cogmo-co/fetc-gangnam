@@ -95,7 +95,7 @@ const COACHES = [
 export default function CoachRow() {
   return (
     <div className={styles.section}>
-      <div className={`${styles.sectionTitle} sr`}>COACH</div>
+      <h2 className={`${styles.sectionTitle} sr`}>COACH</h2>
       <div className={styles.row}>
         {COACHES.map((coach, i) => (
           <div key={coach.name} className={`${styles.card} sr sr-d${i + 1}`}>
@@ -104,7 +104,7 @@ export default function CoachRow() {
             </div>
             <div className={styles.info}>
               <div className={styles.role}>{coach.role}</div>
-              <div className={styles.name}>{coach.name}</div>
+              <h3 className={styles.name}>{coach.name}</h3>
               <div className={styles.divider} />
               <div className={styles.spec}>
                 {coach.spec.map((line, j) => (

@@ -22,7 +22,7 @@ export default function CardGrid({ eyebrow, sectionTitle, cards, dividerColor = 
         {cards.map((card, i) => (
           <div key={card.num} className={`${styles.card} sr sr-d${i + 1}`}>
             <div className={styles.cardNum}>{card.num}</div>
-            <div className={styles.cardTitle}>{card.title}</div>
+            <h3 className={styles.cardTitle}>{card.title}</h3>
             <div className={styles.divider} style={{ background: dividerColor }} />
             <p className={styles.cardBody}>{card.body}</p>
           </div>

@@ -18,7 +18,7 @@ export default async function AboutPage() {
   const isMobile = isMobileUA(ua);
   return (
     <div className="sub-page">
-      <SubHero title="ABOUT FETC" image="/images/about-hero.jpg" half/>
+      <SubHero title="ABOUT FETC" subtitle="강남 선수재활 ∙ 퍼포먼스 트레이닝 | FE트레이닝센터 강남점" image="/images/about-hero.jpg" half/>
 
       <div className={styles.textSection}>
         <p className={`${styles.text} sr`}>

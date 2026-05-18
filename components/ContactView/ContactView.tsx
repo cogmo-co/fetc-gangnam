@@ -11,7 +11,7 @@ export default function ContactView() {
       </div>
       <div className={styles.overlay} />
       {/* <div className={styles.bgText}>CONTACT</div> */}
-      <div className={`${styles.title} sr`}>CONTACT</div>
+      <h1 className={`${styles.title} sr`}>CONTACT</h1>
       <div className={styles.btns}>
         <a href={`tel:${PHONE}`} className={`${styles.btn} sr sr-d1`}>
           <span className={`${styles.icon} ${styles.iconPhone}`}>

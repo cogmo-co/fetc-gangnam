@@ -19,10 +19,10 @@ const PERFORMANCE_CARDS = [
 export default function PerformancePage() {
   return (
     <div className="sub-page">
-      <SubHero title="PERFORMANCE" image="/images/performance-hero.jpg" />
+      <SubHero title="PERFORMANCE" subtitle="선수 트레이닝의 기준, Flowtics" image="/images/performance-hero.jpg" />
 
       <div className={styles.textSection}>
-        <div className={`${styles.methodTitle} sr`}>FLOWTICS METHOD</div>
+        <h2 className={`${styles.methodTitle} sr`}>FLOWTICS METHOD</h2>
         <p className={`${styles.methodBody} sr sr-d1`}>
           Flowtics method는 올림픽 레벨 선수들의<br />
           실제 훈련과 관리방식을 바탕으로 만들어진 4단계 프로그램입니다.<br /><br />

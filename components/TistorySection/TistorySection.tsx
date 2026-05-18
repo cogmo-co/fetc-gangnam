@@ -12,7 +12,7 @@ export default async function TistorySection() {
     <div className={styles.section}>
       <div className={styles.inner}>
         <div className={styles.header}>
-          <div className={`${styles.fgTitle} sr`}>BLOG</div>
+          <h2 className={`${styles.fgTitle} sr`}>BLOG</h2>
           <div className={`${styles.socialIcons} sr sr-d1`}>
             <a
               href="https://fetc-gangnam.tistory.com"

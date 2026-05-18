@@ -39,7 +39,7 @@ export default function BranchGrid() {
             placeId={branch.placeId}
             className={`${styles.item} ${branch.current ? styles.current : ""} sr sr-d${i + 1}`}
           >
-            <div className={styles.name}>{branch.name}</div>
+            <h3 className={styles.name}>{branch.name}</h3>
             <div className={styles.tag}>
               {branch.address.split("\n").map((line, j) => (
                 <span key={j}>

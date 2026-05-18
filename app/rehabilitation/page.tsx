@@ -19,7 +19,7 @@ const REHAB_CARDS = [
 export default function RehabilitationPage() {
   return (
     <div className="sub-page">
-      <SubHero title="REHABILITATION" image="/images/rehabilitation-hero.jpg" />
+      <SubHero title="REHABILITATION" subtitle="통증 원인부터 일상 복귀까지, 단계별 맞춤 재활 | FE트레이닝센터 강남점" image="/images/rehabilitation-hero.jpg" />
 
       <div className={styles.textSection}>
         <p className={`${styles.title} sr`}>

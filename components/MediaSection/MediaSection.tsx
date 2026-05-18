@@ -27,7 +27,7 @@ export default async function MediaSection() {
     <div className={styles.section}>
       <div className={styles.inner}>
         <div className={styles.header}>
-          <div className={`${styles.fgTitle} sr`}>SHORTS</div>
+          <h2 className={`${styles.fgTitle} sr`}>SHORTS</h2>
           <div className={`${styles.socialIcons} sr sr-d1`}>
             <a
               href="https://www.youtube.com/@FETC_gangnam"

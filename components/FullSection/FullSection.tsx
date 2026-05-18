@@ -19,9 +19,9 @@ export default function FullSection({ bgColor, bgLabel, text, body, href }: Full
       </div>
       <div className={styles.overlay} />
       <div className={styles.content}>
-        <div className={`${styles.bgText} sr`}>
+        <h2 className={`${styles.bgText} sr`}>
           <ScrollFillText className={styles.bgTextSpan}>{text}</ScrollFillText>
-        </div>
+        </h2>
         <p className={`${styles.body} sr sr-d1`}>{body}</p>
       </div>
     </Link>

@@ -118,7 +118,7 @@ export default function NewsDetail({ post }: Props) {
           </div>
 
           <div className={styles.titleArea}>
-            <div className={styles.postTitle}>{post.title}</div>
+            <h1 className={styles.postTitle}>{post.title}</h1>
           </div>
           <div className={styles.scrollArea}>
             {post.body && (

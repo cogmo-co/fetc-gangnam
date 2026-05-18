@@ -27,7 +27,7 @@ export default async function NewsPage() {
 
   return (
     <div className="sub-page">
-      <SubHero title="FETC NEWS" image="/images/news-hero.png" half />
+      <SubHero title="FETC NEWS" subtitle="FETC 강남점 소식·이벤트" image="/images/news-hero.png" half />
       <NewsGrid
         initialPosts={formatted}
         initialCursor={hasMore ? formatted[formatted.length - 1].created_at : null}

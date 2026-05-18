@@ -62,7 +62,7 @@ const TRAINING_CARDS = [
 export default function TrainingPage() {
   return (
     <div className="sub-page">
-      <SubHero title="TRAINING" image="/images/training-hero.jpg" />
+      <SubHero title="TRAINING" subtitle="평가에서 시작되는 기능 중심 트레이닝 | FE트레이닝센터 강남점" image="/images/training-hero.jpg" />
 
       <div className={styles.textSection}>
         <p className={`${styles.text} sr`}>
