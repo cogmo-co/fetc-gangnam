@@ -47,7 +47,7 @@ export default async function TistorySection() {
               {post.thumbnail ? (
                 <Image
                   src={post.thumbnail}
-                  alt=""
+                  alt={`${post.title} - FETC 블로그`}
                   width={320}
                   height={200}
                 />

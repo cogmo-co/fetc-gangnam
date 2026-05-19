@@ -61,7 +61,7 @@ export default async function MediaSection() {
             >
               <Image
                 src={`https://img.youtube.com/vi/${short.id}/hqdefault.jpg`}
-                alt=""
+                alt={`${short.title} - FETC 영상`}
                 width={195}
                 height={346}
               />

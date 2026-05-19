@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { headers } from "next/headers";
 import SubHero from "@/components/SubHero/SubHero";
 import CoachRow from "@/components/CoachRow/CoachRow";
+import FAQSection from "@/components/FAQSection/FAQSection";
 import LocationInfoSection from "@/components/LocationInfoSection/LocationInfoSection";
 import BranchGrid from "@/components/BranchGrid/BranchGrid";
 import { isMobileUA } from "@/lib/device";
@@ -34,6 +35,7 @@ export default async function AboutPage() {
       </div>
 
       <CoachRow />
+      <FAQSection />
       <div className={styles.spacer} />
 
       <LocationInfoSection isMobile={isMobile} />
