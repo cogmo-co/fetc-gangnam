@@ -1,0 +1,172 @@
+.root{
+  font-family:var(--font-pretendard),sans-serif;
+  color:#111;
+}
+
+/* ===============================
+   Section common
+   =============================== */
+.section{margin-bottom:8px;}
+.sectionLabel{
+  display:inline-block;
+  font-size:11px;font-weight:bold;
+  letter-spacing:0.14em;
+  color:#fff;background:#1a1a1a;
+  padding:4px 12px;border-radius:2px;
+  margin:32px 0 18px;
+}
+
+/* ===============================
+   Timeline
+   =============================== */
+.timeline{
+  position:relative;
+  padding-left:26px;
+}
+.timeline::before{
+  content:'';
+  position:absolute;
+  left:7px;top:8px;bottom:10px;
+  width:1px;background:#ddd;
+}
+.timelineItem{
+  position:relative;
+  margin-bottom:24px;
+}
+.timelineItem:last-child{margin-bottom:0;}
+.timelineItem::before{
+  content:'';
+  position:absolute;
+  left:-22px;top:7px;
+  width:8px;height:8px;
+  border-radius:50%;background:#1a1a1a;
+}
+.timelinePeriod{
+  font-size:11px;font-weight:bold;
+  color:#999;letter-spacing:0.08em;
+  margin-bottom:4px;
+}
+.timelineTitle{
+  font-size:15px;font-weight:bold;
+  color:#111;line-height:1.4;
+  margin-bottom:4px;
+}
+.timelineSubtitle{
+  font-size:13px;color:#555;
+  line-height:1.7;
+  margin-bottom:8px;
+}
+.timelineBullets{
+  list-style:none;padding:0;margin:0;
+}
+.timelineBullets li{
+  font-size:13px;color:#555;
+  padding-left:16px;
+  position:relative;
+  margin-bottom:4px;
+  line-height:1.65;
+}
+.timelineBullets li::before{
+  content:'—';
+  position:absolute;left:0;
+  color:#bbb;
+}
+
+/* ===============================
+   Certifications
+   =============================== */
+.certGrid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+.certCard{
+  background:#f7f7f7;
+  border-radius:6px;
+  padding:13px 15px;
+}
+.certLabel{
+  font-size:11px;font-weight:bold;
+  color:#999;
+  margin-bottom:4px;
+}
+.certTitle{
+  font-size:12px;color:#333;
+  line-height:1.5;font-weight:500;
+  white-space:pre-line;
+}
+
+/* ===============================
+   Highlights (시즌별 카드)
+   =============================== */
+.highlightGrid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+.highlightItem{
+  padding:18px 20px;
+  border-radius:8px;
+  background:#f7f7f7;
+  color:#111;
+}
+.highlightItemEmphasis{
+  background:linear-gradient(135deg,#f5d77c,#e8b85a);
+  color:#1a1a1a;
+}
+.highlightSeason{
+  font-size:11px;font-weight:bold;
+  letter-spacing:0.08em;
+  color:#999;
+  margin-bottom:8px;
+}
+.highlightItemEmphasis .highlightSeason{
+  color:rgba(26,26,26,0.7);
+}
+.highlightEvents{
+  font-size:13px;
+  line-height:1.6;
+  font-weight:500;
+}
+
+/* ===============================
+   Program (rounded gray box)
+   =============================== */
+.program{
+  background:#f7f7f7;
+  border-radius:10px;
+  padding:24px 28px;
+  margin:24px 0 8px;
+}
+.programLabel{
+  font-size:11px;font-weight:bold;
+  color:#999;
+  letter-spacing:0.12em;
+  margin-bottom:12px;
+}
+.programList{
+  list-style:none;padding:0;margin:0;
+}
+.programList li{
+  font-size:14px;color:#333;
+  padding-left:20px;
+  position:relative;
+  margin-bottom:8px;
+  line-height:1.65;
+}
+.programList li:last-child{margin-bottom:0;}
+.programList li::before{
+  content:'·';
+  position:absolute;left:0;
+  color:#1a1a1a;font-weight:bold;
+}
+
+/* ===============================
+   Mobile
+   =============================== */
+@media(max-width:640px){
+  .sectionLabel{margin:24px 0 14px;}
+  .certGrid{grid-template-columns:1fr;}
+  .highlightGrid{grid-template-columns:1fr;}
+  .program{padding:20px 22px;}
+}

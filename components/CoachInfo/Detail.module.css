@@ -1,0 +1,82 @@
+/* ===============================
+   Page
+   =============================== */
+.page{
+  background:#fff;
+  color:#111;
+  min-height:100vh;
+  padding-bottom:60px;
+}
+
+/* ===============================
+   Image hero
+   =============================== */
+.imageArea{
+  position:relative;
+  width:100%;
+  aspect-ratio:4/5;
+  background:#1a1a1a;
+}
+.imageArea img{
+  width:100%;height:100%;
+  object-fit:cover;
+}
+
+/* ===============================
+   Content
+   =============================== */
+.content{
+  padding:24px 20px 0;
+}
+.header{
+  padding:8px 0 22px;
+  border-bottom:1px solid #eee;
+  margin-bottom:8px;
+}
+.role{
+  font-family:var(--font-pretendard),sans-serif;
+  font-size:11px;font-weight:700;
+  letter-spacing:0.3em;
+  color:#999;
+  text-transform:uppercase;
+  margin-bottom:10px;
+}
+.name{
+  font-family:var(--font-pretendard),sans-serif;
+  font-size:26px;font-weight:700;
+  color:#111;
+  letter-spacing:-0.5px;
+  line-height:1.2;
+}
+
+/* ===============================
+   Actions row (back left, more right)
+   =============================== */
+.actions{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-top:36px;
+}
+
+.moreBtn{
+  display:inline-flex;align-items:center;gap:6px;
+  padding:8px 14px 8px 18px;
+  color:#111;
+  font-family:var(--font-pretendard),sans-serif;
+  font-size:13px;font-weight:600;
+  border:1px solid #111;
+  border-radius:4px;
+  text-decoration:none;
+  letter-spacing:-0.2px;
+  transition:background 0.2s,color 0.2s;
+}
+.moreBtn:hover{background:#111;color:#fff;}
+
+.backBtn{
+  font-family:var(--font-pretendard),sans-serif;
+  font-size:14px;
+  color:#666;
+  text-decoration:none;
+  padding:8px 0;
+}
