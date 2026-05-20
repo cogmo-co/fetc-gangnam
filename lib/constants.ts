@@ -6,3 +6,5 @@ export const MAX_IMAGES_PER_POST = 12;
 export const REVALIDATE_INTERVAL = 3600;
 
 export const PHONE = "010-3375-9911";
+
+export const BASE_URL = "https://fetc.co.kr";

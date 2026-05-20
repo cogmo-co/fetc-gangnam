@@ -1,3 +1,6 @@
+import { BASE_URL } from "./constants";
+
+
 // ===============================
 // Schema
 // ===============================
@@ -486,4 +489,42 @@ export const COACHES: Coach[] = [
 
 export function findCoach(id: string): Coach | undefined {
   return COACHES.find((c) => c.id === id);
+}
+
+
+// ===============================
+// JSON-LD (Person schema)
+// ===============================
+
+export function getPersonSchema(coach: Coach) {
+  return {
+    "@type": "Person",
+    name: coach.name,
+    jobTitle: coach.role,
+    image: `${BASE_URL}/images/${coach.img}`,
+    url: `${BASE_URL}/coach/${coach.id}`,
+    sameAs: [coach.tistoryUrl],
+    worksFor: {
+      "@type": "Organization",
+      name: "FE트레이닝센터 강남점",
+      url: BASE_URL,
+    },
+    knowsAbout: coach.spec,
+  };
+}
+
+/** About 페이지용 — 6명 코치를 @graph로 묶은 schema */
+export function getAllCoachesSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@graph": COACHES.map(getPersonSchema),
+  };
+}
+
+/** /coach/[id] 페이지용 — 단일 코치 schema */
+export function getSingleCoachSchema(coach: Coach) {
+  return {
+    "@context": "https://schema.org",
+    ...getPersonSchema(coach),
+  };
 }

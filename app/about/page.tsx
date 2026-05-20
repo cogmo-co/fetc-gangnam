@@ -6,6 +6,7 @@ import FAQSection from "@/components/FAQSection/FAQSection";
 import LocationInfoSection from "@/components/LocationInfoSection/LocationInfoSection";
 import BranchGrid from "@/components/BranchGrid/BranchGrid";
 import { isMobileUA } from "@/lib/device";
+import { getAllCoachesSchema } from "@/lib/coaches";
 import styles from "./about.module.css";
 
 export const metadata: Metadata = {
@@ -19,6 +20,10 @@ export default async function AboutPage() {
   const isMobile = isMobileUA(ua);
   return (
     <div className="sub-page">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(getAllCoachesSchema()) }}
+      />
       <SubHero title="ABOUT FETC" subtitle="강남 선수재활 ∙ 퍼포먼스 트레이닝 | FE트레이닝센터 강남점" image="/images/about-hero.jpg" half/>
 
       <div className={styles.textSection}>

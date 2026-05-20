@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import SubHero from "@/components/SubHero/SubHero";
 import CoachRow from "@/components/CoachRow/CoachRow";
 import Detail from "@/components/CoachInfo/Detail";
-import { COACHES, findCoach } from "@/lib/coaches";
+import { COACHES, findCoach, getSingleCoachSchema } from "@/lib/coaches";
 
 export function generateStaticParams() {
   return COACHES.map((c) => ({ id: c.id }));
@@ -41,6 +41,10 @@ export default async function CoachPage({
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(getSingleCoachSchema(coach)) }}
+      />
       {/* PC: About 컨텍스트 + 모달 자동 열기 */}
       <div className="sub-page pc-only">
         <SubHero

@@ -1,8 +1,7 @@
 import type { MetadataRoute } from "next";
 import { supabase } from "@/lib/supabase";
 import { COACHES } from "@/lib/coaches";
-
-const BASE_URL = "https://fetc.co.kr";
+import { BASE_URL } from "@/lib/constants";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const { data: posts } = await supabase

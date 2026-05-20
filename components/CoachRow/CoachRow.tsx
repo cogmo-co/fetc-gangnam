@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import Script from "next/script";
 import { useRouter } from "next/navigation";
 import { COACHES, type Coach } from "@/lib/coaches";
 import Modal from "@/components/CoachInfo/Modal";
@@ -11,24 +10,6 @@ import styles from "./CoachRow.module.css";
 interface Props {
   autoOpenCoach?: Coach;
 }
-
-const coachesJsonLd = {
-  "@context": "https://schema.org",
-  "@graph": COACHES.map((coach) => ({
-    "@type": "Person",
-    name: coach.name,
-    jobTitle: coach.role,
-    image: `https://fetc.co.kr/images/${coach.img}`,
-    url: `https://fetc.co.kr/coach/${coach.id}`,
-    sameAs: [coach.tistoryUrl],
-    worksFor: {
-      "@type": "Organization",
-      name: "FE트레이닝센터 강남점",
-      url: "https://fetc.co.kr",
-    },
-    knowsAbout: coach.spec,
-  })),
-};
 
 export default function CoachRow({ autoOpenCoach }: Props) {
   const router = useRouter();
@@ -66,12 +47,6 @@ export default function CoachRow({ autoOpenCoach }: Props) {
 
   return (
     <>
-      <Script
-        id="ld-coaches"
-        type="application/ld+json"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(coachesJsonLd) }}
-      />
       <div className={styles.section}>
         <h2 className={`${styles.sectionTitle} sr`}>COACH</h2>
         <div className={styles.row}>
@@ -79,7 +54,16 @@ export default function CoachRow({ autoOpenCoach }: Props) {
             <div
               key={coach.id}
               className={`${styles.card} sr sr-d${i + 1}`}
+              role="button"
+              tabIndex={0}
               onClick={() => openCoach(coach)}
+              onKeyDown={(e) => {
+                if (e.key === "Enter" || e.key === " ") {
+                  e.preventDefault();
+                  openCoach(coach);
+                }
+              }}
+              aria-label={`${coach.name} 코치 상세 보기`}
             >
               <div className={styles.photo}>
                 <Image src={`/images/${coach.img}`} alt={coach.name} width={360} height={460} />
