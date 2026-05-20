@@ -1,5 +1,6 @@
 import type { MetadataRoute } from "next";
 import { supabase } from "@/lib/supabase";
+import { COACHES } from "@/lib/coaches";
 
 const BASE_URL = "https://fetc.co.kr";
 
@@ -16,6 +17,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }));
 
+  const coachEntries: MetadataRoute.Sitemap = COACHES.map((c) => ({
+    url: `${BASE_URL}/coach/${c.id}`,
+    lastModified: new Date(),
+    priority: 0.7,
+  }));
+
   return [
     { url: BASE_URL, lastModified: new Date(), priority: 1.0 },
     { url: `${BASE_URL}/about`, lastModified: new Date(), priority: 0.8 },
@@ -24,6 +31,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     { url: `${BASE_URL}/rehabilitation`, lastModified: new Date(), priority: 0.8 },
     { url: `${BASE_URL}/news`, lastModified: new Date(), priority: 0.8 },
     { url: `${BASE_URL}/contact`, lastModified: new Date(), priority: 0.7 },
+    ...coachEntries,
     ...newsEntries,
   ];
 }

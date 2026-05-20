@@ -6,14 +6,14 @@
 /* ===============================
    Section common
    =============================== */
-.section{margin-bottom:8px;}
+.section{margin-bottom:0.5rem;}
 .sectionLabel{
   display:inline-block;
-  font-size:11px;font-weight:bold;
+  font-size:0.8rem;font-weight:bold;
   letter-spacing:0.14em;
   color:#fff;background:#1a1a1a;
-  padding:4px 12px;border-radius:2px;
-  margin:32px 0 18px;
+  padding:0.25rem 0.75rem;border-radius:5px;
+  margin:2rem 0 1.125rem;
 }
 
 /* ===============================
@@ -21,7 +21,7 @@
    =============================== */
 .timeline{
   position:relative;
-  padding-left:26px;
+  padding-left:1.625rem;
 }
 .timeline::before{
   content:'';
@@ -31,7 +31,7 @@
 }
 .timelineItem{
   position:relative;
-  margin-bottom:24px;
+  margin-bottom:1.5rem;
 }
 .timelineItem:last-child{margin-bottom:0;}
 .timelineItem::before{
@@ -42,28 +42,28 @@
   border-radius:50%;background:#1a1a1a;
 }
 .timelinePeriod{
-  font-size:11px;font-weight:bold;
+  font-size:0.6875rem;font-weight:bold;
   color:#999;letter-spacing:0.08em;
-  margin-bottom:4px;
+  margin-bottom:0.25rem;
 }
 .timelineTitle{
-  font-size:15px;font-weight:bold;
+  font-size:1rem;font-weight:bold;
   color:#111;line-height:1.4;
-  margin-bottom:4px;
+  margin-bottom:0.25rem;
 }
 .timelineSubtitle{
-  font-size:13px;color:#555;
+  font-size:0.8125rem;color:#555;
   line-height:1.7;
-  margin-bottom:8px;
+  margin-bottom:0.5rem;
 }
 .timelineBullets{
   list-style:none;padding:0;margin:0;
 }
 .timelineBullets li{
-  font-size:13px;color:#555;
-  padding-left:16px;
+  font-size:0.8125rem;color:#555;
+  padding-left:1rem;
   position:relative;
-  margin-bottom:4px;
+  margin-bottom:0.25rem;
   line-height:1.65;
 }
 .timelineBullets li::before{
@@ -78,20 +78,20 @@
 .certGrid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:10px;
+  gap:0.625rem;
 }
 .certCard{
   background:#f7f7f7;
   border-radius:6px;
-  padding:13px 15px;
+  padding:0.8125rem 0.9375rem;
 }
 .certLabel{
-  font-size:11px;font-weight:bold;
+  font-size:0.6875rem;font-weight:bold;
   color:#999;
-  margin-bottom:4px;
+  margin-bottom:0.25rem;
 }
 .certTitle{
-  font-size:12px;color:#333;
+  font-size:0.8rem;color:#333;
   line-height:1.5;font-weight:500;
   white-space:pre-line;
 }
@@ -102,10 +102,10 @@
 .highlightGrid{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:12px;
+  gap:0.75rem;
 }
 .highlightItem{
-  padding:18px 20px;
+  padding:1.125rem 1.25rem;
   border-radius:8px;
   background:#f7f7f7;
   color:#111;
@@ -115,16 +115,16 @@
   color:#1a1a1a;
 }
 .highlightSeason{
-  font-size:11px;font-weight:bold;
+  font-size:0.6875rem;font-weight:bold;
   letter-spacing:0.08em;
   color:#999;
-  margin-bottom:8px;
+  margin-bottom:0.5rem;
 }
 .highlightItemEmphasis .highlightSeason{
   color:rgba(26,26,26,0.7);
 }
 .highlightEvents{
-  font-size:13px;
+  font-size:0.8125rem;
   line-height:1.6;
   font-weight:500;
 }
@@ -135,23 +135,23 @@
 .program{
   background:#f7f7f7;
   border-radius:10px;
-  padding:24px 28px;
-  margin:24px 0 8px;
+  padding:1.5rem 1.75rem;
+  margin:1.5rem 0 0.5rem;
 }
 .programLabel{
-  font-size:11px;font-weight:bold;
+  font-size:0.6875rem;font-weight:bold;
   color:#999;
   letter-spacing:0.12em;
-  margin-bottom:12px;
+  margin-bottom:0.75rem;
 }
 .programList{
   list-style:none;padding:0;margin:0;
 }
 .programList li{
-  font-size:14px;color:#333;
-  padding-left:20px;
+  font-size:0.875rem;color:#333;
+  padding-left:1.25rem;
   position:relative;
-  margin-bottom:8px;
+  margin-bottom:0.5rem;
   line-height:1.65;
 }
 .programList li:last-child{margin-bottom:0;}
@@ -165,8 +165,8 @@
    Mobile
    =============================== */
 @media(max-width:640px){
-  .sectionLabel{margin:24px 0 14px;}
+  .sectionLabel{margin:1.5rem 0 0.875rem;}
   .certGrid{grid-template-columns:1fr;}
   .highlightGrid{grid-template-columns:1fr;}
-  .program{padding:20px 22px;}
+  .program{padding:1.25rem 1.375rem;}
 }
