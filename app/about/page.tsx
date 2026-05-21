@@ -41,7 +41,6 @@ export default async function AboutPage() {
 
       <CoachRow />
       <FAQSection />
-      <div className={styles.spacer} />
 
       <LocationInfoSection isMobile={isMobile} />
       <BranchGrid />

@@ -32,8 +32,9 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
         { threshold: 0.1 }
       );
 
-      document.querySelectorAll(".sr").forEach((el) => {
-        el.classList.remove("visible");
+      // 이미 visible된 요소는 건드리지 않음 — pushState 등으로 effect가 재실행돼도 깜빡임 방지.
+      // 신규 라우트의 .sr 요소만 관찰 대상이 됨.
+      document.querySelectorAll(".sr:not(.visible)").forEach((el) => {
         observerRef.current?.observe(el);
       });
     }, 50);

@@ -5,6 +5,7 @@ import localFont from "next/font/local";
 import AppShell from "@/components/AppShell/AppShell";
 import Footer from "@/components/Footer/Footer";
 import KakaoFloat from "@/components/KakaoFloat/KakaoFloat";
+import { BASE_URL } from "@/lib/constants";
 import "./globals.css";
 
 const organizationJsonLd = {
@@ -12,8 +13,8 @@ const organizationJsonLd = {
   "@type": "Organization",
   name: "FE트레이닝센터",
   alternateName: "FETC",
-  url: "https://fetc.co.kr",
-  logo: "https://fetc.co.kr/images/meta-image.png",
+  url: BASE_URL,
+  logo: `${BASE_URL}/images/meta-image.png`,
   sameAs: [
     "https://www.youtube.com/@FETC_gangnam",
     "https://www.instagram.com/fetc_gangnam/",
@@ -33,8 +34,8 @@ const localBusinessJsonLd = {
   "@context": "https://schema.org",
   "@type": "SportsActivityLocation",
   name: "FE트레이닝센터 강남점",
-  image: "https://fetc.co.kr/images/meta-image.png",
-  url: "https://fetc.co.kr",
+  image: `${BASE_URL}/images/meta-image.png`,
+  url: BASE_URL,
   telephone: "+82-10-3375-9911",
   address: {
     "@type": "PostalAddress",
@@ -70,7 +71,7 @@ const localBusinessJsonLd = {
   parentOrganization: {
     "@type": "Organization",
     name: "FE트레이닝센터",
-    url: "https://fetc.co.kr",
+    url: BASE_URL,
   },
 };
 
@@ -105,7 +106,7 @@ export const metadata: Metadata = {
     template: "%s | FE트레이닝센터 강남점",
   },
   description: "국가대표 선수가 선택한 재활, 퍼포먼스",
-  metadataBase: new URL("https://fetc.co.kr"),
+  metadataBase: new URL(BASE_URL),
   openGraph: {
     type: "website",
     locale: "ko_KR",
