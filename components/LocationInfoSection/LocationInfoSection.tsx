@@ -5,9 +5,10 @@ import styles from "./LocationInfoSection.module.css";
 
 interface Props {
   isMobile: boolean;
+  centerTitle?: boolean;
 }
 
-export default function LocationInfoSection({ isMobile }: Props) {
+export default function LocationInfoSection({ isMobile, centerTitle }: Props) {
   return (
     <section className={styles.section}>
       {/* 배경 이미지 */}
@@ -16,7 +17,7 @@ export default function LocationInfoSection({ isMobile }: Props) {
       </div>
       <div className={styles.overlay} />
 
-      <h2 className={styles.title}>LOCATION</h2>
+      <h2 className={`${styles.title} ${centerTitle ? styles.titleCenter : ""}`}>LOCATION</h2>
       <div className={styles.inner}>
         <div className={styles.container}>
           {/* 왼쪽: 지도 + 내부 CTA */}

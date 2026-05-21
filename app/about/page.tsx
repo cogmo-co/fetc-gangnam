@@ -42,7 +42,7 @@ export default async function AboutPage() {
       <CoachRow />
       <FAQSection />
 
-      <LocationInfoSection isMobile={isMobile} />
+      <LocationInfoSection isMobile={isMobile} centerTitle />
       <BranchGrid />
     </div>
   );

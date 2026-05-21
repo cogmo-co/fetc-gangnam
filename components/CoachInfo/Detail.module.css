@@ -5,7 +5,13 @@
   background:#fff;
   color:#111;
   min-height:100vh;
-  padding-bottom:1.875rem;
+  padding:0 0 1.875rem;
+}
+.page::before{
+  content:'';
+  display:block;
+  height:5.25rem;
+  background:#1a1a1a;
 }
 
 /* ===============================
@@ -20,15 +26,7 @@
 .imageArea img{
   width:100%;height:100%;
   object-fit:cover;
-}
-.imageArea::before{
-  content:'';
-  position:absolute;
-  inset:0 0 auto 0;
-  height:140px;
-  background:linear-gradient(to bottom,rgba(0,0,0,0.55),rgba(0,0,0,0));
-  z-index:1;
-  pointer-events:none;
+  filter:grayscale(100%);
 }
 
 /* ===============================

@@ -41,6 +41,9 @@
   margin-bottom: 24px;
   letter-spacing: 2px;
 }
+.titleCenter {
+  text-align: center;
+}
 
 .container {
   display: flex;

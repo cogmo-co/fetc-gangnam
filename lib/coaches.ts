@@ -31,7 +31,7 @@ export type CoachSection =
   | { type: "program"; title: string; items: string[] };
 
 export interface Coach {
-  id: string;            // 슬러그 'woonsang-im'
+  id: string;            // 슬러그 'woonsang-lim'
   name: string;
   role: string;
   img: string;
@@ -47,10 +47,10 @@ export interface Coach {
 
 export const COACHES: Coach[] = [
   {
-    id: "seokgyu-han",
+    id: "seokkyu-han",
     name: "한석규",
     role: "Head Coach",
-    img: "coach-seokgyu-han.png",
+    img: "coach-seokkyu-han.png",
     spec: [
       "FE트레이닝센터 강남점 헤드코치",
       "기능운동재활협회 FEARA 대표",
@@ -138,10 +138,10 @@ export const COACHES: Coach[] = [
     ],
   },
   {
-    id: "mingu-kang",
+    id: "minku-kang",
     name: "강민구",
     role: "PCC / MANAGER",
-    img: "coach-mingu-kang.png",
+    img: "coach-minku-kang.png",
     spec: [
       "인하대학교 스포츠과학대학 석사",
       "인하대학교 스포츠재활연구소 연구원",
@@ -207,10 +207,10 @@ export const COACHES: Coach[] = [
     ],
   },
   {
-    id: "woonsang-im",
+    id: "woonsang-lim",
     name: "임운상",
     role: "PCC",
-    img: "coach-woonsang-im.jpg",
+    img: "coach-woonsang-lim.jpg",
     spec: [
       "Sports performance coach, Louisiana Tech University",
       "Sports performance coach, University South Dakota",
@@ -346,10 +346,10 @@ export const COACHES: Coach[] = [
     ],
   },
   {
-    id: "woochan-im",
+    id: "woochan-lim",
     name: "임우찬",
     role: "PCC",
-    img: "coach-woochan-im.png",
+    img: "coach-woochan-lim.png",
     spec: [
       "물리치료사",
       "FE트레이닝센터 강남점 코치",
