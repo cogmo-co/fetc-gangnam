@@ -1,0 +1,312 @@
+.section {
+  position: relative;
+  width: 100%;
+  padding: 90px 0 80px;
+  /* 비네팅: 중앙 #2d2d2d → 가장자리 #050505 (대비 매우 강하게) */
+  background: radial-gradient(ellipse at center, #2d2d2d 0%, #050505 100%);
+  overflow: hidden;
+  isolation: isolate;
+}
+/* 노이즈/그레인: blend 없이 직접 노출 (가시성 우선 디버그 모드) */
+.section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='200'%20height='200'%3E%3Cfilter%20id='n'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.7'%20numOctaves='3'%20stitchTiles='stitch'/%3E%3C/filter%3E%3Crect%20width='200'%20height='200'%20filter='url(%23n)'%20opacity='0.5'/%3E%3C/svg%3E");
+  opacity: 0.5;
+  pointer-events: none;
+  z-index: 1;
+}
+.inner {
+  position: relative;
+  z-index: 10;
+  padding: 0 5%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ======================================================
+   타이틀
+====================================================== */
+.title {
+  font-family: var(--font-oswald), 'Oswald', sans-serif;
+  font-size: clamp(40px, 5.5vw, 64px);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: #fff;
+  text-align: center;
+  margin: 0 0 4rem 0;
+}
+
+/* ======================================================
+   4단계 chevron 다이어그램
+====================================================== */
+.stages {
+  display: flex;
+  gap: 0;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto 3.5rem;
+}
+.stage {
+  position: relative;
+  flex: 1 1 0;
+  min-height: 7rem;
+  padding: 1.25rem 2rem 1.25rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  clip-path: polygon(0 0, 90% 0, 100% 50%, 90% 100%, 0 100%, 10% 50%);
+  margin-left: -2.5%;
+}
+.stage:first-child {
+  margin-left: 0;
+  clip-path: polygon(0 0, 90% 0, 100% 50%, 90% 100%, 0 100%);
+  padding-left: 1.5rem;
+}
+/* 색 그라데이션 B안: 어두움 → 밝음 (Performance에서 시선 도달) */
+.stage:nth-child(1) {
+  background: #5a5a5a;
+  color: #fff;
+}
+.stage:nth-child(2) {
+  background: #888;
+  color: #fff;
+}
+.stage:nth-child(3) {
+  background: #b8b8b8;
+  color: #1a1a1a;
+}
+.stage:nth-child(4) {
+  background: #ececec;
+  color: #1a1a1a;
+}
+
+/* 화살표 방향성을 암시하는 빛 sweep — 좌→우 무한 루프, 카드 간 0.4s 시차 */
+.stage::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 40%,
+    rgba(255, 255, 255, 0.45) 50%,
+    transparent 60%
+  );
+  transform: translateX(-100%);
+  opacity: 0;
+  animation: chevron-sweep 4s ease-in-out infinite;
+  pointer-events: none;
+}
+/* 밝은 카드는 흰 sweep이 안 보이므로 어두운 톤으로 반전 */
+.stage:nth-child(3)::after,
+.stage:nth-child(4)::after {
+  background: linear-gradient(
+    90deg,
+    transparent 40%,
+    rgba(0, 0, 0, 0.25) 50%,
+    transparent 60%
+  );
+}
+.stage:nth-child(1)::after { animation-delay: 0s; }
+.stage:nth-child(2)::after { animation-delay: 0.4s; }
+.stage:nth-child(3)::after { animation-delay: 0.8s; }
+.stage:nth-child(4)::after { animation-delay: 1.2s; }
+
+/* opacity로 sweep 끝나면 페이드아웃 → 위치 리셋도 보이지 않게 */
+@keyframes chevron-sweep {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  45% {
+    transform: translateX(100%);
+    opacity: 1;
+  }
+  55% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .stage::after {
+    animation: none;
+  }
+}
+
+.stageName {
+  font-family: var(--font-pretendard), sans-serif;
+  font-size: clamp(0.95rem, 1.8vw, 1.2rem);
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  line-height: 1.6;
+  margin-bottom: 0.5rem;
+}
+.stageDesc {
+  font-family: var(--font-pretendard), sans-serif;
+  font-size: clamp(0.9rem, 0.95vw, 0.9375rem);
+  font-weight: 400;
+  letter-spacing: -0.2px;
+  opacity: 0.85;
+}
+
+/* stage 카드 스크롤 인: 기본 .sr translateY 대신 좌→우 흐름 강조 */
+.stage.sr {
+  opacity: 0;
+  transform: translateX(-24px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.stage.sr.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ======================================================
+   본문 설명 (2단락 가운데 정렬)
+====================================================== */
+.description {
+  text-align: center;
+  max-width: 920px;
+  margin: 0 auto 4rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.description p {
+  font-family: var(--font-pretendard), sans-serif;
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.5;
+  letter-spacing: -0.2px;
+  margin: 0;
+}
+
+/* ======================================================
+   프로그램 연결 영역
+====================================================== */
+.programLink {
+  text-align: center;
+  width: 100%;
+}
+.programIntro,
+.programOutro {
+  font-family: var(--font-pretendard), sans-serif;
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  color: rgba(255, 255, 255, 0.78);
+  line-height: 1.5;
+  margin: 0;
+}
+.programButtons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+.programBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.65rem 1.4rem;
+  /* 불투명한 솔리드 배경 — 비네팅 위에서도 또렷한 칩 */
+  background: #2a2a2a;
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  border-radius: 999px;
+  color: #fff;
+  font-family: var(--font-oswald), 'Oswald', sans-serif;
+  font-size: clamp(0.95rem, 1.8vw, 1.2rem);
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-decoration: none;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.65);
+  transition: all 0.25s ease;
+}
+.programBtn:hover {
+  background: #fff;
+  border-color: #fff;
+  color: #1a1a1a;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.8);
+}
+.programBtn:hover .hash {
+  color: rgba(26, 26, 26, 0.65);
+}
+/* # 기호: 흐릿한 prefix → 태그 느낌 */
+.hash {
+  color: rgba(255, 255, 255, 0.55);
+  font-weight: 400;
+  font-size: 1.05em;
+  transition: color 0.25s ease;
+}
+
+/* ======================================================
+   모바일
+====================================================== */
+@media (max-width: 640px) {
+  .section {
+    padding: 60px 0;
+  }
+  .title {
+    margin-bottom: 2.5rem;
+  }
+
+  /* 모바일: 1×4 세로 스택, chevron은 아래 방향으로 회전 */
+  .stages {
+    flex-direction: column;
+    gap: 0.5rem;
+    max-width: 100%;
+    margin-bottom: 3rem;
+  }
+  .stage,
+  .stage:first-child,
+  .stage:last-child {
+    flex: 0 0 auto;
+    width: 62%;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 5.5rem;
+    padding: 1.25rem 1rem 2rem;
+    clip-path: polygon(0 0, 100% 0, 100% 75%, 50% 100%, 0 75%);
+  }
+  /* 모바일은 위→아래 슬라이드 */
+  .stage.sr {
+    transform: translateY(20px);
+  }
+  .stage.sr.visible {
+    transform: translateY(0);
+  }
+
+  .description {
+    margin-bottom: 3rem;
+  }
+  .description p,
+  .programIntro,
+  .programOutro {
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  .programButtons {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1.25rem 0;
+  }
+  .programBtn {
+    padding: 0.6rem 1.2rem;
+    font-size: .9rem;
+  }
+}
