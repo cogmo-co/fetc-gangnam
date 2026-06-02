@@ -61,6 +61,7 @@
   .section{padding:3.75rem 5% 4.375rem;}
   .title{margin-bottom:2.25rem;}
   .q{padding:1.125rem 1.25rem;font-size:0.9375rem;}
+  .qText{font-size:0.9375rem;}
   .a{padding:0 1.25rem 1.25rem;font-size:0.8125rem;line-height:1.7;}
   .toggle{font-size:1.25rem;}
 }
