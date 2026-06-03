@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, type ReactNode } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { COACHES, type Coach } from "@/lib/coaches";
@@ -9,11 +9,14 @@ import styles from "./CoachRow.module.css";
 
 interface Props {
   autoOpenCoach?: Coach;
+  subtitle?: ReactNode;
 }
 
-export default function CoachRow({ autoOpenCoach }: Props) {
+export default function CoachRow({ autoOpenCoach, subtitle }: Props) {
   const router = useRouter();
   const [selected, setSelected] = useState<Coach | null>(null);
+  // 마지막 클릭한 카드 — 모달 닫을 때 이 카드 bottom을 viewport 하단에 맞춰 스크롤
+  const lastClickedCardRef = useRef<HTMLElement | null>(null);
 
   // /coach/[id] 직접 접속 시 PC에서 모달 자동 열기
   useEffect(() => {
@@ -42,19 +45,29 @@ export default function CoachRow({ autoOpenCoach }: Props) {
 
   function closeCoach() {
     setSelected(null);
-    // autoOpenCoach가 있으면 /coach/[id] 직접 접속 컨텍스트 → About 페이지의 coach 섹션으로 네비게이션.
-    // 없으면 About 페이지에서 모달 연 케이스 → URL만 복귀(재렌더 없음 = scroll-reveal 깜빡임 방지).
+    // autoOpenCoach가 있으면 /coach/[id] 직접 접속 컨텍스트 → COACH 페이지로 네비게이션.
+    // 없으면 COACH 페이지에서 모달 연 케이스 → URL만 복귀(재렌더 없음 = scroll-reveal 깜빡임 방지).
     if (autoOpenCoach) {
-      router.push("/about#coaches");
+      router.push("/about/coach#coaches");
     } else {
-      history.pushState(null, "", "/about");
+      history.pushState(null, "", "/about/coach");
     }
+    // 클릭한 카드의 bottom이 viewport 하단에 오도록 스크롤 (Modal cleanup 후 실행)
+    requestAnimationFrame(() => {
+      lastClickedCardRef.current?.scrollIntoView({
+        block: "end",
+        behavior: "smooth",
+      });
+    });
   }
 
   return (
     <>
       <div id="coaches" className={styles.section}>
         <h2 className={`${styles.sectionTitle} sr`}>COACH</h2>
+        {subtitle && (
+          <p className={`${styles.subtitle} sr sr-d1`}>{subtitle}</p>
+        )}
         <div className={styles.row}>
           {COACHES.map((coach, i) => (
             <div
@@ -62,10 +75,17 @@ export default function CoachRow({ autoOpenCoach }: Props) {
               className={`${styles.card} sr sr-d${i + 1}`}
               role="button"
               tabIndex={0}
-              onClick={() => openCoach(coach)}
+              // mousedown preventDefault: 클릭 시 카드로 focus 이동 → 브라우저 scroll-into-view 차단
+              // (키보드 Tab 포커스는 onKeyDown으로 처리되므로 영향 없음)
+              onMouseDown={(e) => e.preventDefault()}
+              onClick={(e) => {
+                lastClickedCardRef.current = e.currentTarget;
+                openCoach(coach);
+              }}
               onKeyDown={(e) => {
                 if (e.key === "Enter" || e.key === " ") {
                   e.preventDefault();
+                  lastClickedCardRef.current = e.currentTarget;
                   openCoach(coach);
                 }
               }}

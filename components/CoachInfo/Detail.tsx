@@ -1,7 +1,7 @@
 import Image from "next/image";
-import Link from "next/link";
 import type { Coach } from "@/lib/coaches";
 import Body from "./Body";
+import BackButton from "./BackButton";
 import styles from "./Detail.module.css";
 
 interface Props {
@@ -30,9 +30,7 @@ export default function Detail({ coach }: Props) {
         <Body coach={coach} />
 
         <div className={styles.actions}>
-          <Link href="/about" className={styles.backBtn}>
-            ← 목록으로
-          </Link>
+          <BackButton className={styles.backBtn} />
           <a
             href={coach.tistoryUrl}
             target="_blank"

@@ -5,6 +5,25 @@
   color:#f5f5f5;text-transform:uppercase;
   text-align:center;margin-bottom:52px;
 }
+.subtitle{
+  font-family:var(--font-pretendard),sans-serif;
+  font-size:clamp(1.05rem, 2vw, 1.3rem);
+  font-weight:400;
+  letter-spacing:-0.2px;
+  line-height:1.7;
+  color:rgba(255,255,255,0.78);
+  text-align:center;
+  max-width:760px;
+  margin:-32px auto 52px;
+}
+@media (max-width: 640px){
+  .subtitle{
+    font-size:0.9375rem;
+    line-height:1.7;
+    margin:-24px auto 32px;
+    padding:0 5%;
+  }
+}
 .row{
   max-width:1128px;margin:0 auto;
   display:flex;justify-content:center;gap:24px;flex-wrap:wrap;
@@ -48,4 +67,36 @@
   flex-shrink:0;
   display:flex;align-items:center;justify-content:center;
   color:rgba(255,255,255,0.85);
+}
+
+/* 모바일: 카드 2열 그리드 */
+@media (max-width: 640px){
+  .row{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:12px;
+    padding:0 5%;
+  }
+  .card{
+    width:100%;
+  }
+  .photo{
+    height:auto;
+    aspect-ratio: 360 / 460;
+  }
+  .info{
+    padding:14px 16px;
+    gap:8px;
+  }
+  .role{
+    font-size:0.65rem;
+    margin-bottom:0.35rem;
+  }
+  .name{
+    font-size:1rem;
+  }
+  .arrow svg{
+    width:32px;
+    height:32px;
+  }
 }

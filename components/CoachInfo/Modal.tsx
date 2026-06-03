@@ -46,17 +46,21 @@ export default function Modal({ coach, onClose }: Props) {
     return () => window.removeEventListener("keydown", handleKey);
   }, [onClose]);
 
-  // body scroll lock + 진입 시 첫 focusable로 focus 이동, 종료 시 이전 focus 복귀
+  // body scroll lock — html overflow:hidden 방식 (스크롤 위치 자체 보존, 복원 불필요)
+  // + 진입 시 첫 focusable로 focus 이동, 종료 시 이전 focus 복귀
   useEffect(() => {
     previousFocusRef.current = document.activeElement as HTMLElement | null;
-    document.body.style.overflow = "hidden";
+    const html = document.documentElement;
+    const originalOverflow = html.style.overflow;
+    html.style.overflow = "hidden";
 
     const focusables = modalRef.current?.querySelectorAll<HTMLElement>(FOCUSABLE_SELECTOR);
-    focusables?.[0]?.focus();
+    focusables?.[0]?.focus({ preventScroll: true });
 
     return () => {
-      document.body.style.overflow = "";
-      previousFocusRef.current?.focus();
+      html.style.overflow = originalOverflow;
+      // preventScroll로 focus 복원 시 브라우저 자동 scroll-into-view 차단
+      previousFocusRef.current?.focus({ preventScroll: true });
     };
   }, []);
 
