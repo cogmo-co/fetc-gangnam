@@ -1,0 +1,158 @@
+.section {
+  position: relative;
+  width: 100%;
+  padding: 90px 0 80px;
+  background: #1c1c1c;
+}
+.inner {
+  position: relative;
+  z-index: 10;
+  padding: 0 5%;
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 36px;
+}
+.title {
+  font-family: var(--font-oswald), 'Oswald', sans-serif;
+  font-size: clamp(40px, 5.5vw, 64px);
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  color: #fff;
+}
+.more {
+  padding: 0.5rem 1.2rem;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 4px;
+  font-size: 0.9rem;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+.more:hover {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.6);
+}
+
+/* 카드 6개 가로 1행, 대각선 평행사변형 클립 */
+.grid {
+  display: flex;
+  gap: 0;
+  width: 100%;
+}
+.card {
+  position: relative;
+  flex: 1 1 0;
+  aspect-ratio: 1 / 1;
+  overflow: hidden;
+  clip-path: polygon(12% 0, 100% 0, 88% 100%, 0 100%);
+  margin-left: -6%;
+  transition: clip-path 0.35s ease;
+}
+.card:first-child {
+  clip-path: polygon(0 0, 100% 0, 88% 100%, 0 100%);
+  margin-left: 0;
+}
+.card:last-child {
+  clip-path: polygon(12% 0, 100% 0, 100% 100%, 0 100%);
+}
+/* hover: clip 제거 → 사각형 + 테두리/그림자로 인접 카드와 분리 */
+.card:hover,
+.card:first-child:hover,
+.card:last-child:hover {
+  clip-path: none;
+  z-index: 3;
+  box-shadow:
+    0 0 0 2px rgba(255, 255, 255, 0.55),
+    0 12px 30px rgba(0, 0, 0, 0.75);
+}
+.card img {
+  object-fit: cover;
+  opacity: 0.85;
+  transition: opacity 0.25s;
+}
+.card:hover img {
+  opacity: 1;
+}
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0) 55%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+  pointer-events: none;
+}
+.label {
+  position: absolute;
+  left: 18%;
+  bottom: 14px;
+  color: #fff;
+  font-family: var(--font-oswald), 'Oswald', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  line-height: 1.1;
+  text-transform: uppercase;
+  white-space: pre-line;
+  z-index: 2;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6);
+}
+
+.caption {
+  margin-top: 36px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  line-height: 1.6;
+  text-align: center;
+}
+
+@media (max-width: 640px) {
+  .section {
+    padding: 60px 0 60px;
+  }
+  .header {
+    margin-bottom: 24px;
+  }
+  /* 모바일: 3×2, 평행사변형 유지. 행마다 첫(3n+1) 카드는 좌변 수직, 마지막(3n) 카드는 우변 수직 */
+  .grid {
+    flex-wrap: wrap;
+    row-gap: 6px;
+  }
+  .card {
+    flex: 0 0 36%;
+    margin-left: -4%;
+    aspect-ratio: 1 / 1;
+  }
+  .card:nth-child(3n + 1) {
+    margin-left: 0;
+    clip-path: polygon(0 0, 100% 0, 88% 100%, 0 100%);
+  }
+  .card:nth-child(3n) {
+    clip-path: polygon(12% 0, 100% 0, 100% 100%, 0 100%);
+  }
+  /* 모바일 hover: nth-child 클립이 더 뒤에 선언되어 우선되므로 명시적 오버라이드 */
+  .card:nth-child(3n + 1):hover,
+  .card:nth-child(3n):hover {
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+  /* 모바일 라벨 — 카드 폭이 좁아 폰트 축소 */
+  .label {
+    font-size: 11px;
+    left: 14%;
+    bottom: 8px;
+    letter-spacing: 0.3px;
+  }
+  .caption {
+    margin-top: 28px;
+    font-size: 1.05rem;
+    line-height: 1.7;
+    padding: 0 4%;
+  }
+}

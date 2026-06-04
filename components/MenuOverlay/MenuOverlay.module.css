@@ -37,6 +37,57 @@
 }
 .navLink:hover{color:rgba(255,255,255,0.4);}
 
+/* ======================================
+   GROUP (ABOUT / PROGRAM 부모 + 하위 submenu)
+   ====================================== */
+.group{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:4px;
+}
+.submenu{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:4px;
+  max-height:0;
+  opacity:0;
+  overflow:hidden;
+  margin-top:0;
+  margin-bottom:0;
+  transition:max-height 0.35s ease, opacity 0.3s ease, margin 0.35s ease;
+}
+.group.expanded .submenu{
+  max-height:320px;
+  opacity:1;
+  margin-top:4px;
+  margin-bottom:12px;
+}
+/* PC (hover 가능 기기): hover 시 자동 펼침 */
+@media(hover:hover){
+  .group:hover .submenu{
+    max-height:320px;
+    opacity:1;
+    margin-top:4px;
+    margin-bottom:12px;
+  }
+}
+.subLink{
+  font-family:var(--font-oswald),'Oswald',sans-serif;
+  font-size:clamp(22px,2.8vw,32px);
+  font-weight:600;
+  letter-spacing:2px;
+  color:rgba(255,255,255,0.65);
+  text-align:center;
+  line-height:1.2;
+  text-transform:uppercase;
+  text-decoration:none;
+  transition:color 0.2s;
+}
+.subLink:hover{color:#fff;}
+
 @media(max-width:640px){
   .navLink{font-size:48px;}
+  .subLink{font-size:20px;}
 }

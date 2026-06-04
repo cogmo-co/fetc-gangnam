@@ -7,12 +7,6 @@
   min-height:100vh;
   padding:0 0 1.875rem;
 }
-.page::before{
-  content:'';
-  display:block;
-  height:5.25rem;
-  background:#1a1a1a;
-}
 
 /* ===============================
    Image hero
@@ -82,7 +76,7 @@
 
 .backBtn{
   font-family:var(--font-pretendard),sans-serif;
-  font-size:0.875rem;
+  font-size:1rem;
   color:#666;
   text-decoration:none;
   padding:0.5rem 0;

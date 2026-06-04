@@ -17,17 +17,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   const coachEntries: MetadataRoute.Sitemap = COACHES.map((c) => ({
-    url: `${BASE_URL}/coach/${c.id}`,
+    url: `${BASE_URL}/about/coach/${c.id}`,
     lastModified: new Date(),
     priority: 0.7,
   }));
 
   return [
     { url: BASE_URL, lastModified: new Date(), priority: 1.0 },
-    { url: `${BASE_URL}/about`, lastModified: new Date(), priority: 0.8 },
-    { url: `${BASE_URL}/performance`, lastModified: new Date(), priority: 0.8 },
-    { url: `${BASE_URL}/training`, lastModified: new Date(), priority: 0.8 },
-    { url: `${BASE_URL}/rehabilitation`, lastModified: new Date(), priority: 0.8 },
+    { url: `${BASE_URL}/about/FETC`, lastModified: new Date(), priority: 0.8 },
+    { url: `${BASE_URL}/about/coach`, lastModified: new Date(), priority: 0.8 },
+    { url: `${BASE_URL}/about/facility`, lastModified: new Date(), priority: 0.8 },
+    { url: `${BASE_URL}/about/location`, lastModified: new Date(), priority: 0.8 },
+    { url: `${BASE_URL}/program/performance`, lastModified: new Date(), priority: 0.8 },
+    { url: `${BASE_URL}/program/training`, lastModified: new Date(), priority: 0.8 },
+    { url: `${BASE_URL}/program/rehabilitation`, lastModified: new Date(), priority: 0.8 },
     { url: `${BASE_URL}/news`, lastModified: new Date(), priority: 0.8 },
     { url: `${BASE_URL}/contact`, lastModified: new Date(), priority: 0.7 },
     ...coachEntries,

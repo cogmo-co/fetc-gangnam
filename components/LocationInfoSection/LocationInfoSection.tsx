@@ -6,20 +6,26 @@ import styles from "./LocationInfoSection.module.css";
 interface Props {
   isMobile: boolean;
   centerTitle?: boolean;
+  /** /about/location 전용 — 배경 이미지/overlay 제거, sr 애니메이션 부착, padding 5rem */
+  plain?: boolean;
 }
 
-export default function LocationInfoSection({ isMobile, centerTitle }: Props) {
+export default function LocationInfoSection({ isMobile, centerTitle, plain }: Props) {
   return (
-    <section className={styles.section}>
-      {/* 배경 이미지 */}
-      <div className={styles.bg}>
-        <Image src="/images/location.jpg" alt="센터 위치" fill sizes="100vw" />
-      </div>
-      <div className={styles.overlay} />
+    <section className={`${styles.section} ${plain ? styles.plain : ""}`}>
+      {!plain && (
+        <>
+          {/* 배경 이미지 */}
+          <div className={styles.bg}>
+            <Image src="/images/location.jpg" alt="센터 위치" fill sizes="100vw" />
+          </div>
+          <div className={styles.overlay} />
+        </>
+      )}
 
-      <h2 className={`${styles.title} ${centerTitle ? styles.titleCenter : ""}`}>LOCATION</h2>
+      <h2 className={`${styles.title} ${centerTitle ? styles.titleCenter : ""} ${plain ? "sr" : ""}`}>LOCATION</h2>
       <div className={styles.inner}>
-        <div className={styles.container}>
+        <div className={`${styles.container} ${plain ? "sr sr-d1" : ""}`}>
           {/* 왼쪽: 지도 + 내부 CTA */}
           <NaverMapClient isMobile={isMobile} />
 

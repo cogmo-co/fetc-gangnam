@@ -501,8 +501,8 @@ export function getPersonSchema(coach: Coach) {
     "@type": "Person",
     name: coach.name,
     jobTitle: coach.role,
-    image: `${BASE_URL}/images/${coach.img}`,
-    url: `${BASE_URL}/coach/${coach.id}`,
+    image: `${BASE_URL}/images/about/coach/${coach.img}`,
+    url: `${BASE_URL}/about/coach/${coach.id}`,
     sameAs: [coach.tistoryUrl],
     worksFor: {
       "@type": "Organization",
@@ -521,7 +521,7 @@ export function getAllCoachesSchema() {
   };
 }
 
-/** /coach/[id] 페이지용 — 단일 코치 schema */
+/** /about/coach/[id] 페이지용 — 단일 코치 schema */
 export function getSingleCoachSchema(coach: Coach) {
   return {
     "@context": "https://schema.org",

@@ -1,0 +1,149 @@
+.page {
+  background: #1a1a1a;
+  min-height: 100vh;
+}
+
+.imageArea {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: #0e0e0e;
+}
+.imageArea img {
+  object-fit: cover;
+}
+
+.content {
+  padding: 2rem 5% 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.header {
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.fullName {
+  margin: 0 0 0.5rem 0;
+  font-family: var(--font-pretendard), sans-serif;
+  font-size: 1.375rem;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  color: #fff;
+  line-height: 1.3;
+}
+
+.tagline {
+  margin: 0;
+  font-family: var(--font-pretendard), sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.62);
+  letter-spacing: -0.2px;
+}
+
+.body {
+  margin: 0;
+  font-family: var(--font-pretendard), sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.78);
+  letter-spacing: -0.2px;
+  line-height: 1.8;
+  white-space: pre-line;
+}
+
+.detailImages {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.detailImage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background: #222;
+}
+.detailImage img {
+  object-fit: cover;
+}
+
+/* 블로그 스타일 prev/next nav — 양옆 분할, 텍스트 베이스 */
+.postNav {
+  margin-top: 1rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  padding: 1.25rem 1rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: var(--font-pretendard), sans-serif;
+  transition: background 0.2s ease;
+  min-height: 5rem;
+  justify-content: center;
+}
+.navItem:hover:not(:disabled) {
+  background: rgba(255, 255, 255, 0.04);
+}
+.navItem:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.prev {
+  align-items: flex-start;
+  text-align: left;
+  border-right: 1px solid rgba(255, 255, 255, 0.1);
+}
+.next {
+  align-items: flex-end;
+  text-align: right;
+}
+
+.navLabel {
+  font-size: 0.7rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1;
+}
+.navTitle {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.2px;
+  line-height: 1.3;
+  word-break: keep-all;
+}
+
+/* 「목록으로 돌아가기」— 가운데 작은 텍스트 링크 */
+.listLink {
+  display: block;
+  margin: 0 auto;
+  padding: 0.5rem 1rem;
+  background: transparent;
+  border: none;
+  color: rgba(255, 255, 255, 0.55);
+  font-family: var(--font-pretendard), sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  letter-spacing: -0.2px;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.listLink:hover {
+  color: #fff;
+  text-decoration: underline;
+}
