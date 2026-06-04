@@ -35,7 +35,12 @@ const HERO: Record<string, HeroEntry> = {
     image: "/images/about/facility/hero.jpg",
     half: true,
   },
-  // TODO: /about/location 추가 시 여기 등록
+  "/about/location": {
+    title: "ABOUT FETC",
+    subtitle: "강남 선수재활 ∙ 퍼포먼스 트레이닝 | FE트레이닝센터 강남점",
+    image: "/images/about/location/hero.jpg",
+    half: true,
+  },
 };
 
 /**

@@ -5,6 +5,11 @@
   padding: 90px 5%;
 }
 
+/* /about/location 전용 — 배경 없이 다른 about 페이지와 동일한 컨벤션 */
+.plain {
+  padding: 5rem 5%;
+}
+
 /* 배경 이미지 */
 .bg {
   position: absolute;
