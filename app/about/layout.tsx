@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import SubHero from "@/components/SubHero/SubHero";
 import AboutSubNav from "@/components/AboutSubNav/AboutSubNav";
+import styles from "./layout.module.css";
 
 type HeroEntry = {
   title: string;
@@ -37,14 +38,34 @@ const HERO: Record<string, HeroEntry> = {
   // TODO: /about/location 추가 시 여기 등록
 };
 
+/**
+ * pathname에서 HERO entry 찾기.
+ * 정확 매칭 우선, 없으면 부모 섹션 경로로 fallback (`/about/facility/vald` → `/about/facility`).
+ */
+function findHero(pathname: string): HeroEntry | undefined {
+  if (HERO[pathname]) return HERO[pathname];
+  // /about/{section}/[...] → /about/{section} fallback
+  const segments = pathname.split("/");
+  if (segments.length >= 3) {
+    const parent = segments.slice(0, 3).join("/");
+    return HERO[parent];
+  }
+  return undefined;
+}
+
 export default function AboutLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
-  const hero = HERO[pathname];
+  const hero = findHero(pathname);
+  // detail 페이지 (e.g., /about/facility/vald, /about/coach/[id]) — depth 4+
+  // 모바일에선 SubHero·SubNav 숨김 (focused detail 뷰), PC는 유지
+  const isDetailPage = pathname.split("/").length > 3;
 
   return (
     <div className="sub-page">
       {hero && (
-        <>
+        <div
+          className={`${styles.heroWrap} ${isDetailPage ? styles.heroWrapDetailHide : ""}`}
+        >
           <SubHero
             title={hero.title}
             subtitle={hero.subtitle}
@@ -52,7 +73,7 @@ export default function AboutLayout({ children }: { children: React.ReactNode })
             half={hero.half}
           />
           <AboutSubNav />
-        </>
+        </div>
       )}
       {children}
     </div>

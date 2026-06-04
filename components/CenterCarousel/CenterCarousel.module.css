@@ -16,7 +16,7 @@
 .viewport {
   position: relative;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1128px; /* EquipmentGrid .grid와 동일 */
   margin: 0 auto;
   overflow: hidden;
   border-radius: 0.75rem;

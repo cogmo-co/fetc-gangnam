@@ -18,7 +18,9 @@ export default function AboutSubNav() {
     <nav className={styles.nav} aria-label="About sub navigation">
       <div className={styles.inner}>
         {TABS.map((tab) => {
-          const active = pathname === tab.href;
+          // sub-route 포함: /about/facility/vald 도 FACILITY 탭 active
+          const active =
+            pathname === tab.href || pathname.startsWith(`${tab.href}/`);
           return (
             <Link
               key={tab.href}

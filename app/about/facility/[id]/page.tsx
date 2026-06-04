@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import SubHero from "@/components/SubHero/SubHero";
 import EquipmentGrid from "@/components/FacilityEquipment/EquipmentGrid";
 import Detail from "@/components/FacilityEquipment/Detail";
 import {
@@ -50,14 +49,8 @@ export default async function EquipmentPage({
           __html: JSON.stringify(getEquipmentSchema(equipment)),
         }}
       />
-      {/* PC: facility 컨텍스트 + 모달 자동 열기 */}
+      {/* PC: SubHero+SubNav은 layout이 자동 처리 (HERO 부모 fallback). EquipmentGrid가 autoOpen으로 detail 렌더 */}
       <div className="pc-only">
-        <SubHero
-          title="ABOUT FETC"
-          subtitle="강남 선수재활 ∙ 퍼포먼스 트레이닝 | FE트레이닝센터 강남점"
-          image="/images/about/facility/hero.jpg"
-          half
-        />
         <EquipmentGrid autoOpenEquipment={equipment} />
       </div>
 

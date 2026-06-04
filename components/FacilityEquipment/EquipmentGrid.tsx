@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, type ReactNode } from "react";
+import { useState, useEffect, type ReactNode } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import {
@@ -8,8 +8,11 @@ import {
   type Equipment,
   getEquipmentImage,
 } from "@/lib/equipment";
-import Modal from "./Modal";
+import EquipmentDetail from "./EquipmentDetail";
 import styles from "./EquipmentGrid.module.css";
+
+// 모바일에서 detail 페이지로 navigation 시 scrollY 보관 (목록 복귀 시 복원용)
+const SCROLL_KEY = "facility-scrollY";
 
 interface Props {
   autoOpenEquipment?: Equipment;
@@ -22,8 +25,6 @@ export default function EquipmentGrid({
 }: Props) {
   const router = useRouter();
   const [selected, setSelected] = useState<Equipment | null>(null);
-  // 마지막 클릭한 카드 — 모달 닫을 때 이 카드 bottom을 viewport 하단에 맞춰 스크롤
-  const lastClickedCardRef = useRef<HTMLElement | null>(null);
 
   // /about/facility/[id] 직접 접속 시 PC에서 모달 자동 열기
   useEffect(() => {
@@ -41,8 +42,25 @@ export default function EquipmentGrid({
     return () => window.removeEventListener("popstate", handlePopState);
   }, []);
 
+  // 모바일에서 detail → 「목록으로 돌아가기」 복귀 시 scrollY 복원
+  // ⚠️ 목록 페이지(/about/facility)에서만 실행 — detail [id] 페이지도 EquipmentGrid를 (pc-only div로) mount하므로,
+  // pathname 체크 없으면 detail 페이지가 중간 스크롤 위치에서 시작하는 버그 발생.
+  useEffect(() => {
+    if (window.location.pathname !== "/about/facility") return;
+    const saved = sessionStorage.getItem(SCROLL_KEY);
+    if (saved !== null) {
+      const y = parseInt(saved, 10);
+      if (!Number.isNaN(y)) {
+        requestAnimationFrame(() => window.scrollTo(0, y));
+      }
+      sessionStorage.removeItem(SCROLL_KEY);
+    }
+  }, []);
+
   function openEquipment(equipment: Equipment) {
     if (window.innerWidth <= 640) {
+      // 모바일은 페이지 navigation → 복귀 시 위치 복원용 scrollY 저장
+      sessionStorage.setItem(SCROLL_KEY, String(window.scrollY));
       router.push(`/about/facility/${equipment.id}`);
     } else {
       setSelected(equipment);
@@ -53,28 +71,28 @@ export default function EquipmentGrid({
   function closeEquipment() {
     setSelected(null);
     // autoOpenEquipment가 있으면 /about/facility/[id] 직접 접속 컨텍스트 → FACILITY 페이지로 네비게이션.
-    // 없으면 FACILITY 페이지에서 모달 연 케이스 → URL만 복귀.
+    // 없으면 inline detail 닫기 → URL만 복귀 (재렌더 없음 = scroll-reveal 깜빡임 방지).
     if (autoOpenEquipment) {
       router.push("/about/facility#equipments");
     } else {
       history.pushState(null, "", "/about/facility");
     }
-    // 클릭한 카드의 bottom이 viewport 하단에 오도록 스크롤 (Modal cleanup 후 실행)
-    requestAnimationFrame(() => {
-      lastClickedCardRef.current?.scrollIntoView({
-        block: "end",
-        behavior: "smooth",
-      });
-    });
   }
 
   return (
-    <>
-      <section id="equipments" className={styles.section}>
-        <h2 className={`${styles.sectionTitle} sr`}>FACILITY</h2>
-        {subtitle && (
-          <p className={`${styles.subtitle} sr sr-d1`}>{subtitle}</p>
-        )}
+    <section id="equipments" className={styles.section}>
+      <h2 className={`${styles.sectionTitle} sr`}>FACILITY</h2>
+      {subtitle && (
+        <p className={`${styles.subtitle} sr sr-d1`}>{subtitle}</p>
+      )}
+
+      {selected ? (
+        <EquipmentDetail
+          equipment={selected}
+          onBack={closeEquipment}
+          onSelect={openEquipment}
+        />
+      ) : (
         <div className={styles.grid}>
           {EQUIPMENTS.map((equipment, i) => (
             <div
@@ -83,26 +101,33 @@ export default function EquipmentGrid({
               role="button"
               tabIndex={0}
               onMouseDown={(e) => e.preventDefault()}
-              onClick={(e) => {
-                lastClickedCardRef.current = e.currentTarget;
-                openEquipment(equipment);
-              }}
+              onClick={() => openEquipment(equipment)}
               onKeyDown={(e) => {
                 if (e.key === "Enter" || e.key === " ") {
                   e.preventDefault();
-                  lastClickedCardRef.current = e.currentTarget;
                   openEquipment(equipment);
                 }
               }}
               aria-label={`${equipment.name} 장비 상세 보기`}
             >
+              {/* 같은 이미지 2 레이어: base(그레이) + color(중앙 클립, hover 시 양옆 펼침) */}
               <div className={styles.photo}>
-                <Image
-                  src={getEquipmentImage(equipment.img)}
-                  alt={equipment.name}
-                  fill
-                  sizes="(max-width:640px) 50vw, 33vw"
-                />
+                <div className={styles.photoBase}>
+                  <Image
+                    src={getEquipmentImage(equipment.img)}
+                    alt={equipment.name}
+                    fill
+                    sizes="(max-width:640px) 50vw, 33vw"
+                  />
+                </div>
+                <div className={styles.photoColor} aria-hidden="true">
+                  <Image
+                    src={getEquipmentImage(equipment.img)}
+                    alt=""
+                    fill
+                    sizes="(max-width:640px) 50vw, 33vw"
+                  />
+                </div>
               </div>
               <div className={styles.label}>
                 <span className={styles.labelText}>{equipment.name}</span>
@@ -113,8 +138,7 @@ export default function EquipmentGrid({
             </div>
           ))}
         </div>
-      </section>
-      {selected && <Modal equipment={selected} onClose={closeEquipment} />}
-    </>
+      )}
+    </section>
   );
 }

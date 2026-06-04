@@ -1,0 +1,13 @@
+/* SubHero + AboutSubNav wrapper.
+   display: contents → wrapper가 layout tree에서 제거되어 자식들이 .sub-page 직접 자식처럼 동작.
+   AboutSubNav의 sticky 동작이 wrapper에 의해 제한되지 않음.
+   detail 페이지 (depth 4+) 모바일에서는 display: none으로 전체 숨김. */
+.heroWrap {
+  display: contents;
+}
+
+@media (max-width: 640px) {
+  .heroWrapDetailHide {
+    display: none;
+  }
+}
