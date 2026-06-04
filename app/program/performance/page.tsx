@@ -70,7 +70,7 @@ export default function PerformancePage() {
   return (
     <>
       {/* PERFORMANCE intro — 종목별 프로그램 개요 */}
-      <section className={styles.intro}>
+      <section id="intro" className={styles.intro}>
         <h2 className={`${styles.bigTitle} sr`}>PERFORMANCE</h2>
         <div className={`${styles.story} sr sr-d1`}>
           <p>

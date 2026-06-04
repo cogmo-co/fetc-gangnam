@@ -30,6 +30,13 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit;line-height:inherit;}
    ============================================ */
 .sub-page{padding-top:84px;}
 
+/* anchor scroll 시 sticky Topbar(84) + SubNav(~70/54)만큼 offset
+   → hash 이동 시 title이 SubNav 바로 아래 위치 */
+html{scroll-padding-top:154px;}
+@media(max-width:640px){
+  html{scroll-padding-top:138px;}
+}
+
 /* ============================================
    MOBILE BREAK
    ============================================ */

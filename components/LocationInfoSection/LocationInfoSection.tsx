@@ -12,7 +12,7 @@ interface Props {
 
 export default function LocationInfoSection({ isMobile, centerTitle, plain }: Props) {
   return (
-    <section className={`${styles.section} ${plain ? styles.plain : ""}`}>
+    <section id="location" className={`${styles.section} ${plain ? styles.plain : ""}`}>
       {!plain && (
         <>
           {/* 배경 이미지 */}

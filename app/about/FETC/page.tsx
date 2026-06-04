@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function FETCPage() {
   return (
     <>
-      <section className={styles.intro}>
+      <section id="intro" className={styles.intro}>
         <h2 className={`${styles.bigTitle} sr`}>FE TRAINING CENTER</h2>
         <div className={`${styles.story} sr sr-d1`}>
           <p>

@@ -74,7 +74,7 @@ const TRAINING_CARDS = [
 export default function TrainingPage() {
   return (
     <>
-      <section className={styles.intro}>
+      <section id="intro" className={styles.intro}>
         <h2 className={`${styles.bigTitle} sr`}>TRAINING</h2>
         <div className={`${styles.story} sr sr-d1`}>
           <p>

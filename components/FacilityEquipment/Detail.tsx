@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
@@ -13,6 +14,12 @@ interface Props {
 
 export default function Detail({ equipment }: Props) {
   const router = useRouter();
+
+  // 모바일에서 detail 진입/이전·다음 이동 시 항상 최상단부터 시작
+  // (Next.js 기본 scroll-to-top이 일부 모바일 브라우저(S26 등)에서 누락되는 케이스 보정)
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [equipment.id]);
   const currentIndex = EQUIPMENTS.findIndex((e) => e.id === equipment.id);
   const prev = currentIndex > 0 ? EQUIPMENTS[currentIndex - 1] : null;
   const next =
