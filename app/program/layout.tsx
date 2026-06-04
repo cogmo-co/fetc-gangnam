@@ -22,7 +22,13 @@ const HERO: Record<string, HeroEntry> = {
     image: "/images/program/performance/hero.jpg",
     half: true,
   },
-  // TODO: /program/training, /program/rehabilitation 추가 시 등록
+  "/program/training": {
+    title: "PROGRAM",
+    subtitle: "FEA 평가 기반 기능성 트레이닝 | FE트레이닝센터 강남점",
+    image: "/images/program/training/hero.jpg",
+    half: true,
+  },
+  // TODO: /program/rehabilitation 추가 시 등록
 };
 
 export default function ProgramLayout({ children }: { children: React.ReactNode }) {

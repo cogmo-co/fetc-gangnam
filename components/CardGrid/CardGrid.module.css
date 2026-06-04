@@ -20,7 +20,7 @@
 .card:hover{background:#252525;}
 .cardNum{
   font-family:var(--font-oswald),'Oswald',sans-serif;font-size:3rem;font-weight:700;letter-spacing:0;
-  -webkit-text-stroke:1px rgba(255,255,255,0.25);color:transparent;
+  color:rgba(255,255,255,0.25);
   line-height:1;margin-bottom:20px;
 }
 .cardTitle{

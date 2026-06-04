@@ -29,8 +29,8 @@
 
 .item {
   display: flex;
-  align-items: flex-start;
-  gap: 1rem;
+  align-items: center;
+  gap: 1.2rem;
   font-family: var(--font-pretendard), sans-serif;
 }
 
