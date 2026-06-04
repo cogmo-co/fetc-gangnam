@@ -18,7 +18,7 @@ export default function CoachRow({ autoOpenCoach, subtitle }: Props) {
   // 마지막 클릭한 카드 — 모달 닫을 때 이 카드 bottom을 viewport 하단에 맞춰 스크롤
   const lastClickedCardRef = useRef<HTMLElement | null>(null);
 
-  // /coach/[id] 직접 접속 시 PC에서 모달 자동 열기
+  // /about/coach/[id] 직접 접속 시 PC에서 모달 자동 열기
   useEffect(() => {
     if (autoOpenCoach && window.innerWidth > 640) {
       setSelected(autoOpenCoach);
@@ -36,16 +36,16 @@ export default function CoachRow({ autoOpenCoach, subtitle }: Props) {
 
   function openCoach(coach: Coach) {
     if (window.innerWidth <= 640) {
-      router.push(`/coach/${coach.id}`);
+      router.push(`/about/coach/${coach.id}`);
     } else {
       setSelected(coach);
-      history.pushState(null, "", `/coach/${coach.id}`);
+      history.pushState(null, "", `/about/coach/${coach.id}`);
     }
   }
 
   function closeCoach() {
     setSelected(null);
-    // autoOpenCoach가 있으면 /coach/[id] 직접 접속 컨텍스트 → COACH 페이지로 네비게이션.
+    // autoOpenCoach가 있으면 /about/coach/[id] 직접 접속 컨텍스트 → COACH 페이지로 네비게이션.
     // 없으면 COACH 페이지에서 모달 연 케이스 → URL만 복귀(재렌더 없음 = scroll-reveal 깜빡임 방지).
     if (autoOpenCoach) {
       router.push("/about/coach#coaches");

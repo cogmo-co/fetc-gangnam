@@ -17,7 +17,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   }));
 
   const coachEntries: MetadataRoute.Sitemap = COACHES.map((c) => ({
-    url: `${BASE_URL}/coach/${c.id}`,
+    url: `${BASE_URL}/about/coach/${c.id}`,
     lastModified: new Date(),
     priority: 0.7,
   }));

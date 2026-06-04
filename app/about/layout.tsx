@@ -28,7 +28,13 @@ const HERO: Record<string, HeroEntry> = {
     image: "/images/about/fetc/why_fetc_01.jpg",
     half: true,
   },
-  // TODO: /about/facility, /about/location 추가 시 여기 등록
+  "/about/facility": {
+    title: "ABOUT FETC",
+    subtitle: "강남 선수재활 ∙ 퍼포먼스 트레이닝 | FE트레이닝센터 강남점",
+    image: "/images/about/facility/hero.jpg",
+    half: true,
+  },
+  // TODO: /about/location 추가 시 여기 등록
 };
 
 export default function AboutLayout({ children }: { children: React.ReactNode }) {

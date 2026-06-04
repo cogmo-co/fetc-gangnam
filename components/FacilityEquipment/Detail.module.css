@@ -1,0 +1,97 @@
+.page {
+  background: #1a1a1a;
+  min-height: 100vh;
+}
+
+.imageArea {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  background: #0e0e0e;
+}
+.imageArea img {
+  object-fit: cover;
+}
+
+.content {
+  padding: 2rem 5% 3rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.header {
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.fullName {
+  margin: 0 0 0.5rem 0;
+  font-family: var(--font-pretendard), sans-serif;
+  font-size: 1.375rem;
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  color: #fff;
+  line-height: 1.3;
+}
+
+.tagline {
+  margin: 0;
+  font-family: var(--font-pretendard), sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.62);
+  letter-spacing: -0.2px;
+}
+
+.body {
+  margin: 0;
+  font-family: var(--font-pretendard), sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.78);
+  letter-spacing: -0.2px;
+  line-height: 1.8;
+  white-space: pre-line;
+}
+
+.detailImages {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.detailImage {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 0.5rem;
+  overflow: hidden;
+  background: #222;
+}
+.detailImage img {
+  object-fit: cover;
+}
+
+.actions {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.backBtn {
+  padding: 0.75rem 2rem;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  color: #fff;
+  font-family: var(--font-pretendard), sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: -0.2px;
+  cursor: pointer;
+  transition: background 0.2s ease, border-color 0.2s ease;
+}
+.backBtn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.6);
+}
