@@ -1,5 +1,4 @@
 .intro {
-  position: relative;
   width: 100%;
   padding: 5rem 5%;
   background: #121212;
@@ -7,6 +6,11 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
+}
+
+/* FLOWTICS METHOD 섹션 — 상하 .intro와 톤 차이로 구분 */
+.introAlt {
+  background: #1c1c1c;
 }
 
 .bigTitle {
@@ -22,7 +26,7 @@
   display: flex;
   flex-direction: column;
   gap: 1.5rem;
-  max-width: 760px;
+  max-width: 1000px;
 }
 
 .story p {
