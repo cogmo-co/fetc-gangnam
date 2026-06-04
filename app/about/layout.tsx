@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import SubHero from "@/components/SubHero/SubHero";
 import AboutSubNav from "@/components/AboutSubNav/AboutSubNav";
+import { useResetScrollOnRouteChange } from "@/hooks/useResetScrollOnRouteChange";
 import styles from "./layout.module.css";
 
 type HeroEntry = {
@@ -64,6 +65,8 @@ export default function AboutLayout({ children }: { children: React.ReactNode })
   // detail 페이지 (e.g., /about/facility/vald, /about/coach/[id]) — depth 4+
   // 모바일에선 SubHero·SubNav 숨김 (focused detail 뷰), PC는 유지
   const isDetailPage = pathname.split("/").length > 3;
+
+  useResetScrollOnRouteChange();
 
   return (
     <div className="sub-page">

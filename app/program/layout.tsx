@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import SubHero from "@/components/SubHero/SubHero";
 import ProgramSubNav from "@/components/ProgramSubNav/ProgramSubNav";
+import { useResetScrollOnRouteChange } from "@/hooks/useResetScrollOnRouteChange";
 
 type HeroEntry = {
   title: string;
@@ -39,6 +40,8 @@ const HERO: Record<string, HeroEntry> = {
 export default function ProgramLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
   const hero = HERO[pathname];
+
+  useResetScrollOnRouteChange();
 
   return (
     <div className="sub-page">
