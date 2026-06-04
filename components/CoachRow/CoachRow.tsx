@@ -92,7 +92,7 @@ export default function CoachRow({ autoOpenCoach, subtitle }: Props) {
               aria-label={`${coach.name} 코치 상세 보기`}
             >
               <div className={styles.photo}>
-                <Image src={`/images/${coach.img}`} alt={coach.name} width={360} height={460} />
+                <Image src={`/images/about/coach/${coach.img}`} alt={coach.name} width={360} height={460} />
               </div>
               <div className={styles.info}>
                 <div className={styles.infoText}>

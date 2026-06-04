@@ -7,7 +7,7 @@ export default function WhoWeAre() {
       <div className={styles.inner}>
         <div className={styles.header}>
           <h2 className={`${styles.title} sr`}>WHO WE ARE?</h2>
-          <Link href="/about" className={`${styles.more} sr sr-d1`}>
+          <Link href="/about/FETC" className={`${styles.more} sr sr-d1`}>
             더보기
           </Link>
         </div>

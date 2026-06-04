@@ -17,8 +17,7 @@ export default function EquipmentSection() {
       <div className={styles.inner}>
         <div className={styles.header}>
           <h2 className={`${styles.title} sr`}>EQUIPMENT</h2>
-          {/* TODO: /about/facility 생성 후 링크 교체 */}
-          <Link href="/about" className={`${styles.more} sr sr-d1`}>
+          <Link href="/about/facility" className={`${styles.more} sr sr-d1`}>
             더보기
           </Link>
         </div>

@@ -80,7 +80,7 @@ export default function Modal({ coach, onClose }: Props) {
         <div className={styles.modal}>
           <div className={styles.imageArea}>
             <Image
-              src={`/images/${coach.img}`}
+              src={`/images/about/coach/${coach.img}`}
               alt={coach.name}
               fill
               sizes="(max-width:640px) 90vw, 400px"

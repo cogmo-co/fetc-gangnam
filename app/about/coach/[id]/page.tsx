@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import SubHero from "@/components/SubHero/SubHero";
 import CoachRow from "@/components/CoachRow/CoachRow";
 import Detail from "@/components/CoachInfo/Detail";
 import { COACHES, findCoach, getSingleCoachSchema } from "@/lib/coaches";
@@ -24,7 +23,7 @@ export async function generateMetadata({
     description: `FE트레이닝센터 강남점 ${coach.role} ${coach.name}. ${coach.spec[0] ?? ""}`,
     openGraph: {
       title: `${coach.name} - FE트레이닝센터 강남점`,
-      images: [`/images/${coach.img}`],
+      images: [`/images/about/coach/${coach.img}`],
       type: "profile",
     },
   };
@@ -45,18 +44,12 @@ export default async function CoachPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(getSingleCoachSchema(coach)) }}
       />
-      {/* PC: About 컨텍스트 + 모달 자동 열기 */}
-      <div className="sub-page pc-only">
-        <SubHero
-          title="COACH"
-          subtitle={`${coach.name} - FE트레이닝센터 강남점 ${coach.role}`}
-          image="/images/about-hero.jpg"
-          half
-        />
+      {/* PC: CoachRow에서 모달 자동 열기 (layout이 SubHero 처리) */}
+      <div className="pc-only">
         <CoachRow autoOpenCoach={coach} />
       </div>
 
-      {/* Mobile: Detail 풀페이지 */}
+      {/* Mobile: Detail 풀페이지 (layout이 SubHero/SubNav 숨김) */}
       <div className="mobile-only">
         <Detail coach={coach} />
       </div>

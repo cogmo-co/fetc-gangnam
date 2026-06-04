@@ -501,7 +501,7 @@ export function getPersonSchema(coach: Coach) {
     "@type": "Person",
     name: coach.name,
     jobTitle: coach.role,
-    image: `${BASE_URL}/images/${coach.img}`,
+    image: `${BASE_URL}/images/about/coach/${coach.img}`,
     url: `${BASE_URL}/about/coach/${coach.id}`,
     sameAs: [coach.tistoryUrl],
     worksFor: {

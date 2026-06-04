@@ -8,11 +8,10 @@ const STAGES = [
   { name: "Performance", desc: "경기력 · 일상 활력" },
 ];
 
-// TODO: /program/* 라우팅 신설 시 href 교체
 const PROGRAMS = [
-  { label: "PERFORMANCE", href: "/performance" },
-  { label: "TRAINING", href: "/training" },
-  { label: "REHABILITATION", href: "/rehabilitation" },
+  { label: "PERFORMANCE", href: "/program/performance" },
+  { label: "TRAINING", href: "/program/training" },
+  { label: "REHABILITATION", href: "/program/rehabilitation" },
 ];
 
 export default function FlowticsMethod() {

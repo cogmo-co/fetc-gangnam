@@ -28,7 +28,12 @@ const HERO: Record<string, HeroEntry> = {
     image: "/images/program/training/hero.jpg",
     half: true,
   },
-  // TODO: /program/rehabilitation 추가 시 등록
+  "/program/rehabilitation": {
+    title: "PROGRAM",
+    subtitle: "수술 후 재활 ∙ 만성 통증 ∙ 자세교정 재활 | FE트레이닝센터 강남점",
+    image: "/images/program/rehabilitation/hero.jpg",
+    half: true,
+  },
 };
 
 export default function ProgramLayout({ children }: { children: React.ReactNode }) {

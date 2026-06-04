@@ -13,7 +13,7 @@ export default function Detail({ coach }: Props) {
     <div className={styles.page}>
       <div className={styles.imageArea}>
         <Image
-          src={`/images/${coach.img}`}
+          src={`/images/about/coach/${coach.img}`}
           alt={coach.name}
           fill
           sizes="100vw"
