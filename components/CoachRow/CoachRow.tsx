@@ -39,7 +39,13 @@ export default function CoachRow({ autoOpenCoach, subtitle }: Props) {
       router.push(`/about/coach/${coach.id}`);
     } else {
       setSelected(coach);
-      history.pushState(null, "", `/about/coach/${coach.id}`);
+      // inlineDetail 플래그: useResetScrollOnRouteChange가 scroll-to-top skip하도록 마킹
+      const currentState = window.history.state ?? {};
+      history.pushState(
+        { ...currentState, inlineDetail: true },
+        "",
+        `/about/coach/${coach.id}`,
+      );
     }
   }
 
@@ -50,7 +56,12 @@ export default function CoachRow({ autoOpenCoach, subtitle }: Props) {
     if (autoOpenCoach) {
       router.push("/about/coach#coaches");
     } else {
-      history.pushState(null, "", "/about/coach");
+      const currentState = window.history.state ?? {};
+      history.pushState(
+        { ...currentState, inlineDetail: true },
+        "",
+        "/about/coach",
+      );
     }
     // 클릭한 카드의 bottom이 viewport 하단에 오도록 스크롤 (Modal cleanup 후 실행)
     requestAnimationFrame(() => {

@@ -25,6 +25,9 @@ export default function EquipmentGrid({
 }: Props) {
   const router = useRouter();
   const [selected, setSelected] = useState<Equipment | null>(null);
+  // detail 한 번이라도 열었으면 grid 복귀 시 카드 sr 애니메이션 skip
+  // (AppShell observer setTimeout 타이밍 회피 — 카드 invisible 잔존 버그 방지)
+  const [hasOpenedDetail, setHasOpenedDetail] = useState(false);
 
   // /about/facility/[id] 직접 접속 시 PC에서 모달 자동 열기
   useEffect(() => {
@@ -58,13 +61,20 @@ export default function EquipmentGrid({
   }, []);
 
   function openEquipment(equipment: Equipment) {
+    setHasOpenedDetail(true);
     if (window.innerWidth <= 640) {
       // 모바일은 페이지 navigation → 복귀 시 위치 복원용 scrollY 저장
       sessionStorage.setItem(SCROLL_KEY, String(window.scrollY));
       router.push(`/about/facility/${equipment.id}`);
     } else {
       setSelected(equipment);
-      history.pushState(null, "", `/about/facility/${equipment.id}`);
+      // inlineDetail 플래그: useResetScrollOnRouteChange가 scroll-to-top skip하도록 마킹
+      const currentState = window.history.state ?? {};
+      history.pushState(
+        { ...currentState, inlineDetail: true },
+        "",
+        `/about/facility/${equipment.id}`,
+      );
     }
   }
 
@@ -75,7 +85,12 @@ export default function EquipmentGrid({
     if (autoOpenEquipment) {
       router.push("/about/facility#equipments");
     } else {
-      history.pushState(null, "", "/about/facility");
+      const currentState = window.history.state ?? {};
+      history.pushState(
+        { ...currentState, inlineDetail: true },
+        "",
+        "/about/facility",
+      );
     }
   }
 
@@ -97,7 +112,7 @@ export default function EquipmentGrid({
           {EQUIPMENTS.map((equipment, i) => (
             <div
               key={equipment.id}
-              className={`${styles.card} sr sr-d${i + 1}`}
+              className={`${styles.card} ${hasOpenedDetail ? "" : `sr sr-d${i + 1}`}`}
               role="button"
               tabIndex={0}
               onMouseDown={(e) => e.preventDefault()}
