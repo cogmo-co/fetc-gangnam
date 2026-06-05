@@ -44,26 +44,10 @@ const PERFORMANCE_RECOMMENDED: RecommendedItem[] = [
 ];
 
 const PERFORMANCE_CARDS = [
-  {
-    num: "01",
-    title: "Pre-activation",
-    body: "마사지와 스트레칭을 통해 신체와 신경계를 깨워 움직임을 시작할 감각을 되살리는 단계입니다.",
-  },
-  {
-    num: "02",
-    title: "Dynamic Preparation",
-    body: "다양한 제약기반의 움직임과 리듬, 밸런스 훈련으로 움직임의 가능성을 탐색하고 퍼포먼스 모드로 전환합니다.",
-  },
-  {
-    num: "03",
-    title: "Strength Integration",
-    body: "강화된 힘을 움직임 속에 통합하여 기능적인 퍼포먼스로 연결하는 단계입니다.",
-  },
-  {
-    num: "04",
-    title: "Performance",
-    body: "준비된 신체와 움직임을 경기력, 생활의 활력으로 확장합니다. 훈련의 모든 과정이 실제 퍼포먼스로 이어집니다.",
-  },
+  { num: "01", title: "Pre-activation", body: "마사지와 스트레칭을 통해 신체와 신경계를 깨워 움직임을 시작할 감각을 되살리는 단계입니다." },
+  { num: "02", title: "Dynamic Preparation", body: "다양한 제약기반의 움직임과 리듬, 밸런스 훈련으로 움직임의 가능성을 탐색하고 퍼포먼스 모드로 전환합니다." },
+  { num: "03", title: "Strength Integration", body: "강화된 힘을 움직임 속에 통합하여 기능적인 퍼포먼스로 연결하는 단계입니다." },
+  { num: "04", title: "Performance", body: "준비된 신체와 움직임을 경기력, 생활의 활력으로 확장합니다. 훈련의 모든 과정이 실제 퍼포먼스로 이어집니다." },
 ];
 
 export default function PerformancePage() {
