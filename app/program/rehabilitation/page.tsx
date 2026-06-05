@@ -16,9 +16,11 @@ const REHAB_TRACKS = [
     image: "/images/program/rehabilitation/post_op_rehab.jpg",
     body: (
       <>
-        회전근개 ∙ 전방십자인대(ACL) ∙ 반월상연골 ∙ 아킬레스건 등 수술 후 단계별
-        <br className="pc-br" />
-        {" "}가동성 회복과 기능 통합 프로그램
+        회전근개 ∙ 전방십자인대(ACL) 
+        <br className="pc-br" /> 
+        {" "}∙ 반월상연골 ∙ 아킬레스건 등
+        <br className="pc-br" /> 
+        {" "}수술 후 단계별 가동성 회복과 기능 통합 프로그램
       </>
     ),
   },
@@ -27,9 +29,11 @@ const REHAB_TRACKS = [
     image: "/images/program/rehabilitation/chronic_pain_rehab.jpg",
     body: (
       <>
-        어깨∙허리∙무릎∙발목 등 반복되는 통증의 원인을 평가하고 일상 동작까지
+        어깨∙허리∙무릎∙발목 등 
         <br className="pc-br" />
-        {" "}안전하게 복귀시키는 프로그램
+        {" "}반복되는 통증의 원인을 평가하고 
+        <br className="pc-br" />
+        {" "}일상 동작까지 안전하게 복귀시키는 프로그램
       </>
     ),
   },
@@ -40,9 +44,9 @@ const REHAB_TRACKS = [
       <>
         거북목∙라운드숄더∙골반 비대칭 등
         <br className="pc-br" />
-        {" "}자세 기인 통증을 움직임 패턴
+        {" "}자세 기인 통증을 
         <br className="pc-br" />
-        {" "}교정으로 해결
+        {" "}움직임 패턴 교정으로 해결
       </>
     ),
   },

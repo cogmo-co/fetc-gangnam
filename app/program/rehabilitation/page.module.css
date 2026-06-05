@@ -60,16 +60,17 @@
 }
 
 .trackBadge {
-  align-self: center;
-  padding: 0.4rem 1rem;
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 999px;
   font-family: var(--font-pretendard), sans-serif;
-  font-size: 0.95rem;
+  color: #ffffff;
+  letter-spacing: 0.5px;
+  background: #222;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 10px;
+  align-self: center;
+  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
   font-weight: 700;
-  color: #1a1a1a;
-  letter-spacing: -0.2px;
+  width: 100%;
 }
 
 .trackImage {
@@ -87,7 +88,7 @@
 
 .trackBody {
   font-family: var(--font-pretendard), sans-serif;
-  font-size: 0.95rem;
+  font-size: 1rem;
   font-weight: 400;
   letter-spacing: -0.2px;
   line-height: 1.65;
