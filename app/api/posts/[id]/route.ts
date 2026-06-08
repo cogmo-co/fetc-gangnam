@@ -15,8 +15,11 @@ export async function GET(
     .eq("published", true)
     .single();
 
-  if (error || !data) {
-    return NextResponse.json({ error: "조회 실패" }, { status: 404 });
+  if (error) {
+    return NextResponse.json({ error: "조회 실패" }, { status: 500 });
+  }
+  if (!data) {
+    return NextResponse.json({ error: "not found" }, { status: 404 });
   }
 
   const post = {
@@ -25,5 +28,14 @@ export async function GET(
     likes: undefined,
   };
 
-  return NextResponse.json({ post });
+  // 게시물 변경 빈도 낮음 → CDN/edge 캐시로 단건 fetch 반복 비용 절감
+  return NextResponse.json(
+    { post },
+    {
+      headers: {
+        "Cache-Control":
+          "s-maxage=300, stale-while-revalidate=3600",
+      },
+    },
+  );
 }

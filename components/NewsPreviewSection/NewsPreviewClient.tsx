@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import SlidesNav from "@/components/SlidesNav/SlidesNav";
@@ -23,6 +23,13 @@ interface Props {
 export default function NewsPreviewClient({ posts }: Props) {
   const [selected, setSelected] = useState<NewsPost | null>(null);
   const [loadingId, setLoadingId] = useState<string | null>(null);
+  // in-flight fetch 추적 — 새 클릭/모달 닫기/언마운트 시 abort
+  const abortRef = useRef<AbortController | null>(null);
+
+  // unmount 시 in-flight fetch 정리
+  useEffect(() => {
+    return () => abortRef.current?.abort();
+  }, []);
 
   async function openPost(post: NewsPreviewPost) {
     // 모바일: full page 이동 — /news/[id]에서 자체 server fetch
@@ -31,24 +38,35 @@ export default function NewsPreviewClient({ posts }: Props) {
       return;
     }
 
-    // PC: 모달용 단건 fetch
-    if (loadingId) return; // 중복 클릭 방지
+    // PC: 모달용 단건 fetch — 이전 in-flight 있으면 취소하고 새로 시작
+    abortRef.current?.abort();
+    const ctrl = new AbortController();
+    abortRef.current = ctrl;
     setLoadingId(post.id);
     try {
-      const res = await fetch(`/api/posts/${post.id}`);
+      const res = await fetch(`/api/posts/${post.id}`, { signal: ctrl.signal });
       if (!res.ok) throw new Error("fetch failed");
       const { post: full }: { post: NewsPost } = await res.json();
+      // 취소 후 도착한 응답 무시
+      if (ctrl.signal.aborted) return;
       setSelected(full);
       history.pushState(null, "", `/news/${post.id}`);
-    } catch {
+    } catch (e) {
+      if ((e as Error).name === "AbortError") return;
       // fallback: full page 이동
       window.location.href = `/news/${post.id}`;
     } finally {
-      setLoadingId(null);
+      // 현재 fetch가 최신인 경우만 loading 상태 정리 (새 클릭으로 교체됐다면 그쪽 loading 보존)
+      if (abortRef.current === ctrl) {
+        setLoadingId(null);
+        abortRef.current = null;
+      }
     }
   }
 
   const closePost = useCallback(() => {
+    // 닫을 때 in-flight fetch도 abort
+    abortRef.current?.abort();
     setSelected(null);
     history.pushState(null, "", "/");
   }, []);

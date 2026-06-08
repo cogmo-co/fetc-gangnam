@@ -50,6 +50,7 @@
   border-radius: 4px;
   overflow: hidden;
   cursor: pointer;
+  transition: opacity 0.15s ease;
 }
 .cell img {
   object-fit: cover;
@@ -57,6 +58,9 @@
 }
 .cell:hover img {
   transform: scale(1.03);
+}
+.cell[aria-busy="true"] {
+  opacity: 0.65;
 }
 
 /* 모바일: SlidesNav 기본 동작 (flex + 화살표) */
