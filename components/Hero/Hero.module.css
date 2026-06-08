@@ -69,18 +69,24 @@
   background-position:100% 0;
   -webkit-background-clip:text;
   background-clip:text;
-  animation:textFill 1.5s cubic-bezier(0.25,0.46,0.45,0.94) 0.8s forwards;
+  animation:textFill 0.7s cubic-bezier(0.25,0.46,0.45,0.94) 0.5s forwards,
+            strokeFade 1.5s ease 4.0s forwards;
 }
 .bgTextD1{
-  animation:textFill 1.5s cubic-bezier(0.25,0.46,0.45,0.94) 2.4s forwards,
-            textFadeOut 2.0s ease 6.3s forwards;
+  /* BEYOND — strokeFade 없음 (textFadeOut으로 사라짐) */
+  animation:textFill 0.7s cubic-bezier(0.25,0.46,0.45,0.94) 1.7s forwards,
+            textFadeOut 1.5s ease 4.0s forwards;
 }
-.bgTextD2{animation-delay:4.0s;}
+/* LIMITS — textFill delay 2.9s, strokeFade delay 4.0s */
+.bgTextD2{animation-delay:2.9s,4.0s;}
 @keyframes textFill{
   to{background-position:0 0;}
 }
 @keyframes textFadeOut{
   to{--fill-alpha:0;}
+}
+@keyframes strokeFade{
+  to{-webkit-text-stroke-color:#181818;}
 }
 .title{
   font-family:var(--font-oswald),'Oswald',sans-serif;
