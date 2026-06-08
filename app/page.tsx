@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { headers } from "next/headers";
 import Hero from "@/components/Hero/Hero";
 import TistorySection from "@/components/TistorySection/TistorySection";
@@ -5,6 +6,7 @@ import MediaSection from "@/components/MediaSection/MediaSection";
 import LocationInfoSection from "@/components/LocationInfoSection/LocationInfoSection";
 import BranchGrid from "@/components/BranchGrid/BranchGrid";
 import NewsPreviewSection from "@/components/NewsPreviewSection/NewsPreviewSection";
+import NewsPreviewSkeleton from "@/components/NewsPreviewSection/NewsPreviewSkeleton";
 import WhoWeAre from "@/components/WhoWeAre/WhoWeAre";
 import FlowticsMethod from "@/components/FlowticsMethod/FlowticsMethod";
 import EquipmentSection from "@/components/EquipmentSection/EquipmentSection";
@@ -19,7 +21,9 @@ export default async function Home() {
   return (
     <>
       <Hero />
-      <NewsPreviewSection />
+      <Suspense fallback={<NewsPreviewSkeleton />}>
+        <NewsPreviewSection />
+      </Suspense>
 
       <WhoWeAre />
 

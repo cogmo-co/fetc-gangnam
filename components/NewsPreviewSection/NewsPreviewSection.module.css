@@ -75,3 +75,33 @@
     flex: 0 0 50%;
   }
 }
+
+/* ===============================
+   Suspense Skeleton
+   =============================== */
+.skeletonGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+.cellSkeleton {
+  aspect-ratio: 4/5;
+  border-radius: 4px;
+  background: linear-gradient(90deg, #1f1f1f 25%, #2a2a2a 50%, #1f1f1f 75%);
+  background-size: 200% 100%;
+  animation: skeletonShimmer 1.5s ease-in-out infinite;
+}
+@keyframes skeletonShimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+@media (max-width: 640px) {
+  .skeletonGrid {
+    display: flex;
+    gap: 0.75rem;
+    overflow: hidden;
+  }
+  .cellSkeleton {
+    flex: 0 0 50%;
+  }
+}
