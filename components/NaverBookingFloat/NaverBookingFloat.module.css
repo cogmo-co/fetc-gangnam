@@ -1,0 +1,21 @@
+.float{
+  position:fixed;
+  bottom:28px;right:28px;
+  z-index:700;
+  display:flex;align-items:center;justify-content:center;
+  width:46px;height:46px;
+  border-radius:50%;
+  background:rgba(3,199,90,0.55);
+  border:none;
+  box-shadow:0 2px 12px rgba(0,0,0,0.25);
+  transition:transform 0.2s,box-shadow 0.2s,background 0.2s;
+  color:#fff;
+}
+.float:hover,.float:active{
+  transform:scale(1.08);
+  box-shadow:0 4px 18px rgba(0,0,0,0.3);
+  background:#03C75A;
+}
+.icon{
+  width:25px;height:25px;
+}

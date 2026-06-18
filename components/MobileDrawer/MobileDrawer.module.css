@@ -152,35 +152,6 @@
 }
 
 /* ===============================
-   하단 sticky CTA — RESERVATION
-   =============================== */
-.ctaWrap {
-  padding: 1.25rem 1.5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-.ctaBtn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.625rem;
-  width: 100%;
-  padding: 1rem;
-  background: #fff;
-  color: #000;
-  text-align: center;
-  font-family: var(--font-oswald), 'Oswald', sans-serif;
-  font-size: 1.0625rem;
-  font-weight: 700;
-  letter-spacing: 2px;
-  border-radius: 8px;
-  text-decoration: none;
-  transition: opacity 0.2s ease;
-}
-.ctaBtn:active {
-  opacity: 0.85;
-}
-
-/* ===============================
    PC: drawer 숨김 (모바일 전용)
    =============================== */
 @media (min-width: 769px) {

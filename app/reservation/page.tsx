@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import SubHero from "@/components/SubHero/SubHero";
 import BookingLink from "@/components/BookingLink/BookingLink";
+import { NaverBookingIcon, KakaoChannelIcon } from "@/components/Icons";
 import { PHONE } from "@/lib/constants";
 import styles from "./page.module.css";
 
@@ -88,9 +89,7 @@ export default function ReservationPage() {
             <div className={styles.cardSpacer} />
             <BookingLink className={`${styles.ctaBtn} ${styles.ctaNaver}`} aria-label="네이버 예약 바로가기">
               네이버 예약 바로가기
-              <svg width="22" height="22" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
-                <path d="M14,1.5h-2.5V0.8c0-0.3-0.2-0.5-0.5-0.5h-0.2c-0.3,0-0.5,0.2-0.5,0.5v0.7H5.7V0.8c0-0.3-0.2-0.5-0.5-0.5H5 c-0.3,0-0.5,0.2-0.5,0.5v0.7H2c-0.6,0-1,0.4-1,1v12c0,0.6,0.4,1,1,1h12c0.6,0,1-0.4,1-1v-12C15,1.9,14.6,1.5,14,1.5z M13.8,14.3H2.2 V4h11.6V14.3z M6.9,12H5V6h1.8l2.3,3.2V6H11v6H9.2L6.9,8.8V12z" />
-              </svg>
+              <NaverBookingIcon width={22} height={22} />
             </BookingLink>
             <p className={styles.cardNote}>
               담당자가 확인 후, 예약을 확정하기 위해 연락드립니다.
@@ -110,9 +109,7 @@ export default function ReservationPage() {
               aria-label="카카오톡 상담 바로가기"
             >
               카카오톡 상담 바로가기
-              <svg width="22" height="22" viewBox="35 70 220 140" fill="currentColor" aria-hidden="true">
-                <path d="M150 40.992c-56.923 0-103.069 42.684-103.069 95.336 0 38.887 16.287 57.45 38.593 74.373l.107.046v45.636a2.621 2.621 0 0 0 4.184 2.1l39.085-29.031.841.365A111.675 111.675 0 0 0 150 231.663c56.924 0 103.069-42.684 103.069-95.335S206.924 40.992 150 40.992m-34.55 119.494c10.1 0 18.746-6.048 21.343-15.392h14.945c-3.655 17.983-17.648 29.768-36.288 29.768-21.662 0-38.839-16.155-38.839-38.642s17.177-38.641 38.839-38.641c18.828 0 32.919 12.021 36.4 30.312h-14.9c-2.267-9.945-11.2-16.143-21.5-16.143-14.566 0-24.254 10.391-24.254 24.472a23.93 23.93 0 0 0 24.254 24.266m98.466 12.893h-13.695v-30.892c0-7.114-4.14-10.936-10.51-10.936-7.112 0-11.677 4.352-11.677 13.163v28.665h-13.7v-75.56h13.7v28.423c3.29-4.989 8.6-7.431 15.817-7.431 5.839 0 10.617 1.91 14.332 5.838 3.823 3.929 5.733 9.237 5.733 16.137Z" />
-              </svg>
+              <KakaoChannelIcon />
             </a>
             <p className={styles.cardNote}>
               담당자가 확인 후, 순차적으로 답변 드립니다.

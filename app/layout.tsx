@@ -4,7 +4,7 @@ import { Oswald, Noto_Sans_KR } from "next/font/google";
 import localFont from "next/font/local";
 import AppShell from "@/components/AppShell/AppShell";
 import Footer from "@/components/Footer/Footer";
-import KakaoFloat from "@/components/KakaoFloat/KakaoFloat";
+import NaverBookingFloat from "@/components/NaverBookingFloat/NaverBookingFloat";
 import { BASE_URL } from "@/lib/constants";
 import "./globals.css";
 
@@ -171,7 +171,7 @@ export default function RootLayout({
         </noscript>
         <AppShell>{children}</AppShell>
         <Footer />
-        <KakaoFloat />
+        <NaverBookingFloat />
       </body>
     </html>
   );

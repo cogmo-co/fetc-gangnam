@@ -91,28 +91,6 @@
 }
 .subLink:hover{color:#fff;}
 
-/* ======================================
-   CTA — RESERVATION (메뉴 하단 강조)
-   ====================================== */
-.cta{
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  gap:0.875rem;
-  margin-top:4.5rem;
-  padding:1rem 2.5rem;
-  background:#fff;
-  color:#000;
-  border-radius:8px;
-  font-family:var(--font-oswald),'Oswald',sans-serif;
-  font-size:clamp(28px,3.5vw,40px);
-  font-weight:700;
-  letter-spacing:3px;
-  text-decoration:none;
-  transition:opacity 0.2s;
-}
-.cta:hover{opacity:0.85;}
-
 @media(max-width:640px){
   .navLink{font-size:48px;}
   .subLink{font-size:20px;}
