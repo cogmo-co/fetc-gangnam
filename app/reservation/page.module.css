@@ -1,0 +1,282 @@
+/* ===============================
+   상단 contact 섹션 (3-card)
+   =============================== */
+.contact {
+  width: 100%;
+  padding: 5rem 5%;
+  background: #121212;
+}
+.contactGrid {
+  max-width: 800px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+.contactCard {
+  background: #313131;
+  border-radius: 0.75rem;
+  padding: 2rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: .8rem;
+}
+
+/* Card 1: 전화상담 — full width, row layout [icon] | [phoneBlock 위 / hoursBlock 아래] */
+.phoneCard {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  padding: 2rem 2rem;
+}
+.phoneIcon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+.phoneRight {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.phoneBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+}
+.phoneLabel {
+  font-family: var(--font-pretendard), sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: -0.1px;
+}
+.phoneNumber {
+  font-family: var(--font-pretendard), sans-serif;
+  font-size: 2.0rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.5px;
+  text-decoration: none;
+  line-height: 1.5;
+}
+.phoneNumber:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+.hoursBlock {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+.hoursLabel {
+  font-family: var(--font-pretendard), sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: -0.1px;
+}
+.hoursGrid {
+  display: grid;
+  grid-template-columns: 3rem auto;
+  gap: 0.7rem 1.5rem;
+  font-family: var(--font-pretendard), sans-serif;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.9);
+  border-left: 1px solid rgba(255, 255, 255, 0.18);
+  padding-left: 1.5rem;
+}
+
+/* Card 2, 3: 네이버예약/카카오톡 — 3-row 레이아웃 (eyebrow+title 좌 / 버튼 우 / note 좌) */
+.cardEyebrow {
+  font-family: var(--font-pretendard), sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.55);
+  letter-spacing: -0.1px;
+}
+.cardTitle {
+  font-family: var(--font-pretendard), sans-serif;
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -3%;
+  margin: 0;
+}
+.cardSpacer {
+  flex: 1;
+}
+.ctaBtn {
+  align-self: flex-end;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.5rem;
+  background: #fff;
+  color: #1a1a1a;
+  border-radius: 999px;
+  font-family: var(--font-pretendard), sans-serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+.ctaBtn:hover {
+  opacity: 0.85;
+}
+.ctaNaver {
+  background: #03C75A;
+  color: #FFFFFF;
+}
+.ctaKakao {
+  background: #F9DE00;
+  color: #2C1617;
+}
+.cardNote {
+  font-family: var(--font-pretendard), sans-serif;
+  font-size: 0.8125rem;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: -0.1px;
+  text-align: right;
+}
+
+/* ===============================
+   프로세스 섹션 (예약문의 + 01-05)
+   =============================== */
+.processSection {
+  width: 100%;
+  padding: 5rem 5%;
+  background: #1c1c1c;
+}
+.processInner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.processHeader {
+  margin-bottom: 3rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+.processEyebrow {
+  font-family: var(--font-pretendard), sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.7rem;
+  letter-spacing: -0.2px;
+}
+.processTitle {
+  font-family: var(--font-pretendard), sans-serif;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0;
+  letter-spacing: -0.2px;
+}
+
+.steps {
+  max-width: 650px;
+  margin-left: auto;
+  margin-right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.step {
+  background: #313131;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  gap: 1.5rem;
+  align-items: center;
+  justify-items: center;
+}
+.stepNum {
+  font-family: var(--font-oswald), 'Oswald', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+}
+.stepContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.stepTitle {
+  font-family: var(--font-pretendard), sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+  letter-spacing: -0.3px;
+}
+.stepBody {
+  font-family: var(--font-pretendard), sans-serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.65;
+  margin: 0;
+  letter-spacing: -0.2px;
+}
+
+/* ===============================
+   모바일
+   =============================== */
+@media (max-width: 768px) {
+  .contact,
+  .processSection {
+    padding: 3.5rem 5% 3rem;
+  }
+  .contactGrid {
+    grid-template-columns: 1fr;
+  }
+  .contactCard {
+    padding: 1.75rem 1.25rem;
+  }
+  /* 전화상담 카드 — 모바일에선 세로 스택 */
+  .phoneCard {
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 2rem 1.5rem;
+  }
+  .phoneIcon img {
+    width: 64px;
+    height: 64px;
+  }
+  .phoneBlock {
+    align-items: center;
+  }
+  .phoneNumber {
+    font-size: 1.875rem;
+  }
+  .phoneBlock,
+  .hoursBlock {
+    flex-direction: column;
+    gap: 0.5rem;
+    text-align: center;
+  }
+  .hoursGrid {
+    border-left: none;
+    padding-left: 0;
+    justify-content: center;
+  }
+  .cardIcon {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  .step {
+    grid-template-columns: 3rem 1fr;
+    gap: 1rem;
+    padding: 1.25rem 1.25rem;
+  }
+  .stepTitle {
+    font-size: 1.1rem;
+  }
+  .stepBody {
+    font-size: 0.95rem;
+  }
+}
