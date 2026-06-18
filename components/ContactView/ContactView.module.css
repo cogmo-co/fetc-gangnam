@@ -1,68 +1,323 @@
-.contact{
-  min-height:calc(100vh - 68px - 180px);
-  display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  padding:80px 5%;text-align:center;
-  background:#1a1a1a;position:relative;overflow:hidden;
+/* ===============================
+   비즈니스 문의 채널 섹션
+   =============================== */
+.channelSection {
+  width: 100%;
+  padding: 5rem 5% 0 5%;
+  background: #1d1d1d;
 }
-.bg{
-  position:absolute;inset:0;background:#1a1a1a;
+.channelHeader {
+  max-width: 800px;
+  margin: 0 auto 2.5rem;
 }
-.bg img{
-  width:100%;height:100%;object-fit:cover;
-  opacity:0.35;filter:grayscale(100%);
+.channelTitle {
+  font-family: var(--font-pretendard), sans-serif;
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 0.5rem 0;
+  letter-spacing: -0.3px;
 }
-.overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(to bottom,rgba(0,0,0,0.2) 0%,rgba(0,0,0,0.5) 100%);
-  pointer-events:none;
+.channelSubtitle {
+  font-family: var(--font-pretendard), sans-serif;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0;
+  letter-spacing: -0.2px;
 }
-.bgText{
-  position:absolute;top:50%;left:50%;
-  transform:translate(-50%,-50%);
-  font-family:var(--font-oswald),'Oswald',sans-serif;
-  font-weight:700;
-  font-size:clamp(100px,18vw,260px);
-  letter-spacing:-6px;
-  -webkit-text-stroke:2px rgba(255,255,255,0.04);
-  color:transparent;
-  white-space:nowrap;
-  user-select:none;pointer-events:none;
+/* redirect 안내 한 줄 — subtitle과 동일 톤, RESERVATION 링크만 살짝 강조 */
+.channelRedirect {
+  font-family: var(--font-pretendard), sans-serif;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0.35rem 0 0 0;
+  letter-spacing: -0.2px;
 }
-.title{
-  font-family:var(--font-oswald),'Oswald',sans-serif;
-  font-size:clamp(48px,7vw,72px);
-  font-weight:700;letter-spacing:-1px;
-  color:#fff;margin-bottom:48px;
-  position:relative;z-index:10;
+.channelRedirectLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  color: rgba(255, 255, 255, 0.85);
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
-.btns{
-  display:flex;flex-direction:column;gap:12px;
-  width:100%;max-width:300px;
-  position:relative;z-index:10;
+.channelRedirectLink:hover {
+  color: #fff;
 }
-.btn{
-  display:grid;grid-template-columns:36px 1fr;gap:28px;
-  align-items:center;
-  width:100%;padding:16px 24px;
-  font-family:var(--font-pretendard),sans-serif;font-size:1rem;font-weight:700;
-  letter-spacing:-0.3px;text-align:left;
-  background:rgba(0,0,0,0.4);color:rgba(255,255,255,0.9);
-  border:1.5px solid rgba(255,255,255,0.3);
-  transition:background 0.2s,color 0.2s,border-color 0.2s;
-  cursor:pointer;
+.channelGrid {
+  max-width: 800px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
 }
-.btn:hover{background:#f5f5f5;color:#222;border-color:#f5f5f5;}
-.navy{background:#13264B;border-color:#13264B;color:#fff;}
-.navy:hover{background:#f5f5f5;color:#222;border-color:#f5f5f5;}
-.kakao{background:#FEE500;border-color:#FEE500;color:#222;}
-.kakao:hover{background:#f5f5f5;color:#222;border-color:#f5f5f5;}
-.icon{
-  display:flex;align-items:center;justify-content:center;
-  width:36px;height:36px;
-  border-radius:8px;
+.channelCard {
+  background: #313131;
+  border-radius: 0.75rem;
+  padding: 1.7rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1.5rem;
 }
-.iconPhone{background:rgba(255,59,48,0.7);}
-.iconBooking{background:rgba(3,199,90,0.7);}
-.iconKakao{background:rgba(254,229,0,0.7);}
-.iconEmail{background:rgba(0,100,255,0.7);}
+.channelText {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.channelEyebrow {
+  font-family: var(--font-pretendard), sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.55);
+  letter-spacing: 0.1em;
+}
+.channelIcon {
+  width: 62px;
+  height: 62px;
+  border-radius: 100px;
+  padding: 11px;
+  background: linear-gradient(129.33deg, #615DF6 20.92%, #5A72F7 83.39%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  flex-shrink: 0;
+}
+.channelIcon svg {
+  width: 100%;
+  height: 100%;
+}
+.channelValue {
+  font-family: var(--font-pretendard), sans-serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.5px;
+  text-decoration: none;
+  line-height: 1.2;
+  word-break: break-all;
+}
+.channelValue:hover {
+  color: rgba(255, 255, 255, 0.85);
+}
+.channelNote {
+  font-family: var(--font-pretendard), sans-serif;
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.45);
+  letter-spacing: -0.1px;
+  margin: 0;
+}
+
+/* ===============================
+   협업 문의 (5-step) — reservation 패턴 동일
+   =============================== */
+.processSection {
+  width: 100%;
+  padding: 5rem 5%;
+  background: #1d1d1d;
+}
+.processInner {
+  max-width: 800px;
+  margin: 0 auto;
+}
+.processHeader {
+  margin-bottom: 3rem;
+  padding-top: 4.5rem;
+  border-top: 1.5px solid rgba(255, 255, 255, 0.5);
+}
+.processEyebrow {
+  font-family: var(--font-pretendard), sans-serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #fff;
+  margin-bottom: 0.7rem;
+  letter-spacing: -0.2px;
+}
+.processTitle {
+  font-family: var(--font-pretendard), sans-serif;
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0;
+  letter-spacing: -0.2px;
+}
+.steps {
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.step {
+  background: #313131;
+  border-radius: 0.75rem;
+  padding: 1.5rem;
+  display: grid;
+  grid-template-columns: 4rem 1fr;
+  gap: 1.5rem;
+  align-items: center;
+}
+.stepNum {
+  font-family: var(--font-oswald), 'Oswald', sans-serif;
+  font-size: 3rem;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+}
+.stepContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.stepTitle {
+  font-family: var(--font-pretendard), sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+  line-height: 1.6;
+  letter-spacing: -0.3px;
+}
+.stepBody {
+  font-family: var(--font-pretendard), sans-serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.6;
+  margin: 0;
+  letter-spacing: -0.2px;
+}
+
+/* ===============================
+   정보 카드 (RESPONSE + MEETING)
+   =============================== */
+.infoSection {
+  width: 100%;
+  padding: 0 5% 4rem 5%;
+  background: #1d1d1d;
+}
+.infoInner {
+  max-width: 800px;
+  margin: 0 auto;
+  border-top: 1.5px solid rgba(255, 255, 255, 0.5);
+  padding-top: 4rem;
+}
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+.infoCard {
+  background: #313131;
+  border-radius: 0.75rem;
+  padding: 1.8rem;
+}
+.infoEyebrow {
+  font-family: var(--font-oswald), 'Oswald', sans-serif;
+  font-size: 1.4rem;
+  font-weight: 100;
+  color: #fff;
+  letter-spacing: 0.11em;
+  line-height: 1;
+  margin: 0 0 1rem 0;
+}
+.infoBody {
+  font-family: var(--font-pretendard), sans-serif;
+  font-size: 1.05rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.7;
+  letter-spacing: -0.1px;
+  margin: 0;
+}
+.infoBody strong {
+  font-weight: 700;
+  color: #fff;
+}
+
+/* ===============================
+   푸터 note
+   =============================== */
+.footerNote {
+  width: 100%;
+  padding: 2rem 5% 2rem;
+  background: #1d1d1d;
+  text-align: center;
+  font-family: var(--font-pretendard), sans-serif;
+  font-size: 1rem;
+  color: rgba(255, 255, 255, 0.4);
+  line-height: 1.5;
+  letter-spacing: -0.1px;
+}
+.footerLink {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: underline;
+}
+.footerLink:hover {
+  color: #fff;
+}
+
+/* ===============================
+   모바일
+   =============================== */
+@media (max-width: 768px) {
+  /* 섹션 padding — desktop처럼 channel은 bottom 0, info는 top 0 (divider 연속성) */
+  .channelSection {
+    padding: 3.5rem 5% 0 5%;
+  }
+  .processSection {
+    padding: 3.5rem 5% 3rem;
+  }
+  .infoSection {
+    padding: 0 5% 3rem 5%;
+  }
+  .processHeader {
+    padding-top: 2.5rem;
+    margin-bottom: 2rem;
+  }
+  .infoInner {
+    padding-top: 2.5rem;
+  }
+  .channelGrid,
+  .infoGrid {
+    grid-template-columns: 1fr;
+  }
+  .channelCard {
+    padding: 1.5rem;
+  }
+  .channelMain {
+    gap: 1rem;
+  }
+  .channelIcon {
+    width: 56px;
+    height: 56px;
+    padding: 12px;
+  }
+  .channelValue {
+    font-size: 1.25rem;
+  }
+  .step {
+    grid-template-columns: 3rem 1fr;
+    gap: 1rem;
+    padding: 1.25rem;
+  }
+  .stepNum {
+    font-size: 2rem;
+  }
+  .stepTitle {
+    font-size: 1.1rem;
+  }
+  .stepBody {
+    font-size: 0.95rem;
+  }
+  .infoGrid {
+    gap: 1.5rem;
+  }
+  .footerNote {
+    font-size: .8rem;
+  }
+}
