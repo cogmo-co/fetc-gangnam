@@ -4,6 +4,7 @@ import { useState, useCallback, useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import Topbar from "@/components/Topbar/Topbar";
 import MenuOverlay from "@/components/MenuOverlay/MenuOverlay";
+import MobileDrawer from "@/components/MobileDrawer/MobileDrawer";
 
 export default function AppShell({ children }: { children: React.ReactNode }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -51,7 +52,10 @@ export default function AppShell({ children }: { children: React.ReactNode }) {
   return (
     <>
       <Topbar menuOpen={menuOpen} onToggleMenu={toggleMenu} />
+      {/* PC: 풀스크린 overlay (≤768px에서 CSS로 hidden) */}
       <MenuOverlay open={menuOpen} onClose={closeMenu} />
+      {/* 모바일: 좌측 슬라이드 drawer (>768px에서 CSS로 hidden) */}
+      <MobileDrawer open={menuOpen} onClose={closeMenu} />
       {children}
     </>
   );

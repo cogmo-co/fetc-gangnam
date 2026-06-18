@@ -1,0 +1,191 @@
+/* ===============================
+   Backdrop (Topbar 아래부터 dim)
+   =============================== */
+.backdrop {
+  position: fixed;
+  inset: 84px 0 0 0;
+  background: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 600;
+  transition: opacity 0.3s ease;
+}
+.backdropOpen {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ===============================
+   Drawer (좌측 슬라이드, 70vw, Topbar 아래)
+   =============================== */
+.drawer {
+  position: fixed;
+  top: 84px;
+  bottom: 0;
+  left: 0;
+  width: 70vw;
+  max-width: 360px;
+  background: #1d1d1d;
+  z-index: 700;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.5);
+}
+.drawerOpen {
+  transform: translateX(0);
+}
+
+/* ===============================
+   Menu list (스크롤 가능)
+   =============================== */
+.nav {
+  flex: 1;
+  overflow-y: auto;
+  padding: 0.5rem 0 1rem 0;
+}
+/* 1depth 항목 사이 얇은 구분선 */
+.nav > * {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.nav > *:first-child {
+  border-top: none;
+}
+.nav > *:last-child {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.group {
+  /* parent + submenu wrapper */
+}
+.groupRow {
+  display: flex;
+  align-items: stretch;
+}
+.parentLabel {
+  flex: 1;
+  display: block;
+  padding: 1rem 1.5rem;
+  color: #fff;
+  font-family: var(--font-oswald), 'Oswald', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 3px;
+}
+.parentLabel:active {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+/* ▼ 버튼 — 우측 넓은 터치 영역 */
+.toggleBtn {
+  flex-shrink: 0;
+  width: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  padding: 0;
+}
+.toggleBtn:active {
+  background: rgba(255, 255, 255, 0.05);
+}
+.chevron {
+  transition: transform 0.25s ease;
+}
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+/* ===============================
+   Submenu (애니메이션 펼침)
+   =============================== */
+.submenu {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  background: rgba(0, 0, 0, 0.25);
+  transition: max-height 0.3s ease, opacity 0.25s ease;
+}
+/* 좌측 accent line — 부모-자식 시각적 binding */
+.submenu::before {
+  content: "";
+  position: absolute;
+  left: 1.5rem;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  width: 2px;
+  background: rgba(255, 255, 255, 0.15);
+}
+.submenuOpen {
+  max-height: 400px;
+  opacity: 1;
+}
+.subLink {
+  display: block;
+  padding: 0.875rem 1.5rem 0.875rem 2.5rem;
+  color: rgba(255, 255, 255, 0.7);
+  font-family: var(--font-oswald), 'Oswald', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 500;
+  text-decoration: none;
+  letter-spacing: 2px;
+}
+.subLink:active {
+  background: rgba(255, 255, 255, 0.06);
+  color: #fff;
+}
+/* 현재 페이지 highlight */
+.subLinkActive {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+.parentLabelActive {
+  background: rgba(255, 255, 255, 0.08);
+}
+
+/* ===============================
+   하단 sticky CTA — RESERVATION
+   =============================== */
+.ctaWrap {
+  padding: 1.25rem 1.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+.ctaBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.625rem;
+  width: 100%;
+  padding: 1rem;
+  background: #fff;
+  color: #000;
+  text-align: center;
+  font-family: var(--font-oswald), 'Oswald', sans-serif;
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+.ctaBtn:active {
+  opacity: 0.85;
+}
+
+/* ===============================
+   PC: drawer 숨김 (모바일 전용)
+   =============================== */
+@media (min-width: 769px) {
+  .backdrop,
+  .drawer {
+    display: none;
+  }
+}
