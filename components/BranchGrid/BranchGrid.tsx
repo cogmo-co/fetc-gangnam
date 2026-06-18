@@ -28,11 +28,19 @@ const BRANCHES = [
   },
 ];
 
-export default function BranchGrid() {
+interface Props {
+  /** "location" → /about/location 페이지 전용 (가운데 정렬 + max-width 1000px) */
+  variant?: "default" | "location";
+}
+
+export default function BranchGrid({ variant = "default" }: Props) {
+  const isLocation = variant === "location";
   return (
-    <div className={styles.wrapper}>
-      <div className={styles.eyebrow}>지점 안내</div>
-      <div className={styles.grid}>
+    <div className={`${styles.wrapper} ${isLocation ? styles.wrapperLocation : ""}`}>
+      <div className={`${styles.eyebrow} ${isLocation ? styles.eyebrowLocation : ""}`}>
+        지점 안내
+      </div>
+      <div className={`${styles.grid} ${isLocation ? styles.gridLocation : ""}`}>
         {BRANCHES.map((branch, i) => (
           <PlaceLink
             key={branch.name}

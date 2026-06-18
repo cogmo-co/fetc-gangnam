@@ -16,7 +16,7 @@ export default async function LocationPage() {
   return (
     <>
       <LocationInfoSection isMobile={isMobile} centerTitle plain />
-      <BranchGrid />
+      <BranchGrid variant="location"/>
     </>
   );
 }

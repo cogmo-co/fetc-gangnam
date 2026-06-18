@@ -32,3 +32,16 @@
 @media(max-width:960px){
   .grid{grid-template-columns:repeat(2,1fr);}
 }
+
+/* /about/location 페이지 전용 — 가운데 정렬 + max-width 1000px */
+.wrapperLocation{
+  padding:0 5% 5rem;
+}
+.eyebrowLocation{
+  max-width:1000px;
+  margin:0 auto 28px;
+}
+.gridLocation{
+  max-width:1000px;
+  margin:0 auto;
+}
