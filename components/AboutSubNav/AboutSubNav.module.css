@@ -9,6 +9,22 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   padding: 1rem 0;
 }
+/* SubNav 하단 fade-out — 아래 섹션과 부드럽게 이어짐 (sticky 시 숨김) */
+.nav::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 50px;
+  background: linear-gradient(to bottom, #0a0a0abf, transparent);
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+.nav.stuck::after {
+  opacity: 0;
+}
 .inner {
   max-width: 1100px;
   margin: 0 auto;

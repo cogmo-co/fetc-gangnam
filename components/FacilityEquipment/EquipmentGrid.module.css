@@ -61,40 +61,22 @@
   position: absolute;
   inset: 0;
 }
-
-/* base 레이어 — 전체 그레이스케일 (항상 보임, 양옆 영역의 흑백 사진 역할) */
-.photoBase {
-  position: absolute;
-  inset: 0;
-}
-.photoBase img {
+/* 기본 — 전체 그레이스케일 */
+.photo img {
   object-fit: cover;
   filter: grayscale(100%);
+  transition: filter 0.5s ease;
 }
-
-/* color 레이어 — 컬러 사진. 초기엔 중앙 40%만 clip-path로 노출.
-   hover/visible 시 양옆으로 펼쳐져 카드 전체 컬러가 됨. */
-.photoColor {
-  position: absolute;
-  inset: 0;
-  clip-path: inset(0 30% 0 30%);
-  transition: clip-path 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-}
-.photoColor img {
-  object-fit: cover;
-}
-
-/* hover 가능 기기 (데스크탑) — hover 시 컬러 영역이 양옆으로 펼침 */
+/* PC — hover 시 컬러 */
 @media (hover: hover) {
-  .card:hover .photoColor {
-    clip-path: inset(0 0 0 0);
+  .card:hover .photo img {
+    filter: grayscale(0%);
   }
 }
-
-/* 터치 기기 (모바일) — scroll-in (.visible) 시 자동 펼침 */
+/* 모바일 — scroll-in (.visible) 시 컬러 */
 @media (hover: none) {
-  .card.visible .photoColor {
-    clip-path: inset(0 0 0 0);
+  .card.visible .photo img {
+    filter: grayscale(0%);
   }
 }
 

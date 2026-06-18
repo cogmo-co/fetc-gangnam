@@ -125,24 +125,14 @@ export default function EquipmentGrid({
               }}
               aria-label={`${equipment.name} 장비 상세 보기`}
             >
-              {/* 같은 이미지 2 레이어: base(그레이) + color(중앙 클립, hover 시 양옆 펼침) */}
+              {/* 단일 이미지 — 기본 grayscale, hover(PC)/visible(모바일) 시 컬러 */}
               <div className={styles.photo}>
-                <div className={styles.photoBase}>
-                  <Image
-                    src={getEquipmentImage(equipment.img)}
-                    alt={equipment.name}
-                    fill
-                    sizes="(max-width:640px) 50vw, 33vw"
-                  />
-                </div>
-                <div className={styles.photoColor} aria-hidden="true">
-                  <Image
-                    src={getEquipmentImage(equipment.img)}
-                    alt=""
-                    fill
-                    sizes="(max-width:640px) 50vw, 33vw"
-                  />
-                </div>
+                <Image
+                  src={getEquipmentImage(equipment.img)}
+                  alt={equipment.name}
+                  fill
+                  sizes="(max-width:640px) 50vw, 33vw"
+                />
               </div>
               <div className={styles.label}>
                 <span className={styles.labelText}>{equipment.name}</span>

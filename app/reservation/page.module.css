@@ -4,7 +4,7 @@
 .contact {
   width: 100%;
   padding: 5rem 5%;
-  background: #121212;
+  background: #1d1d1d;
 }
 .contactGrid {
   max-width: 800px;
@@ -27,7 +27,8 @@
   grid-column: 1 / -1;
   flex-direction: row;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: center;
+  gap: 3rem;
   padding: 2rem 2rem;
 }
 .phoneIcon {
@@ -147,8 +148,8 @@
    =============================== */
 .processSection {
   width: 100%;
-  padding: 5rem 5%;
-  background: #1c1c1c;
+  padding: 0 5% 5rem 5%;
+  background: #1d1d1d;
 }
 .processInner {
   max-width: 800px;
@@ -156,8 +157,8 @@
 }
 .processHeader {
   margin-bottom: 3rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 4.5rem;
+  border-top: 1.5px solid rgba(255, 255, 255, 0.5);
 }
 .processEyebrow {
   font-family: var(--font-pretendard), sans-serif;
@@ -177,7 +178,7 @@
 }
 
 .steps {
-  max-width: 650px;
+  max-width: 680px;
   margin-left: auto;
   margin-right: 0;
   display: flex;
@@ -192,18 +193,18 @@
   grid-template-columns: 4rem 1fr;
   gap: 1.5rem;
   align-items: center;
-  justify-items: center;
 }
 .stepNum {
   font-family: var(--font-oswald), 'Oswald', sans-serif;
-  font-size: 2.5rem;
+  font-size: 3rem;
   font-weight: 600;
   color: rgba(255, 255, 255, 0.5);
+  text-align: center;
 }
 .stepContent {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 0.5rem;
 }
 .stepTitle {
   font-family: var(--font-pretendard), sans-serif;
@@ -211,6 +212,7 @@
   font-weight: 700;
   color: #fff;
   margin: 0;
+  line-height: 1.6;
   letter-spacing: -0.3px;
 }
 .stepBody {
@@ -218,7 +220,7 @@
   font-size: 1.2rem;
   font-weight: 400;
   color: rgba(255, 255, 255, 0.72);
-  line-height: 1.65;
+  line-height: 1.6;
   margin: 0;
   letter-spacing: -0.2px;
 }
@@ -227,9 +229,11 @@
    모바일
    =============================== */
 @media (max-width: 768px) {
-  .contact,
-  .processSection {
+  .contact {
     padding: 3.5rem 5% 3rem;
+  }
+  .processSection {
+    padding: 0 5% 3.5rem 5%;
   }
   .contactGrid {
     grid-template-columns: 1fr;
@@ -267,6 +271,10 @@
   .cardIcon {
     width: 2.5rem;
     height: 2.5rem;
+  }
+  .processHeader {
+    padding-top: 2.5rem;
+    margin-bottom: 2rem;
   }
   .step {
     grid-template-columns: 3rem 1fr;
