@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Script from "next/script";
-import { Oswald, Noto_Sans_KR } from "next/font/google";
+import { Oswald } from "next/font/google";
+// import { Noto_Sans_KR } from "next/font/google"; // 미사용 (Pretendard로 한글 커버)
 import localFont from "next/font/local";
 import AppShell from "@/components/AppShell/AppShell";
 import Footer from "@/components/Footer/Footer";
@@ -14,7 +15,7 @@ const organizationJsonLd = {
   name: "FE트레이닝센터",
   alternateName: "FETC",
   url: BASE_URL,
-  logo: `${BASE_URL}/images/meta-image.png`,
+  logo: `${BASE_URL}/images/meta-image.jpg`,
   sameAs: [
     "https://www.youtube.com/@FETC_gangnam",
     "https://www.instagram.com/fetc_gangnam/",
@@ -34,7 +35,7 @@ const localBusinessJsonLd = {
   "@context": "https://schema.org",
   "@type": "SportsActivityLocation",
   name: "FE트레이닝센터 강남점",
-  image: `${BASE_URL}/images/meta-image.png`,
+  image: `${BASE_URL}/images/meta-image.jpg`,
   url: BASE_URL,
   telephone: "+82-10-3375-9911",
   address: {
@@ -82,12 +83,13 @@ const oswald = Oswald({
   display: "swap",
 });
 
-const notoSansKR = Noto_Sans_KR({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "700"],
-  variable: "--font-noto-sans-kr",
-  display: "swap",
-});
+// 미사용 (Pretendard로 한글 커버)
+// const notoSansKR = Noto_Sans_KR({
+//   subsets: ["latin"],
+//   weight: ["300", "400", "500", "700"],
+//   variable: "--font-noto-sans-kr",
+//   display: "swap",
+// });
 
 const pretendard = localFont({
   src: [
@@ -113,13 +115,13 @@ export const metadata: Metadata = {
     siteName: "FE트레이닝센터 강남점",
     title: "FE트레이닝센터 강남점",
     description: "국가대표 선수가 선택한 재활, 퍼포먼스",
-    images: [{ url: "/images/meta-image.png", width: 2060, height: 1159, alt: "FE트레이닝센터 강남점" }],
+    images: [{ url: "/images/meta-image.jpg", width: 2060, height: 1159, alt: "FE트레이닝센터 강남점" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "FE트레이닝센터 강남점",
     description: "국가대표 선수가 선택한 재활, 퍼포먼스",
-    images: ["/images/meta-image.png"],
+    images: ["/images/meta-image.jpg"],
   },
 };
 
@@ -130,6 +132,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
+      <head>
+        {/* 외부 이미지 도메인 사전 연결 — viewport 진입 시 DNS/TLS 비용 제거 */}
+        <link rel="dns-prefetch" href="https://img.youtube.com" />
+        <link rel="dns-prefetch" href="https://img1.daumcdn.net" />
+        <link rel="dns-prefetch" href="https://blog.kakaocdn.net" />
+        <link rel="preconnect" href="https://e7anpn4ttmde7uib.public.blob.vercel-storage.com" crossOrigin="" />
+      </head>
       {/* Google Tag Manager */}
       <Script id="gtm" strategy="afterInteractive">
         {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -147,7 +156,7 @@ export default function RootLayout({
         })(window,document,"clarity","script","vv0e6snlxl");`}
       </Script>
       <body
-        className={`${oswald.variable} ${notoSansKR.variable} ${pretendard.variable}`}
+        className={`${oswald.variable} ${pretendard.variable}`}
       >
         <Script
           id="ld-organization"

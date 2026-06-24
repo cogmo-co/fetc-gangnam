@@ -64,6 +64,8 @@ export default async function MediaSection() {
                 alt={`${short.title} - FETC 영상`}
                 width={195}
                 height={346}
+                loading="lazy"
+                decoding="async"
               />
               <div className={styles.ytTitle}>{short.title}</div>
             </a>

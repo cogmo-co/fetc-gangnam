@@ -50,6 +50,8 @@ export default async function TistorySection() {
                   alt={`${post.title} - FETC 블로그`}
                   width={320}
                   height={200}
+                  loading="lazy"
+                  decoding="async"
                 />
               ) : (
                 <div className={styles.noImage} />

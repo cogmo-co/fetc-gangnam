@@ -93,6 +93,8 @@ export default function NewsPreviewClient({ posts }: Props) {
                 alt={post.title}
                 fill
                 sizes="(max-width:640px) 50vw, 25vw"
+                loading="lazy"
+                decoding="async"
               />
             )}
           </div>
