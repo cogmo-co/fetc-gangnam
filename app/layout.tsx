@@ -107,20 +107,20 @@ export const metadata: Metadata = {
     default: "FE트레이닝센터 강남점",
     template: "%s | FE트레이닝센터 강남점",
   },
-  description: "국가대표 선수가 선택한 재활, 퍼포먼스",
+  description: "국가대표 선수가 선택한 FE트레이닝센터 강남점은 수술 후 재활PT, 스포츠재활, 퍼포먼스트레이닝을 체계적으로 제공합니다.",
   metadataBase: new URL(BASE_URL),
   openGraph: {
     type: "website",
     locale: "ko_KR",
     siteName: "FE트레이닝센터 강남점",
     title: "FE트레이닝센터 강남점",
-    description: "국가대표 선수가 선택한 재활, 퍼포먼스",
+    description: "국가대표 선수가 선택한 FE트레이닝센터 강남점은 수술 후 재활PT, 스포츠재활, 퍼포먼스트레이닝을 체계적으로 제공합니다.",
     images: [{ url: "/images/meta-image.jpg", width: 2060, height: 1159, alt: "FE트레이닝센터 강남점" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "FE트레이닝센터 강남점",
-    description: "국가대표 선수가 선택한 재활, 퍼포먼스",
+    description: "국가대표 선수가 선택한 FE트레이닝센터 강남점은 수술 후 재활PT, 스포츠재활, 퍼포먼스트레이닝을 체계적으로 제공합니다.",
     images: ["/images/meta-image.jpg"],
   },
 };
