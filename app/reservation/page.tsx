@@ -76,7 +76,7 @@ export default function ReservationPage() {
                   <span>평일</span>
                   <span>10:00 - 22:00</span>
                   <span>토요일</span>
-                  <span>10:00 - 16:00</span>
+                  <span>10:00 - 17:00</span>
                 </div>
               </div>
             </div>
