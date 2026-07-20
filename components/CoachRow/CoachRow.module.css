@@ -23,81 +23,106 @@
     margin:-24px auto 32px;
   }
 }
-.row{
-  max-width:1128px;margin:0 auto;
-  display:flex;justify-content:center;gap:24px;flex-wrap:wrap;
+.inner{max-width:1200px;margin:0 auto;}
+
+/* ====== 그룹 헤더 (HEAD COACH / REHABILITATION / PERFORMANCE) ====== */
+.group + .group{padding-top:52px;}
+.divider{height:1px;background:#2f2f2f;margin-bottom:26px;}
+.groupHead{
+  display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;
+  margin-bottom:26px;
 }
+.tag{
+  position:relative;display:inline-block;
+  padding-left:14px; /* 바 4px + 간격 10px */
+  font-family:var(--font-oswald),'Oswald',sans-serif;
+  font-weight:600;font-size:1.7rem;letter-spacing:0.05em;color:#fff;
+  line-height:1;
+}
+/* 그룹 컬러 바(▌): 하단을 베이스라인에 고정, 대문자 캡 높이만큼 (Oswald cap≈0.72em, baseline≈박스 하단+0.05em) */
+.tag::before{
+  content:"";position:absolute;left:0;
+  bottom:0.05em;
+  width:5px;height:0.9em;background:#dfdfdf;
+}
+.rehab::before{background:#6ea3ff;}
+.perf::before{background:#ffb866;}
+/* 부제 2개(영문+설명)는 한 덩어리로만 줄바꿈 */
+.tagSub{display:flex;align-items:baseline;gap:14px;}
+.tagEn{
+  position:relative;padding-left:15px;
+  font-family:var(--font-oswald),'Oswald',sans-serif;
+  font-weight:500;font-size:1.2rem;letter-spacing:0.03em;
+  color:#e2e2e2;line-height:1;
+}
+/* 구분바: border 대신 절대배치 — 두 텍스트 높이 사이에 광학 중앙 배치 */
+.tagEn::before{
+  content:"";position:absolute;left:0;bottom:-0.05em;
+  width:1px;height:1.1em;background:#3d3d3d;
+}
+.tagDesc{font-size:0.9rem;color:#9a9a9a;letter-spacing:-0.02em;}
+
+/* ====== 코치 카드 그리드 ====== */
+.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;}
 .card{
-  width:360px;background:#222;
-  border:1px solid rgba(255,255,255,0.08);
-  border-radius:8px;overflow:hidden;
-  transition:transform 0.25s,border-color 0.2s;
-  cursor:pointer;
+  position:relative;display:block;border-radius:18px;overflow:hidden;
+  background:#222;border:1px solid #2f2f2f;
+  aspect-ratio:4/5;isolation:isolate;cursor:pointer;
+  transition:transform 0.2s,border-color 0.2s;
 }
-.card:hover{
-  border-color:rgba(255,255,255,0.18);
-  transform:translateY(-6px);
+.card::after{
+  content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg,rgba(21,21,21,0) 42%,rgba(15,15,15,0.15) 60%,rgba(12,12,12,0.92) 100%);
 }
-.photo{
-  width:100%;height:460px;background:#242424;overflow:hidden;
-  display:flex;align-items:center;justify-content:center;
+.card:hover{transform:translateY(-4px);border-color:#4a4a4a;}
+.photo{position:absolute;inset:0;}
+.photo img{
+  object-fit:cover;object-position:top center;
+  filter:grayscale(1) contrast(1.02);
+  transition:filter 0.2s;
 }
-.photo img{width:100%;height:100%;object-fit:cover;opacity:0.8;filter:grayscale(100%);}
-.photoPh{font-size:11px;letter-spacing:0.18em;color:#303030;}
-.info{
-  padding:22px 26px;
-  display:flex;align-items:center;justify-content:space-between;
-  gap:16px;
+.card:hover .photo img{filter:grayscale(0.35);}
+.meta{
+  position:absolute;left:0;right:0;bottom:0;z-index:2;
+  display:flex;align-items:flex-end;justify-content:space-between;gap:14px;
+  padding:22px 22px 20px;
 }
 .infoText{flex:1;min-width:0;}
 .role{
-  font-family:var(--font-pretendard),sans-serif;
-  font-size:0.7rem;font-weight:700;letter-spacing:0.2em;
-  color:rgba(255,255,255,0.28);
-  text-transform:uppercase;
-  margin-bottom:0.5rem;
+  font-family:var(--font-oswald),'Oswald',sans-serif;
+  font-size:0.75rem;font-weight:600;letter-spacing:0.14em;
+  color:#b6b6b6;text-transform:uppercase;
 }
 .name{
   font-family:var(--font-pretendard),sans-serif;
-  font-size:1.25rem;font-weight:700;
-  letter-spacing:-0.3px;color:#fff;
+  font-size:1.375rem;font-weight:700;
+  letter-spacing:-0.02em;color:#fff;margin-top:5px;
 }
-.arrow{
-  flex-shrink:0;
+.go{
+  flex:0 0 auto;width:38px;height:38px;border-radius:50%;
+  border:1px solid rgba(255,255,255,0.55);
   display:flex;align-items:center;justify-content:center;
-  color:rgba(255,255,255,0.85);
+  color:#fff;transition:0.2s;
 }
+.card:hover .go{background:#fff;color:#151515;border-color:#fff;}
 
-/* 모바일: 카드 2열 그리드 */
+/* responsive */
+@media (max-width: 900px){
+  .grid{grid-template-columns:repeat(2,1fr);}
+}
+/* 모바일: 부제 덩어리를 팀명 다음 줄로 강제, 선두 구분바 숨김 */
+@media (max-width: 768px){
+  .tagSub{flex-basis:100%;}
+  .tagEn{padding-left:0;}
+  .tagEn::before{display:none;}
+}
 @media (max-width: 640px){
-  .section{
-    padding:3.5rem 5% 3rem;
-  }
-  .row{
-    display:grid;
-    grid-template-columns:repeat(2, 1fr);
-    gap:12px;
-  }
-  .card{
-    width:100%;
-  }
-  .photo{
-    height:auto;
-    aspect-ratio: 360 / 460;
-  }
-  .info{
-    padding:14px 16px;
-    gap:8px;
-  }
-  .role{
-    font-size:0.65rem;
-    margin-bottom:0.35rem;
-  }
-  .name{
-    font-size:1rem;
-  }
-  .arrow svg{
-    width:32px;
-    height:32px;
-  }
+  .section{padding:3.5rem 5% 3rem;}
+  .group + .group{padding-top:40px;}
+  .grid{gap:12px;}
+  .tagDesc{font-size:0.8rem;}
+  .meta{padding:14px 16px;}
+  .role{font-size:0.65rem;}
+  .name{font-size:1rem;margin-top:4px;}
+  .go{width:32px;height:32px;}
 }

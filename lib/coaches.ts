@@ -30,10 +30,36 @@ export type CoachSection =
   | { type: "highlights"; title: string; items: HighlightItem[] }
   | { type: "program"; title: string; items: string[] };
 
+export type CoachGroupKey = "head" | "rehab" | "perf";
+
+export interface CoachGroup {
+  key: CoachGroupKey;
+  tag: string;           // "REHABILITATION"
+  en?: string;           // "Recover & Rebuild"
+  desc?: string;         // "통증 · 부상회복 · 기능 복귀"
+}
+
+export const COACH_GROUPS: CoachGroup[] = [
+  { key: "head", tag: "HEAD COACH" },
+  {
+    key: "rehab",
+    tag: "REHABILITATION",
+    en: "Recover & Rebuild",
+    desc: "통증 · 부상회복 · 기능 복귀",
+  },
+  {
+    key: "perf",
+    tag: "PERFORMANCE",
+    en: "Strengthen & Perform",
+    desc: "근력 · 파워 · 경기력 향상",
+  },
+];
+
 export interface Coach {
   id: string;            // 슬러그 'woonsang-lim'
   name: string;
   role: string;
+  group: CoachGroupKey;
   img: string;
   spec: string[];        // 카드용 단축
   tistoryUrl: string;
@@ -50,6 +76,7 @@ export const COACHES: Coach[] = [
     id: "seokkyu-han",
     name: "한석규",
     role: "Head Coach",
+    group: "head",
     img: "coach-seokkyu-han.png",
     spec: [
       "FE트레이닝센터 강남점 헤드코치",
@@ -140,7 +167,8 @@ export const COACHES: Coach[] = [
   {
     id: "minku-kang",
     name: "강민구",
-    role: "PCC / MANAGER",
+    role: "PCC",
+    group: "perf",
     img: "coach-minku-kang.png",
     spec: [
       "인하대학교 스포츠과학대학 석사",
@@ -210,6 +238,7 @@ export const COACHES: Coach[] = [
     id: "woonsang-lim",
     name: "임운상",
     role: "PCC",
+    group: "perf",
     img: "coach-woonsang-lim.jpg",
     spec: [
       "Sports performance coach, Louisiana Tech University",
@@ -287,6 +316,7 @@ export const COACHES: Coach[] = [
     id: "doohee-park",
     name: "박두희",
     role: "PCC",
+    group: "rehab",
     img: "coach-doohee-park.jpg",
     spec: [
       "前 하늘병원 컨디셔닝센터: 배구, 핸드볼, 아이스하키, 수영, 유소년 축구, 야구선수 케어",
@@ -346,9 +376,102 @@ export const COACHES: Coach[] = [
     ],
   },
   {
+    id: "suwoong-choi",
+    name: "최수웅",
+    role: "PCC",
+    group: "rehab",
+    img: "coach-suwoong-choi.jpg",
+    spec: [
+      "물리치료사",
+      "前 미래신경외과 / 송도스포츠정형외과",
+      "대한민국 알파인스노보드 국가대표팀 의무트레이너",
+      "  - 24/25 FIS World Cup, World Championships",
+      "  - 26 밀라노·코르티나담페초 동계올림픽 (PGS 은메달)",
+      "대한선수물리치료사연맹 KAPF 운영이사",
+      "기능운동재활협회 FEARA 보조강사",
+      "Dynamic Taping Tutor",
+    ],
+    tistoryUrl: "https://fetc-gangnam.tistory.com/84",
+    sections: [
+      {
+        type: "timeline",
+        title: "주요 경력",
+        items: [
+          {
+            period: "2022 — 2024",
+            title: "미래신경외과 / 송도스포츠정형외과",
+            subtitle: "운동 및 도수치료를 담당하며 종목별 국가대표 선수 케어 경험을 쌓았습니다.",
+            bullets: [
+              "미국 국가대표 배드민턴 선수, 태권도 선수, 철인3종 선수, 테니스 선수 등 종목별 국가대표 선수 케어 다수",
+            ],
+          },
+          {
+            period: "2024 — 2026",
+            title: "대한민국 알파인스노보드 국가대표팀 의무트레이너",
+            subtitle: "국가대표 선수단의 전담 의무트레이너로 국내외 훈련, 월드컵 투어, 세계선수권 및 밀라노·코르티나담페초 동계올림픽에 동행했습니다.",
+          },
+        ],
+      },
+      {
+        type: "timeline",
+        title: "스포츠 대회 및 현장 지원",
+        items: [
+          { period: "2025", title: "인천국제마라톤 엘리트 선수 컨디셔닝" },
+          {
+            period: "2025 — 2026",
+            title: "배드민턴 대회 등 각종 스포츠 대회 의무·컨디셔닝 현장 지원 다수",
+          },
+        ],
+      },
+      {
+        type: "timeline",
+        title: "대외 활동 및 학술",
+        items: [
+          { title: "Dynamic Taping Tutor" },
+          { title: "KAPF 대한선수물리치료사연맹", subtitle: "운영이사" },
+          { title: "FEARA 기능운동재활협회", subtitle: "보조강사" },
+        ],
+      },
+      {
+        type: "highlights",
+        title: "대회 하이라이트 및 주요 성적",
+        items: [
+          {
+            season: "25 / 26 시즌 · 대표 성과",
+            events: [
+              "🥈 2026 밀라노·코르티나담페초 동계올림픽",
+              "알파인스노보드 국가대표팀 의무트레이너 (PGS 은메달)",
+            ],
+            emphasis: true,
+          },
+          {
+            season: "23 / 24 시즌",
+            events: ["2024 강원 동계청소년올림픽", "국내기술임원(NTO) 파견"],
+          },
+          {
+            season: "24 / 25 시즌",
+            events: [
+              "중국 밀린 · 폴란드 크리니차 FIS 월드컵 — PGS 준우승(2위)",
+              "🥉 스위스 장모리츠 세계선수권 — PGS 3위 (동메달)",
+            ],
+          },
+          {
+            season: "25 / 26 시즌",
+            events: [
+              "🥇 슬로베니아 로글라 FIS 월드컵 — PGS 우승(1위)",
+              "🥇 독일 빈터베르크 FIS 월드컵 — PSL 우승(1위)",
+              "폴란드 크리니차 FIS 월드컵 — PGS 준우승(2위)",
+            ],
+          },
+        ],
+      },
+    ],
+  },
+  {
     id: "woochan-lim",
     name: "임우찬",
     role: "PCC",
+    group: "perf",
     img: "coach-woochan-lim.png",
     spec: [
       "물리치료사",
@@ -416,6 +539,7 @@ export const COACHES: Coach[] = [
     id: "nayeon-kang",
     name: "강나연",
     role: "PCC",
+    group: "rehab",
     img: "coach-nayeon-kang.jpg",
     spec: [
       "2025 World Lacrosse Men's U20 Championship 트레이너",
@@ -513,7 +637,7 @@ export function getPersonSchema(coach: Coach) {
   };
 }
 
-/** About 페이지용 — 6명 코치를 @graph로 묶은 schema */
+/** About 페이지용 — 전체 코치를 @graph로 묶은 schema */
 export function getAllCoachesSchema() {
   return {
     "@context": "https://schema.org",

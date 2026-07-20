@@ -3,7 +3,7 @@
 import { useState, useEffect, useRef, type ReactNode } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { COACHES, type Coach } from "@/lib/coaches";
+import { COACHES, COACH_GROUPS, type Coach } from "@/lib/coaches";
 import Modal from "@/components/CoachInfo/Modal";
 import styles from "./CoachRow.module.css";
 
@@ -79,43 +79,63 @@ export default function CoachRow({ autoOpenCoach, subtitle }: Props) {
         {subtitle && (
           <p className={`${styles.subtitle} sr sr-d1`}>{subtitle}</p>
         )}
-        <div className={styles.row}>
-          {COACHES.map((coach, i) => (
-            <div
-              key={coach.id}
-              className={`${styles.card} sr sr-d${i + 1}`}
-              role="button"
-              tabIndex={0}
-              // mousedown preventDefault: 클릭 시 카드로 focus 이동 → 브라우저 scroll-into-view 차단
-              // (키보드 Tab 포커스는 onKeyDown으로 처리되므로 영향 없음)
-              onMouseDown={(e) => e.preventDefault()}
-              onClick={(e) => {
-                lastClickedCardRef.current = e.currentTarget;
-                openCoach(coach);
-              }}
-              onKeyDown={(e) => {
-                if (e.key === "Enter" || e.key === " ") {
-                  e.preventDefault();
-                  lastClickedCardRef.current = e.currentTarget;
-                  openCoach(coach);
-                }
-              }}
-              aria-label={`${coach.name} 코치 상세 보기`}
-            >
-              <div className={styles.photo}>
-                <Image src={`/images/about/coach/${coach.img}`} alt={coach.name} width={360} height={460} />
+        <div className={styles.inner}>
+          {COACH_GROUPS.map((group) => (
+            <div key={group.key} className={styles.group}>
+              {group.key !== "head" && <div className={styles.divider} />}
+              <div className={`${styles.groupHead} sr`}>
+                <span className={[styles.tag, styles[group.key]].filter(Boolean).join(" ")}>{group.tag}</span>
+                {(group.en || group.desc) && (
+                  <span className={styles.tagSub}>
+                    {group.en && <span className={styles.tagEn}>{group.en}</span>}
+                    {group.desc && <span className={styles.tagDesc}>{group.desc}</span>}
+                  </span>
+                )}
               </div>
-              <div className={styles.info}>
-                <div className={styles.infoText}>
-                  <div className={styles.role}>{coach.role}</div>
-                  <h3 className={styles.name}>{coach.name}</h3>
-                </div>
-                <div className={styles.arrow} aria-hidden="true">
-                  <svg width="44" height="44" viewBox="0 0 512 512" fill="currentColor">
-                    <path d="M210.7 147.6c7.5-7.5 19.8-7.5 27.3 0l95.4 95.7c7.3 7.3 7.5 19.1.6 26.6l-94 94.3c-3.8 3.8-8.7 5.7-13.7 5.7-4.9 0-9.9-1.9-13.6-5.6-7.5-7.5-7.6-19.7 0-27.3l79.9-81.1-81.9-81.1c-7.6-7.4-7.6-19.6 0-27.2z" />
-                    <path d="M48 256c0 114.9 93.1 208 208 208s208-93.1 208-208S370.9 48 256 48 48 141.1 48 256zm32 0c0-47 18.3-91.2 51.6-124.4C164.8 98.3 209 80 256 80s91.2 18.3 124.4 51.6C413.7 164.8 432 209 432 256s-18.3 91.2-51.6 124.4C347.2 413.7 303 432 256 432s-91.2-18.3-124.4-51.6C98.3 347.2 80 303 80 256z" />
-                  </svg>
-                </div>
+              <div className={styles.grid}>
+                {COACHES.filter((c) => c.group === group.key).map((coach, i) => (
+                  <div
+                    key={coach.id}
+                    className={`${styles.card} sr sr-d${i + 1}`}
+                    role="button"
+                    tabIndex={0}
+                    // mousedown preventDefault: 클릭 시 카드로 focus 이동 → 브라우저 scroll-into-view 차단
+                    // (키보드 Tab 포커스는 onKeyDown으로 처리되므로 영향 없음)
+                    onMouseDown={(e) => e.preventDefault()}
+                    onClick={(e) => {
+                      lastClickedCardRef.current = e.currentTarget;
+                      openCoach(coach);
+                    }}
+                    onKeyDown={(e) => {
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.preventDefault();
+                        lastClickedCardRef.current = e.currentTarget;
+                        openCoach(coach);
+                      }
+                    }}
+                    aria-label={`${coach.name} 코치 상세 보기`}
+                  >
+                    <div className={styles.photo}>
+                      <Image
+                        src={`/images/about/coach/${coach.img}`}
+                        alt={coach.name}
+                        fill
+                        sizes="(max-width:900px) 50vw, 380px"
+                      />
+                    </div>
+                    <div className={styles.meta}>
+                      <div className={styles.infoText}>
+                        <div className={styles.role}>{coach.role}</div>
+                        <h3 className={styles.name}>{coach.name}</h3>
+                      </div>
+                      <span className={styles.go} aria-hidden="true">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <path d="M5 12h14M13 6l6 6-6 6" />
+                        </svg>
+                      </span>
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
           ))}
