@@ -413,26 +413,6 @@ export const COACHES: Coach[] = [
         ],
       },
       {
-        type: "timeline",
-        title: "스포츠 대회 및 현장 지원",
-        items: [
-          { period: "2025", title: "인천국제마라톤 엘리트 선수 컨디셔닝" },
-          {
-            period: "2025 — 2026",
-            title: "배드민턴 대회 등 각종 스포츠 대회 의무·컨디셔닝 현장 지원 다수",
-          },
-        ],
-      },
-      {
-        type: "timeline",
-        title: "대외 활동 및 학술",
-        items: [
-          { title: "Dynamic Taping Tutor" },
-          { title: "KAPF 대한선수물리치료사연맹", subtitle: "운영이사" },
-          { title: "FEARA 기능운동재활협회", subtitle: "보조강사" },
-        ],
-      },
-      {
         type: "highlights",
         title: "대회 하이라이트 및 주요 성적",
         items: [
@@ -463,6 +443,26 @@ export const COACHES: Coach[] = [
             season: "23 / 24 시즌",
             events: ["2024 강원 동계청소년올림픽", "국내기술임원(NTO) 파견"],
           },
+        ],
+      },
+      {
+        type: "timeline",
+        title: "스포츠 대회 및 현장 지원",
+        items: [
+          { period: "2025", title: "인천국제마라톤 엘리트 선수 컨디셔닝" },
+          {
+            period: "2025 — 2026",
+            title: "배드민턴 대회 등 각종 스포츠 대회 의무·컨디셔닝 현장 지원 다수",
+          },
+        ],
+      },
+      {
+        type: "timeline",
+        title: "대외 활동 및 학술",
+        items: [
+          { title: "Dynamic Taping Tutor" },
+          { title: "KAPF 대한선수물리치료사연맹", subtitle: "운영이사" },
+          { title: "FEARA 기능운동재활협회", subtitle: "보조강사" },
         ],
       },
     ],
