@@ -187,7 +187,7 @@ export const COACHES: Coach[] = [
         title: "학력",
         items: [
           {
-            badge: "석사 졸업",
+            badge: "석사과정 재학",
             title: "인하대학교 스포츠과학대학",
           },
         ],
@@ -355,21 +355,21 @@ export const COACHES: Coach[] = [
         title: "대회 하이라이트",
         items: [
           {
-            season: "22 / 23 시즌",
-            events: ["FIS Nor-Am Cup", "World Championships", "European Cup · World Cup"],
-          },
-          {
-            season: "23 / 24 시즌",
-            events: ["FIS World Cup", "강원 Youth Olympic", "Winter Games"],
+            season: "25 / 26 시즌",
+            events: ["🥉 밀라노 동계올림픽 — 스노보드 국가대표팀 트레이너"],
+            emphasis: true,
           },
           {
             season: "24 / 25 시즌",
             events: ["FIS World Cup", "Asian Winter Games"],
           },
           {
-            season: "25 / 26 시즌",
-            events: ["🥇 밀라노 동계올림픽 — 스노보드 국가대표팀 트레이너"],
-            emphasis: true,
+            season: "23 / 24 시즌",
+            events: ["FIS World Cup", "강원 Youth Olympic", "Winter Games"],
+          },
+          {
+            season: "22 / 23 시즌",
+            events: ["FIS Nor-Am Cup", "World Championships", "European Cup · World Cup"],
           },
         ],
       },
@@ -445,23 +445,23 @@ export const COACHES: Coach[] = [
             emphasis: true,
           },
           {
-            season: "23 / 24 시즌",
-            events: ["2024 강원 동계청소년올림픽", "국내기술임원(NTO) 파견"],
+            season: "25 / 26 시즌",
+            events: [
+              "🥇 슬로베니아 로글라 FIS 월드컵\n— PGS 우승(1위)",
+              "🥇 독일 빈터베르크 FIS 월드컵\n— PSL 우승(1위)",
+              "🥈 폴란드 크리니차 FIS 월드컵\n— PGS 준우승(2위)",
+            ],
           },
           {
             season: "24 / 25 시즌",
             events: [
-              "중국 밀린 · 폴란드 크리니차 FIS 월드컵 — PGS 준우승(2위)",
-              "🥉 스위스 장모리츠 세계선수권 — PGS 3위 (동메달)",
+              "🥈 중국 밀린 · 폴란드 크리니차 FIS 월드컵\n— PGS 준우승(2위)",
+              "🥉 스위스 장모리츠 세계선수권\n— PGS 3위",
             ],
           },
           {
-            season: "25 / 26 시즌",
-            events: [
-              "🥇 슬로베니아 로글라 FIS 월드컵 — PGS 우승(1위)",
-              "🥇 독일 빈터베르크 FIS 월드컵 — PSL 우승(1위)",
-              "폴란드 크리니차 FIS 월드컵 — PGS 준우승(2위)",
-            ],
+            season: "23 / 24 시즌",
+            events: ["2024 강원 동계청소년올림픽", "국내기술임원(NTO) 파견"],
           },
         ],
       },
@@ -507,7 +507,7 @@ export const COACHES: Coach[] = [
             ],
           },
           {
-            title: "스노보드 국가대표팀 의무트레이너",
+            title: "스노보드 유소년팀 의무트레이너",
             bullets: ["평창 3개월간 선수 케어 및 컨디셔닝 담당"],
           },
           {
@@ -529,7 +529,7 @@ export const COACHES: Coach[] = [
         items: [
           "선수 컨디셔닝 및 퍼포먼스 트레이닝",
           "체대입시 전문 트레이닝",
-          "평창 원데이클래스 — 스포츠 테이핑 · 웜업/쿨다운 프로그램 (유소년 선수 · 지도자 · 동호인)",
+          "평창 원데이클래스 — 스포츠 테이핑 · 웜업/쿨다운 프로그램\n(유소년 선수 · 지도자 · 동호인)",
           "일반 회원 건강관리 운동",
         ],
       },

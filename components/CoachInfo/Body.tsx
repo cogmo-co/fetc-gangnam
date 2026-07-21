@@ -75,7 +75,12 @@ function renderSection(section: CoachSection, key: number) {
                 <div className={styles.highlightEvents}>
                   {item.events.map((e, k) => (
                     <span key={k}>
-                      {e}
+                      {e.split("\n").map((line, li, arr) => (
+                        <span key={li}>
+                          {line}
+                          {li < arr.length - 1 && <br />}
+                        </span>
+                      ))}
                       {k < item.events.length - 1 && <br />}
                     </span>
                   ))}
@@ -92,7 +97,14 @@ function renderSection(section: CoachSection, key: number) {
           <div className={styles.programLabel}>{section.title}</div>
           <ul className={styles.programList}>
             {section.items.map((item, j) => (
-              <li key={j}>{item}</li>
+              <li key={j}>
+                {item.split("\n").map((line, li, arr) => (
+                  <span key={li}>
+                    {line}
+                    {li < arr.length - 1 && <br />}
+                  </span>
+                ))}
+              </li>
             ))}
           </ul>
         </section>

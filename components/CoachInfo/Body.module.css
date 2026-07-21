@@ -111,17 +111,13 @@
   color:#111;
 }
 .highlightItemEmphasis{
-  background:linear-gradient(135deg,#f5d77c,#e8b85a);
-  color:#1a1a1a;
+  box-shadow:0 0 10px 3px rgba(244, 215, 124, 0.8) inset;
 }
 .highlightSeason{
   font-size:0.6875rem;font-weight:bold;
   letter-spacing:0.08em;
   color:#999;
   margin-bottom:0.5rem;
-}
-.highlightItemEmphasis .highlightSeason{
-  color:rgba(26,26,26,0.7);
 }
 .highlightEvents{
   font-size:0.8125rem;
@@ -151,14 +147,16 @@
   font-size:0.875rem;color:#333;
   padding-left:1.25rem;
   position:relative;
-  margin-bottom:0.5rem;
+  margin-bottom:0.3rem;
   line-height:1.65;
 }
 .programList li:last-child{margin-bottom:0;}
 .programList li::before{
-  content:'·';
-  position:absolute;left:0;
-  color:#1a1a1a;font-weight:bold;
+  content:'';
+  position:absolute;left:0.1rem;top:0.8em;
+  width:5px;height:5px;border-radius:50%;
+  background:#1a1a1a;
+  transform:translateY(-50%);
 }
 
 /* ===============================
