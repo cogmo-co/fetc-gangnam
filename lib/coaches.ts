@@ -572,9 +572,9 @@ export const COACHES: Coach[] = [
             title: "국제 라크로스 대회 의료지원",
             subtitle: "단일 연도에 3개 국제 대회를 연속으로 커버하며 글로벌 현장 경험을 쌓았습니다.",
             bullets: [
-              "World Lacrosse Men's U20 Championship / Event Physio",
-              "APLU U16 Championship / Team Physio (Australia Women's Team)",
-              "APLU U14 & U12 Festival / Event Physio",
+              "World Lacrosse Men's U20 Championship",
+              "APLU U16 Championship / (Australia Women's Team)",
+              "APLU U14 & U12 Festival",
               "Lacrosse Asia-Pacific Championship / 국가대표 팀 트레이너",
             ],
           },
