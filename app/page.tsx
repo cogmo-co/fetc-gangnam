@@ -9,6 +9,7 @@ import NewsPreviewSection from "@/components/NewsPreviewSection/NewsPreviewSecti
 import NewsPreviewSkeleton from "@/components/NewsPreviewSection/NewsPreviewSkeleton";
 import WhoWeAre from "@/components/WhoWeAre/WhoWeAre";
 import FlowticsMethod from "@/components/FlowticsMethod/FlowticsMethod";
+import TeamCoachingSystem from "@/components/TeamCoachingSystem/TeamCoachingSystem";
 import EquipmentSection from "@/components/EquipmentSection/EquipmentSection";
 import { isMobileUA } from "@/lib/device";
 
@@ -28,6 +29,8 @@ export default async function Home() {
       <WhoWeAre />
 
       <FlowticsMethod />
+
+      <TeamCoachingSystem />
 
       <EquipmentSection />
 
