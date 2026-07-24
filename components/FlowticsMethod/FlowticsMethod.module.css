@@ -28,7 +28,25 @@
 }
 
 /* ======================================================
-   타이틀
+   상단 배지
+====================================================== */
+.badge {
+  align-self: flex-start;
+  width: fit-content;
+  max-width: 100%;
+  padding: 0 0.25rem 0.6rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+  color: rgba(255, 255, 255, 0.85);
+  font-family: var(--font-oswald), 'Oswald', sans-serif;
+  font-size: clamp(0.75rem, 1.4vw, 0.9rem);
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 2.5rem;
+}
+
+/* ======================================================
+   타이틀 · 서브헤딩
 ====================================================== */
 .title {
   font-family: var(--font-oswald), 'Oswald', sans-serif;
@@ -37,163 +55,165 @@
   letter-spacing: -0.5px;
   color: #fff;
   text-align: center;
-  margin: 0 0 4rem 0;
+  margin: 0 0 2rem 0;
+}
+.subtitle {
+  font-family: var(--font-pretendard), sans-serif;
+  font-size: clamp(1.35rem, 3vw, 1.9rem);
+  font-weight: 700;
+  line-height: 1.45;
+  letter-spacing: -0.5px;
+  color: #fff;
+  text-align: center;
+  margin: 0 0 2rem 0;
 }
 
 /* ======================================================
-   4단계 chevron 다이어그램
+   본문 설명 (스텝 다이어그램 위에 위치)
+====================================================== */
+.description {
+  text-align: center;
+  max-width: 920px;
+  margin: 0 auto 3.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+.description p {
+  font-family: var(--font-pretendard), sans-serif;
+  font-size: clamp(0.95rem, 1.6vw, 1.25rem);
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1.65;
+  letter-spacing: -0.2px;
+  margin: 0;
+}
+/* 본문 모바일 전용 줄바꿈 (데스크톱 숨김) */
+.mobileBr {
+  display: none;
+}
+
+/* ======================================================
+   4단계 스텝 블록
 ====================================================== */
 .stages {
   display: flex;
   gap: 0;
   width: 100%;
-  max-width: 1100px;
-  margin: 0 auto 3.5rem;
+  max-width: 1080px;
+  margin: 0 auto 4rem;
 }
 .stage {
   position: relative;
   flex: 1 1 0;
-  min-height: 7rem;
-  padding: 1.25rem 2rem 1.25rem 2.5rem;
+  min-height: clamp(150px, 19vw, 200px);
+  padding: 2rem 1.75rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
-  clip-path: polygon(0 0, 90% 0, 100% 50%, 90% 100%, 0 100%, 10% 50%);
-  margin-left: -2.5%;
+  /* 왼쪽 홈 + 오른쪽 탭 (congruent) → 24px 겹쳐 레고처럼 맞물림 */
+  padding: 2rem calc(1rem + 22px);
+  margin-left: -22px;
+  /* 파일이 쌓인 듯한 얕은 레이어 그림자 (clip-path 형상 따라감) */
+  filter: drop-shadow(2px 0 2px rgba(0, 0, 0, 0.16));
+  clip-path: polygon(
+    0 0,
+    calc(100% - 22px) 0,
+    calc(100% - 22px) 40%,
+    100% 50%,
+    calc(100% - 22px) 60%,
+    calc(100% - 22px) 100%,
+    0 100%,
+    0 60%,
+    22px 50%,
+    0 40%
+  );
 }
+/* 첫 블록: 왼쪽 평평 (홈 없음), 겹침 없음 */
 .stage:first-child {
   margin-left: 0;
-  clip-path: polygon(0 0, 90% 0, 100% 50%, 90% 100%, 0 100%);
-  padding-left: 1.5rem;
+  padding-left: 1rem;
+  clip-path: polygon(
+    0 0,
+    calc(100% - 22px) 0,
+    calc(100% - 22px) 40%,
+    100% 50%,
+    calc(100% - 22px) 60%,
+    calc(100% - 22px) 100%,
+    0 100%
+  );
 }
-/* 색 그라데이션 B안: 어두움 → 밝음 (Performance에서 시선 도달) */
+/* 마지막 블록: 오른쪽 평평 (탭 없음), 왼쪽 홈만 유지 */
+.stage:last-child {
+  padding-left: 1rem;
+  padding-right: 1rem;
+  clip-path: polygon(
+    0 0,
+    100% 0,
+    100% 100%,
+    0 100%,
+    0 60%,
+    22px 50%,
+    0 40%
+  );
+}
+/* 색 그라데이션: 어두움 → 밝음 (Performance에서 시선 도달) */
 .stage:nth-child(1) {
-  background: #5a5a5a;
+  background: #484848;
   color: #fff;
+  z-index: 4;
 }
 .stage:nth-child(2) {
-  background: #888;
+  background: #757575;
   color: #fff;
+  z-index: 3;
 }
 .stage:nth-child(3) {
-  background: #b8b8b8;
+  background: #a9a9a9;
   color: #1a1a1a;
+  z-index: 2;
 }
 .stage:nth-child(4) {
-  background: #ececec;
+  background: #d9d9d9;
   color: #1a1a1a;
+  z-index: 1;
 }
 
-/* 화살표 방향성을 암시하는 빛 sweep — 좌→우 무한 루프, 카드 간 0.4s 시차 */
-.stage::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    90deg,
-    transparent 40%,
-    rgba(255, 255, 255, 0.45) 50%,
-    transparent 60%
-  );
-  transform: translateX(-100%);
-  opacity: 0;
-  animation: chevron-sweep 4s ease-in-out infinite;
-  pointer-events: none;
+.stageNo {
+  font-family: var(--font-oswald), 'Oswald', sans-serif;
+  font-size: clamp(0.8rem, 1.65vw, 1.3rem);
+  font-weight: 300;
+  letter-spacing: 1px;
+  opacity: 0.7;
+  margin-bottom: 1rem;
 }
-/* 밝은 카드는 흰 sweep이 안 보이므로 어두운 톤으로 반전 */
-.stage:nth-child(3)::after,
-.stage:nth-child(4)::after {
-  background: linear-gradient(
-    90deg,
-    transparent 40%,
-    rgba(0, 0, 0, 0.25) 50%,
-    transparent 60%
-  );
-}
-.stage:nth-child(1)::after { animation-delay: 0s; }
-.stage:nth-child(2)::after { animation-delay: 0.4s; }
-.stage:nth-child(3)::after { animation-delay: 0.8s; }
-.stage:nth-child(4)::after { animation-delay: 1.2s; }
-
-/* opacity로 sweep 끝나면 페이드아웃 → 위치 리셋도 보이지 않게 */
-@keyframes chevron-sweep {
-  0% {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-  10% {
-    opacity: 1;
-  }
-  45% {
-    transform: translateX(100%);
-    opacity: 1;
-  }
-  55% {
-    transform: translateX(100%);
-    opacity: 0;
-  }
-  100% {
-    transform: translateX(-100%);
-    opacity: 0;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .stage::after {
-    animation: none;
-  }
-}
-
 .stageName {
-  font-family: var(--font-pretendard), sans-serif;
-  font-size: clamp(0.95rem, 1.8vw, 1.2rem);
+  font-family: var(--font-oswald), 'Oswald', sans-serif;
+  font-size: clamp(1rem, 2.1vw, 1.65rem);
   font-weight: 700;
   letter-spacing: -0.3px;
-  line-height: 1.6;
-  margin-bottom: 0.5rem;
+  line-height: 1.25;
+  white-space: nowrap;
+  margin-bottom: 1.5rem;
 }
 .stageDesc {
   font-family: var(--font-pretendard), sans-serif;
-  font-size: clamp(0.9rem, 0.95vw, 0.9375rem);
-  font-weight: 400;
+  font-size: clamp(0.85rem, 1.3vw, 1.05rem);
+  font-weight: 300;
   letter-spacing: -0.2px;
   opacity: 0.85;
 }
 
-/* stage 카드 스크롤 인: 기본 .sr translateY 대신 좌→우 흐름 강조 */
+/* stage 카드 스크롤 인: 맞물림 유지 위해 위치 이동 없이 opacity 페이드만 */
 .stage.sr {
   opacity: 0;
-  transform: translateX(-24px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
+  transform: none;
+  transition: opacity 0.7s ease;
 }
 .stage.sr.visible {
   opacity: 1;
-  transform: translateX(0);
-}
-
-/* ======================================================
-   본문 설명 (2단락 가운데 정렬)
-====================================================== */
-.description {
-  text-align: center;
-  max-width: 920px;
-  margin: 0 auto 4rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-.description p {
-  font-family: var(--font-pretendard), sans-serif;
-  font-size: clamp(1.05rem, 2vw, 1.3rem);
-  color: rgba(255, 255, 255, 0.78);
-  line-height: 1.5;
-  letter-spacing: -0.2px;
-  margin: 0;
+  transform: none;
 }
 
 /* ======================================================
@@ -220,15 +240,15 @@
 .programBtn {
   display: inline-flex;
   align-items: center;
-  gap: 0.3rem;
-  padding: 0.65rem 1.4rem;
+  justify-content: center;
+  padding: 0.85rem 2rem;
   /* 불투명한 솔리드 배경 — 비네팅 위에서도 또렷한 칩 */
   background: #2a2a2a;
-  border: 1px solid rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.35);
   border-radius: 999px;
   color: #fff;
   font-family: var(--font-oswald), 'Oswald', sans-serif;
-  font-size: clamp(0.95rem, 1.8vw, 1.2rem);
+  font-size: clamp(0.95rem, 1.8vw, 1.15rem);
   font-weight: 700;
   letter-spacing: 1px;
   text-decoration: none;
@@ -242,62 +262,125 @@
   transform: translateY(-2px);
   box-shadow: 0 10px 28px rgba(0, 0, 0, 0.8);
 }
-.programBtn:hover .hash {
-  color: rgba(26, 26, 26, 0.65);
-}
-/* # 기호: 흐릿한 prefix → 태그 느낌 */
-.hash {
-  color: rgba(255, 255, 255, 0.55);
-  font-weight: 400;
-  font-size: 1.05em;
-  transition: color 0.25s ease;
-}
 
 /* ======================================================
    모바일
 ====================================================== */
 @media (max-width: 640px) {
   .section {
-    padding: 60px 0;
+    padding: 76px 0 60px;
+  }
+  .badge {
+    margin-bottom: 1.75rem;
+    font-size: 0.9rem;
   }
   .title {
+    margin-bottom: 1.5rem;
+  }
+  .subtitle {
+    margin-bottom: 1.5rem;
+  }
+  .description {
     margin-bottom: 2.5rem;
   }
 
-  /* 모바일: 1×4 세로 스택, chevron은 아래 방향으로 회전 */
+  /* 모바일: 1×4 세로 스택, 화살표 맞물림 아래 방향 */
   .stages {
     flex-direction: column;
-    gap: 0.5rem;
+    gap: 0;
     max-width: 100%;
     margin-bottom: 3rem;
   }
-  .stage,
-  .stage:first-child,
+  .stage {
+    width: 100%;
+    min-height: auto;
+    /* 번호(큰) 왼쪽 + 명칭·설명 오른쪽 매거진형 */
+    display: grid;
+    grid-template-columns: auto 1fr;
+    column-gap: 1.1rem;
+    align-items: center;
+    justify-items: start;
+    text-align: left;
+    /* 위 홈 + 아래 탭 (congruent) → 28px 세로 겹침 */
+    padding: calc(1.15rem + 28px) 1.25rem calc(1.15rem + 28px);
+    margin: -28px 0 0 0;
+    /* 파일 쌓임 효과: 세로 스택은 하단 방향 얕은 그림자 */
+    filter: drop-shadow(0 2px 2px rgba(0, 0, 0, 0.18));
+    clip-path: polygon(
+      0 0,
+      68% 0,
+      78% 28px,
+      88% 0,
+      100% 0,
+      100% calc(100% - 28px),
+      88% calc(100% - 28px),
+      78% 100%,
+      68% calc(100% - 28px),
+      0 calc(100% - 28px)
+    );
+  }
+  .stage:first-child {
+    margin-top: 0;
+    padding-left: 1.25rem;
+    clip-path: polygon(
+      0 0,
+      100% 0,
+      100% calc(100% - 28px),
+      88% calc(100% - 28px),
+      78% 100%,
+      68% calc(100% - 28px),
+      0 calc(100% - 28px)
+    );
+  }
   .stage:last-child {
-    flex: 0 0 auto;
-    width: 62%;
-    margin-left: auto;
-    margin-right: auto;
-    min-height: 5.5rem;
-    padding: 1.25rem 1rem 2rem;
-    clip-path: polygon(0 0, 100% 0, 100% 75%, 50% 100%, 0 75%);
+    /* 04는 탭 없으므로 아래 패딩 1.15rem(18.4px)로 타이트 */
+    padding-bottom: 1.15rem;
+    padding-left: 1.25rem;
+    clip-path: polygon(
+      0 0,
+      68% 0,
+      78% 28px,
+      88% 0,
+      100% 0,
+      100% 100%,
+      0 100%
+    );
   }
-  /* 모바일은 위→아래 슬라이드 */
-  .stage.sr {
-    transform: translateY(20px);
+  /* 번호: 왼쪽 열, 2행 span, 크게 */
+  .stageNo {
+    grid-column: 1;
+    grid-row: 1 / span 2;
+    align-self: center;
+    font-size: clamp(2.4rem, 13vw, 3.2rem);
+    line-height: 1;
+    margin-bottom: 0;
   }
-  .stage.sr.visible {
-    transform: translateY(0);
+  /* 명칭·설명: 오른쪽 열 */
+  .stageName {
+    grid-column: 2;
+    white-space: normal;
+    font-size: 1.35rem;
+    margin-bottom: 0.35rem;
+  }
+  .stageDesc {
+    grid-column: 2;
+    font-size: 1.05rem;
   }
 
-  .description {
-    margin-bottom: 3rem;
+  /* 모바일도 맞물림 유지 위해 위치 이동 없이 opacity 페이드만 */
+  .stage.sr,
+  .stage.sr.visible {
+    transform: none;
   }
+
   .description p,
   .programIntro,
   .programOutro {
     font-size: 1.05rem;
     line-height: 1.7;
+  }
+  .mobileBr {
+    display: inline;
   }
 
   .programButtons {
@@ -306,7 +389,7 @@
     margin: 1.25rem 0;
   }
   .programBtn {
-    padding: 0.6rem 1.2rem;
+    padding: 0.7rem 1.5rem;
     font-size: .9rem;
   }
 }
