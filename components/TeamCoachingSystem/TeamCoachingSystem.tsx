@@ -27,8 +27,8 @@ export default function TeamCoachingSystem() {
         </div>
 
         <p className={`${styles.caption} sr`}>
-          담당 코치가 세션을 기록하고,
-          <br className={styles.mobileBr} /> FE코치진이 함께 검토해 다음 운동 방향을 결정합니다.
+          회원님의 목표에 맞춰 담당 코치가 세션을 기록하고,
+          <br /> FE코치팀이 검토한 뒤 다음 방향을 설계합니다.
         </p>
       </div>
     </section>

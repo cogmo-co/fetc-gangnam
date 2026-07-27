@@ -20,7 +20,7 @@ export default function WhoWeAre() {
             회원의 신체 기능과 퍼포먼스를 회복·향상시키는 공간입니다.
           </p>
           <p>
-            국가대표 트레이너 출신·물리치료사 자격 보유 코치를 포함한 FEARA 인증 PCC 코치진이 <br className="pc-br" />
+            국가대표 트레이너 출신·물리치료사 자격 보유 코치를 포함한 FEARA 인증 PCC 코치팀이 <br className="pc-br" />
             FETC만의 Flowtics method 4단계 프로세스로 1:1 맞춤 트레이닝을 진행합니다.
           </p>
         </div>

@@ -6,7 +6,7 @@ import styles from "./page.module.css";
 export const metadata: Metadata = {
   title: "FE TRAINING CENTER",
   description:
-    "FE트레이닝센터 강남점 — 평가 기반의 체계적인 트레이닝으로 퍼포먼스를 향상시키는 공간. 국가대표 트레이너 출신 코치진, FEARA 인증 PCC, Flowtics method.",
+    "FE트레이닝센터 강남점 — 평가 기반의 체계적인 트레이닝으로 퍼포먼스를 향상시키는 공간. 국가대표 트레이너 출신 코치팀, FEARA 인증 PCC, Flowtics method.",
 };
 
 export default function FETCPage() {

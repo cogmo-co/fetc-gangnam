@@ -38,7 +38,7 @@
   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
   color: rgba(255, 255, 255, 0.85);
   font-family: var(--font-oswald), 'Oswald', sans-serif;
-  font-size: clamp(0.75rem, 1.4vw, 0.9rem);
+  font-size: clamp(1.28rem, 2.38vw, 1.53rem);
   font-weight: 500;
   letter-spacing: 1.5px;
   text-transform: uppercase;
@@ -272,7 +272,7 @@
   }
   .badge {
     margin-bottom: 1.75rem;
-    font-size: 0.9rem;
+    font-size: 1.53rem;
   }
   .title {
     margin-bottom: 1.5rem;

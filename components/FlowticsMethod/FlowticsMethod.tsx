@@ -33,7 +33,7 @@ export default function FlowticsMethod() {
             <br />바탕으로 만든 FETC의 4단계 트레이닝 시스템입니다.
           </p>
           <p>
-            매주 코치진이 회원의 평가와 운동 기록을 함께 검토합니다.
+            매주 코치팀이 회원의 평가와 운동 기록을 함께 검토합니다.
             <br />검토한 내용과 현재 상태와 변화를 바탕으로
             <br className={styles.mobileBr} /> 가장 적합한 다음 단계를 결정합니다.
           </p>
