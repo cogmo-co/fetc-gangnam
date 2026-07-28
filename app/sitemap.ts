@@ -11,43 +11,49 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     .eq("published", true)
     .order("created_at", { ascending: false });
 
-  const newsEntries: MetadataRoute.Sitemap = (posts ?? []).map((post) => ({
-    url: `${BASE_URL}/news/${post.id}`,
-    lastModified: new Date(post.updated_at),
-    priority: 0.6,
-  }));
+  const now = new Date();
 
-  const coachEntries: MetadataRoute.Sitemap = COACHES.map((c) => ({
-    url: `${BASE_URL}/about/coach/${c.id}`,
-    lastModified: new Date(),
-    priority: 0.7,
-  }));
+  // 각 경로에 ko(/) · en(/en) hreflang alternates 부착
+  const entry = (
+    path: string,
+    priority: number,
+    lastModified: Date = now,
+  ): MetadataRoute.Sitemap[number] => ({
+    url: `${BASE_URL}${path}`,
+    lastModified,
+    priority,
+    alternates: {
+      languages: {
+        ko: `${BASE_URL}${path}`,
+        en: `${BASE_URL}/en${path}`,
+      },
+    },
+  });
 
-  const equipmentEntries: MetadataRoute.Sitemap = EQUIPMENTS.map((e) => ({
-    url: `${BASE_URL}/about/facility/${e.id}`,
-    lastModified: new Date(),
-    priority: 0.6,
-  }));
+  const staticPaths: [string, number][] = [
+    ["", 1.0],
+    // 회원 전환 CTA 페이지 — 최우선 SEO
+    ["/reservation", 0.9],
+    // About sub-pages
+    ["/about/FETC", 0.8],
+    ["/about/coach", 0.8],
+    ["/about/facility", 0.8],
+    ["/about/location", 0.8],
+    // Program sub-pages
+    ["/program/performance", 0.8],
+    ["/program/training", 0.8],
+    ["/program/rehabilitation", 0.8],
+    // 부가 페이지
+    ["/news", 0.8],
+    ["/contact", 0.7],
+  ];
 
   return [
-    { url: BASE_URL, lastModified: new Date(), priority: 1.0 },
-    // 회원 전환 CTA 페이지 — 최우선 SEO
-    { url: `${BASE_URL}/reservation`, lastModified: new Date(), priority: 0.9 },
-    // About sub-pages
-    { url: `${BASE_URL}/about/FETC`, lastModified: new Date(), priority: 0.8 },
-    { url: `${BASE_URL}/about/coach`, lastModified: new Date(), priority: 0.8 },
-    { url: `${BASE_URL}/about/facility`, lastModified: new Date(), priority: 0.8 },
-    { url: `${BASE_URL}/about/location`, lastModified: new Date(), priority: 0.8 },
-    // Program sub-pages
-    { url: `${BASE_URL}/program/performance`, lastModified: new Date(), priority: 0.8 },
-    { url: `${BASE_URL}/program/training`, lastModified: new Date(), priority: 0.8 },
-    { url: `${BASE_URL}/program/rehabilitation`, lastModified: new Date(), priority: 0.8 },
-    // 부가 페이지
-    { url: `${BASE_URL}/news`, lastModified: new Date(), priority: 0.8 },
-    { url: `${BASE_URL}/contact`, lastModified: new Date(), priority: 0.7 },
-    // 동적 entries
-    ...coachEntries,
-    ...equipmentEntries,
-    ...newsEntries,
+    ...staticPaths.map(([path, priority]) => entry(path, priority)),
+    ...COACHES.map((c) => entry(`/about/coach/${c.id}`, 0.7)),
+    ...EQUIPMENTS.map((e) => entry(`/about/facility/${e.id}`, 0.6)),
+    ...(posts ?? []).map((post) =>
+      entry(`/news/${post.id}`, 0.6, new Date(post.updated_at)),
+    ),
   ];
 }

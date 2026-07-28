@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
 import styles from "./AboutSubNav.module.css";
 
 // hash 앵커로 sticky bar 아래에 title이 오도록 스크롤 (CSS scroll-padding-top과 연동)

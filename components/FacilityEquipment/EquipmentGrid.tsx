@@ -3,8 +3,9 @@
 import { useState, useEffect, type ReactNode } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
+import { useLocale, useTranslations } from "next-intl";
 import {
-  EQUIPMENTS,
+  getEquipments,
   type Equipment,
   getEquipmentImage,
 } from "@/lib/equipment";
@@ -24,6 +25,10 @@ export default function EquipmentGrid({
   subtitle,
 }: Props) {
   const router = useRouter();
+  const locale = useLocale();
+  const prefix = locale === "ko" ? "" : `/${locale}`;
+  const equipments = getEquipments(locale);
+  const t = useTranslations("Facility");
   const [selected, setSelected] = useState<Equipment | null>(null);
   // detail 한 번이라도 열었으면 grid 복귀 시 카드 sr 애니메이션 skip
   // (AppShell observer setTimeout 타이밍 회피 — 카드 invisible 잔존 버그 방지)
@@ -49,7 +54,7 @@ export default function EquipmentGrid({
   // ⚠️ 목록 페이지(/about/facility)에서만 실행 — detail [id] 페이지도 EquipmentGrid를 (pc-only div로) mount하므로,
   // pathname 체크 없으면 detail 페이지가 중간 스크롤 위치에서 시작하는 버그 발생.
   useEffect(() => {
-    if (window.location.pathname !== "/about/facility") return;
+    if (window.location.pathname !== `${prefix}/about/facility`) return;
     const saved = sessionStorage.getItem(SCROLL_KEY);
     if (saved !== null) {
       const y = parseInt(saved, 10);
@@ -58,14 +63,14 @@ export default function EquipmentGrid({
       }
       sessionStorage.removeItem(SCROLL_KEY);
     }
-  }, []);
+  }, [prefix]);
 
   function openEquipment(equipment: Equipment) {
     setHasOpenedDetail(true);
     if (window.innerWidth <= 640) {
       // 모바일은 페이지 navigation → 복귀 시 위치 복원용 scrollY 저장
       sessionStorage.setItem(SCROLL_KEY, String(window.scrollY));
-      router.push(`/about/facility/${equipment.id}`);
+      router.push(`${prefix}/about/facility/${equipment.id}`);
     } else {
       setSelected(equipment);
       // inlineDetail 플래그: useResetScrollOnRouteChange가 scroll-to-top skip하도록 마킹
@@ -73,7 +78,7 @@ export default function EquipmentGrid({
       history.pushState(
         { ...currentState, inlineDetail: true },
         "",
-        `/about/facility/${equipment.id}`,
+        `${prefix}/about/facility/${equipment.id}`,
       );
     }
   }
@@ -83,13 +88,13 @@ export default function EquipmentGrid({
     // autoOpenEquipment가 있으면 /about/facility/[id] 직접 접속 컨텍스트 → FACILITY 페이지로 네비게이션.
     // 없으면 inline detail 닫기 → URL만 복귀 (재렌더 없음 = scroll-reveal 깜빡임 방지).
     if (autoOpenEquipment) {
-      router.push("/about/facility#equipments");
+      router.push(`${prefix}/about/facility#equipments`);
     } else {
       const currentState = window.history.state ?? {};
       history.pushState(
         { ...currentState, inlineDetail: true },
         "",
-        "/about/facility",
+        `${prefix}/about/facility`,
       );
     }
   }
@@ -109,7 +114,7 @@ export default function EquipmentGrid({
         />
       ) : (
         <div className={styles.grid}>
-          {EQUIPMENTS.map((equipment, i) => (
+          {equipments.map((equipment, i) => (
             <div
               key={equipment.id}
               className={`${styles.card} ${hasOpenedDetail ? "" : `sr sr-d${i + 1}`}`}
@@ -123,7 +128,7 @@ export default function EquipmentGrid({
                   openEquipment(equipment);
                 }
               }}
-              aria-label={`${equipment.name} 장비 상세 보기`}
+              aria-label={t("viewDetail", { name: equipment.name })}
             >
               {/* 단일 이미지 — 기본 grayscale, hover(PC)/visible(모바일) 시 컬러 */}
               <div className={styles.photo}>

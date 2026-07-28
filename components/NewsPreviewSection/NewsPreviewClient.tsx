@@ -1,7 +1,8 @@
 "use client";
 
 import { useState, useCallback, useEffect, useRef } from "react";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
+import { useLocale, useTranslations } from "next-intl";
 import Image from "next/image";
 import SlidesNav from "@/components/SlidesNav/SlidesNav";
 import NewsModal from "@/components/NewsModal/NewsModal";
@@ -25,6 +26,9 @@ export default function NewsPreviewClient({ posts }: Props) {
   const [loadingId, setLoadingId] = useState<string | null>(null);
   // in-flight fetch 추적 — 새 클릭/모달 닫기/언마운트 시 abort
   const abortRef = useRef<AbortController | null>(null);
+  const c = useTranslations("Common");
+  const locale = useLocale();
+  const prefix = locale === "ko" ? "" : `/${locale}`;
 
   // unmount 시 in-flight fetch 정리
   useEffect(() => {
@@ -34,7 +38,7 @@ export default function NewsPreviewClient({ posts }: Props) {
   async function openPost(post: NewsPreviewPost) {
     // 모바일: full page 이동 — /news/[id]에서 자체 server fetch
     if (window.innerWidth <= 640) {
-      window.location.href = `/news/${post.id}`;
+      window.location.href = `${prefix}/news/${post.id}`;
       return;
     }
 
@@ -50,11 +54,11 @@ export default function NewsPreviewClient({ posts }: Props) {
       // 취소 후 도착한 응답 무시
       if (ctrl.signal.aborted) return;
       setSelected(full);
-      history.pushState(null, "", `/news/${post.id}`);
+      history.pushState(null, "", `${prefix}/news/${post.id}`);
     } catch (e) {
       if ((e as Error).name === "AbortError") return;
       // fallback: full page 이동
-      window.location.href = `/news/${post.id}`;
+      window.location.href = `${prefix}/news/${post.id}`;
     } finally {
       // 현재 fetch가 최신인 경우만 loading 상태 정리 (새 클릭으로 교체됐다면 그쪽 loading 보존)
       if (abortRef.current === ctrl) {
@@ -68,15 +72,15 @@ export default function NewsPreviewClient({ posts }: Props) {
     // 닫을 때 in-flight fetch도 abort
     abortRef.current?.abort();
     setSelected(null);
-    history.pushState(null, "", "/");
-  }, []);
+    history.pushState(null, "", `${prefix}/`);
+  }, [prefix]);
 
   return (
     <section className={styles.section}>
       <div className={styles.header}>
         <h2 className={styles.title}>FETC NEWS</h2>
         <Link href="/news" className={styles.more}>
-          더보기
+          {c("more")}
         </Link>
       </div>
       <SlidesNav bgColor="#181818">

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { getTranslations } from "next-intl/server";
 import SlidesNav from "@/components/SlidesNav/SlidesNav";
 import styles from "./MediaSection.module.css";
 
@@ -23,6 +24,7 @@ async function getShorts() {
 
 export default async function MediaSection() {
   const shorts = await getShorts();
+  const t = await getTranslations("A11y");
   return (
     <div className={styles.section}>
       <div className={styles.inner}>
@@ -61,7 +63,7 @@ export default async function MediaSection() {
             >
               <Image
                 src={`https://img.youtube.com/vi/${short.id}/hqdefault.jpg`}
-                alt={`${short.title} - FETC 영상`}
+                alt={t("videoAlt", { title: short.title })}
                 width={195}
                 height={346}
                 loading="lazy"

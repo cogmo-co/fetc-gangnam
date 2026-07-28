@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { useTranslations, useLocale } from "next-intl";
 import type { Coach } from "@/lib/coaches";
 import Body from "./Body";
 import BackButton from "./BackButton";
@@ -9,6 +10,9 @@ interface Props {
 }
 
 export default function Detail({ coach }: Props) {
+  const t = useTranslations();
+  const locale = useLocale();
+  const prefix = locale === "ko" ? "" : `/${locale}`;
   return (
     <div className={styles.page}>
       <div className={styles.imageArea}>
@@ -30,14 +34,18 @@ export default function Detail({ coach }: Props) {
         <Body coach={coach} />
 
         <div className={styles.actions}>
-          <BackButton className={styles.backBtn} />
+          <BackButton
+            className={styles.backBtn}
+            label={t("Coach.backToList")}
+            fallbackUrl={`${prefix}/about/coach`}
+          />
           <a
             href={coach.tistoryUrl}
             target="_blank"
             rel="noopener noreferrer"
             className={styles.moreBtn}
           >
-            더보기
+            {t("Common.more")}
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <path d="M7 17L17 7M17 7H7M17 7V17" />
             </svg>

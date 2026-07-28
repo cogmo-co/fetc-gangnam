@@ -1,20 +1,23 @@
 import BookingLink from "@/components/BookingLink/BookingLink";
-import { NaverBookingIcon, KakaoTalkIcon } from "@/components/Icons";
-import { PHONE } from "@/lib/constants";
+import { NaverBookingIcon, KakaoTalkIcon, GoogleMapIcon } from "@/components/Icons";
+import { PHONE, GOOGLE_MAP_URL } from "@/lib/constants";
+import { useTranslations } from "next-intl";
 import styles from "./Footer.module.css";
 
 export default function Footer() {
+  const t = useTranslations("Footer");
+  const a = useTranslations("A11y");
   return (
     <footer className={styles.footer}>
       <div className={styles.inner}>
         <div>
           <div className={styles.logo}>FETC</div>
-          <div className={styles.tagline}>Fe Training Center · 강남점</div>
+          <div className={styles.tagline}>{t("tagline")}</div>
           <div className={styles.social}>
-          <BookingLink className={styles.iconLink} aria-label="상담 예약">
+          <BookingLink className={styles.iconLink} aria-label={a("consultBooking")}>
             <NaverBookingIcon />
           </BookingLink>
-          <a href="http://pf.kakao.com/_xkzxfbn/chat" target="_blank" rel="noopener noreferrer" className={styles.iconLink} aria-label="카카오톡 문의">
+          <a href="http://pf.kakao.com/_xkzxfbn/chat" target="_blank" rel="noopener noreferrer" className={styles.iconLink} aria-label={a("kakaoInquiry")}>
             <KakaoTalkIcon />
           </a>
           <svg className={styles.dot} width="4" height="4" viewBox="0 0 4 4"><circle cx="2" cy="2" r="2" fill="currentColor"/></svg>
@@ -35,15 +38,26 @@ export default function Footer() {
         </div>
       </div>
       <div className={styles.info}>
-        <span>사업자등록번호: 809-87-02482</span>
+        <span>{t("bizNumber")}</span>
         <span className={styles.sep}>|</span>
-        <span>대표자명: 기능운동재활협회</span>
+        <span>{t("ceo")}</span>
         <span className={styles.sep}>|</span>
-        <span>대표번호: <a href={`tel:${PHONE}`}>{PHONE}</a></span>
+        <span>{t("phoneLabel")}: <a href={`tel:${PHONE}`}>{PHONE}</a></span>
         <span className={styles.sep}>|</span>
-        <span>주소: 서울특별시 강남구 도곡로7길 6, 한은빌딩 4층</span>
+        <span className={styles.addressItem}>
+          {t("address")}
+          <a
+            href={GOOGLE_MAP_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={styles.mapLink}
+            aria-label={t("directions")}
+          >
+            <GoogleMapIcon width={14} height={14} />
+          </a>
+        </span>
         <br />
-        <span>© 2025 FE Training Center. All rights reserved.</span>
+        <span>{t("copyright")}</span>
       </div>
     </footer>
   );

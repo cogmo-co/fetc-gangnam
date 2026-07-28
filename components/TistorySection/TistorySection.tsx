@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { getTranslations } from "next-intl/server";
 import { fetchTistoryPosts } from "@/lib/tistory";
 import SlidesNav from "@/components/SlidesNav/SlidesNav";
 import styles from "./TistorySection.module.css";
@@ -7,6 +8,8 @@ export default async function TistorySection() {
   const posts = await fetchTistoryPosts();
 
   if (posts.length === 0) return null;
+
+  const t = await getTranslations("A11y");
 
   return (
     <div className={styles.section}>
@@ -47,7 +50,7 @@ export default async function TistorySection() {
               {post.thumbnail ? (
                 <Image
                   src={post.thumbnail}
-                  alt={`${post.title} - FETC 블로그`}
+                  alt={t("blogAlt", { title: post.title })}
                   width={320}
                   height={200}
                   loading="lazy"

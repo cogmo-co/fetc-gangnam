@@ -1,5 +1,6 @@
 import Image from "next/image";
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 import styles from "./EquipmentSection.module.css";
 
 const EQUIPMENT = [
@@ -12,13 +13,16 @@ const EQUIPMENT = [
 ];
 
 export default function EquipmentSection() {
+  const t = useTranslations("Equipment");
+  const c = useTranslations("Common");
+  const a = useTranslations("A11y");
   return (
     <section className={styles.section}>
       <div className={styles.inner}>
         <div className={styles.header}>
           <h2 className={`${styles.title} sr`}>EQUIPMENT</h2>
           <Link href="/about/facility" className={`${styles.more} sr sr-d1`}>
-            더보기
+            {c("more")}
           </Link>
         </div>
 
@@ -27,7 +31,7 @@ export default function EquipmentSection() {
             <div key={item.name} className={styles.card}>
               <Image
                 src={item.src}
-                alt={`${item.name} - FETC 강남점 보유 장비`}
+                alt={a("equipmentAlt", { name: item.name })}
                 fill
                 sizes="(max-width:640px) 70vw, 16vw"
               />
@@ -38,8 +42,7 @@ export default function EquipmentSection() {
         </div>
 
         <p className={styles.caption}>
-          정밀한 평가부터 공압 저항 트레이닝, 고주파 회복까지.<br />
-          NBA, EPL, PSG 등 세계 최상위 스포츠팀이 사용하는 6종의 시스템을 FETC 강남점에서 만나보세요.
+          {t.rich("caption", { br: () => <br /> })}
         </p>
       </div>
     </section>

@@ -30,6 +30,14 @@
   color:rgba(255,255,255,0.45);line-height:1.9;
 }
 .sep{margin:0 10px;opacity:0.3;}
+.addressItem{display:inline-flex;align-items:center;}
+.mapLink{
+  display:inline-flex;align-items:center;
+  margin-left:6px;
+  color:rgba(255,255,255,0.6);
+  transition:color 0.2s;
+}
+.mapLink:hover{color:#fff;}
 
 @media(max-width:640px){
   .sep{display:none;}

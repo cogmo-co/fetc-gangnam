@@ -1,4 +1,5 @@
 import { BASE_URL } from "@/lib/constants";
+import { EQUIPMENTS_EN } from "./equipment.en";
 
 export interface Equipment {
   id: string; // slug for URL — /about/facility/[id]
@@ -81,8 +82,12 @@ NFL combine, 올림픽, MLB 스프링 트레이닝 준비시설로 유명한 EXO
   },
 ];
 
-export function findEquipment(id: string): Equipment | undefined {
-  return EQUIPMENTS.find((e) => e.id === id);
+export function getEquipments(locale: string): Equipment[] {
+  return locale === "en" ? EQUIPMENTS_EN : EQUIPMENTS;
+}
+
+export function findEquipment(id: string, locale = "ko"): Equipment | undefined {
+  return getEquipments(locale).find((e) => e.id === id);
 }
 
 export function getEquipmentImage(filename: string): string {

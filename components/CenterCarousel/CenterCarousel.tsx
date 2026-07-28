@@ -2,21 +2,23 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import styles from "./CenterCarousel.module.css";
 
 const PHOTOS = [
-  { file: "g_panoramic_view.jpg", caption: "전경" },
-  { file: "g_consultation_zone.jpg", caption: "상담 공간" },
-  { file: "g_cardio_zone.jpg", caption: "유산소 존" },
-  { file: "g_care_zone.jpg", caption: "케어 존" },
-  { file: "g_weight_zone.jpg", caption: "웨이트 존" },
-  { file: "g_workout_zone.jpg", caption: "트레이닝 존" },
+  { file: "g_panoramic_view.jpg", key: "photo1" },
+  { file: "g_consultation_zone.jpg", key: "photo2" },
+  { file: "g_cardio_zone.jpg", key: "photo3" },
+  { file: "g_care_zone.jpg", key: "photo4" },
+  { file: "g_weight_zone.jpg", key: "photo5" },
+  { file: "g_workout_zone.jpg", key: "photo6" },
 ];
 
 const IMAGE_BASE = "/images/about/facility";
 const AUTO_PLAY_INTERVAL = 5000; // 5초
 
 export default function CenterCarousel() {
+  const t = useTranslations();
   const [index, setIndex] = useState(0);
   const [paused, setPaused] = useState(false);
 
@@ -46,7 +48,7 @@ export default function CenterCarousel() {
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
-      <h2 className={`${styles.title} sr`}>FE트레이닝센터 전경</h2>
+      <h2 className={`${styles.title} sr`}>{t("Carousel.title")}</h2>
 
       <div className={styles.viewport}>
         <div
@@ -57,12 +59,12 @@ export default function CenterCarousel() {
             <div key={photo.file} className={styles.slide}>
               <Image
                 src={`${IMAGE_BASE}/${photo.file}`}
-                alt={`FE트레이닝센터 ${photo.caption}`}
+                alt={`${t("Carousel.altPrefix")} ${t(`Carousel.${photo.key}`)}`}
                 fill
                 sizes="(max-width:1024px) 100vw, 80vw"
                 priority={i === 0}
               />
-              <div className={styles.caption}>{photo.caption}</div>
+              <div className={styles.caption}>{t(`Carousel.${photo.key}`)}</div>
             </div>
           ))}
         </div>
@@ -71,7 +73,7 @@ export default function CenterCarousel() {
           type="button"
           className={`${styles.arrow} ${styles.arrowPrev}`}
           onClick={prev}
-          aria-label="이전 사진"
+          aria-label={t("Facility.prevPhoto")}
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <polyline points="15 18 9 12 15 6" />
@@ -81,7 +83,7 @@ export default function CenterCarousel() {
           type="button"
           className={`${styles.arrow} ${styles.arrowNext}`}
           onClick={next}
-          aria-label="다음 사진"
+          aria-label={t("Facility.nextPhoto")}
         >
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
             <polyline points="9 18 15 12 9 6" />
@@ -89,7 +91,7 @@ export default function CenterCarousel() {
         </button>
       </div>
 
-      <div className={styles.dots} role="tablist" aria-label="센터 사진 선택">
+      <div className={styles.dots} role="tablist" aria-label={t("Carousel.selectPhoto")}>
         {PHOTOS.map((photo, i) => (
           <button
             key={photo.file}
@@ -97,7 +99,7 @@ export default function CenterCarousel() {
             role="tab"
             className={`${styles.dot} ${i === index ? styles.dotActive : ""}`}
             onClick={() => goTo(i)}
-            aria-label={`${photo.caption}로 이동`}
+            aria-label={t("Carousel.goTo", { caption: t(`Carousel.${photo.key}`) })}
             aria-selected={i === index}
           />
         ))}

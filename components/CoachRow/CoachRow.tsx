@@ -3,7 +3,8 @@
 import { useState, useEffect, useRef, type ReactNode } from "react";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { COACHES, COACH_GROUPS, type Coach } from "@/lib/coaches";
+import { useLocale, useTranslations } from "next-intl";
+import { getCoaches, getCoachGroups, type Coach } from "@/lib/coaches";
 import Modal from "@/components/CoachInfo/Modal";
 import styles from "./CoachRow.module.css";
 
@@ -14,6 +15,11 @@ interface Props {
 
 export default function CoachRow({ autoOpenCoach, subtitle }: Props) {
   const router = useRouter();
+  const locale = useLocale();
+  const ta = useTranslations("A11y");
+  const prefix = locale === "ko" ? "" : `/${locale}`;
+  const coaches = getCoaches(locale);
+  const groups = getCoachGroups(locale);
   const [selected, setSelected] = useState<Coach | null>(null);
   // 마지막 클릭한 카드 — 모달 닫을 때 이 카드 bottom을 viewport 하단에 맞춰 스크롤
   const lastClickedCardRef = useRef<HTMLElement | null>(null);
@@ -36,7 +42,7 @@ export default function CoachRow({ autoOpenCoach, subtitle }: Props) {
 
   function openCoach(coach: Coach) {
     if (window.innerWidth <= 640) {
-      router.push(`/about/coach/${coach.id}`);
+      router.push(`${prefix}/about/coach/${coach.id}`);
     } else {
       setSelected(coach);
       // inlineDetail 플래그: useResetScrollOnRouteChange가 scroll-to-top skip하도록 마킹
@@ -44,7 +50,7 @@ export default function CoachRow({ autoOpenCoach, subtitle }: Props) {
       history.pushState(
         { ...currentState, inlineDetail: true },
         "",
-        `/about/coach/${coach.id}`,
+        `${prefix}/about/coach/${coach.id}`,
       );
     }
   }
@@ -54,13 +60,13 @@ export default function CoachRow({ autoOpenCoach, subtitle }: Props) {
     // autoOpenCoach가 있으면 /about/coach/[id] 직접 접속 컨텍스트 → COACH 페이지로 네비게이션.
     // 없으면 COACH 페이지에서 모달 연 케이스 → URL만 복귀(재렌더 없음 = scroll-reveal 깜빡임 방지).
     if (autoOpenCoach) {
-      router.push("/about/coach#coaches");
+      router.push(`${prefix}/about/coach#coaches`);
     } else {
       const currentState = window.history.state ?? {};
       history.pushState(
         { ...currentState, inlineDetail: true },
         "",
-        "/about/coach",
+        `${prefix}/about/coach`,
       );
     }
     // 클릭한 카드의 bottom이 viewport 하단에 오도록 스크롤 (Modal cleanup 후 실행)
@@ -80,7 +86,7 @@ export default function CoachRow({ autoOpenCoach, subtitle }: Props) {
           <p className={`${styles.subtitle} sr sr-d1`}>{subtitle}</p>
         )}
         <div className={styles.inner}>
-          {COACH_GROUPS.map((group) => (
+          {groups.map((group) => (
             <div key={group.key} className={styles.group}>
               {group.key !== "head" && <div className={styles.divider} />}
               <div className={`${styles.groupHead} sr`}>
@@ -93,7 +99,7 @@ export default function CoachRow({ autoOpenCoach, subtitle }: Props) {
                 )}
               </div>
               <div className={styles.grid}>
-                {COACHES.filter((c) => c.group === group.key).map((coach, i) => (
+                {coaches.filter((c) => c.group === group.key).map((coach, i) => (
                   <div
                     key={coach.id}
                     className={`${styles.card} sr sr-d${i + 1}`}
@@ -113,7 +119,7 @@ export default function CoachRow({ autoOpenCoach, subtitle }: Props) {
                         openCoach(coach);
                       }
                     }}
-                    aria-label={`${coach.name} 코치 상세 보기`}
+                    aria-label={ta("coachDetail", { name: coach.name })}
                   >
                     <div className={styles.photo}>
                       <Image

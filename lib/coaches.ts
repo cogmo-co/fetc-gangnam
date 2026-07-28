@@ -1,4 +1,5 @@
 import { BASE_URL } from "./constants";
+import { COACHES_EN, COACH_GROUPS_EN } from "./coaches.en";
 
 
 // ===============================
@@ -611,8 +612,16 @@ export const COACHES: Coach[] = [
   },
 ];
 
-export function findCoach(id: string): Coach | undefined {
-  return COACHES.find((c) => c.id === id);
+export function getCoaches(locale: string): Coach[] {
+  return locale === "en" ? COACHES_EN : COACHES;
+}
+
+export function getCoachGroups(locale: string): CoachGroup[] {
+  return locale === "en" ? COACH_GROUPS_EN : COACH_GROUPS;
+}
+
+export function findCoach(id: string, locale = "ko"): Coach | undefined {
+  return getCoaches(locale).find((c) => c.id === id);
 }
 
 

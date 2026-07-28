@@ -1,0 +1,313 @@
+{
+  "Common": {
+    "more": "More",
+    "booking": "Book a Visit",
+    "findUs": "Find Us",
+    "close": "Close",
+    "brandFull": "FE Training Center Gangnam"
+  },
+  "Topbar": {
+    "call": "Call",
+    "booking": "Book a Visit",
+    "menu": "Menu"
+  },
+  "Footer": {
+    "tagline": "FE Training Center · Gangnam",
+    "bizNumber": "Business Reg. No. 809-87-02482",
+    "ceo": "Representative: Functional Exercise and Rehabilitation Association",
+    "phoneLabel": "Phone",
+    "address": "Address: 6, Dogok-ro 7-gil, Gangnam-gu, Seoul, 4F",
+    "directions": "Get Directions",
+    "copyright": "© 2025 FE Training Center. All rights reserved."
+  },
+  "Hero": {
+    "heading": "Athletic Rehabilitation & Performance Training in Gangnam",
+    "brand": "FE Training Center Gangnam"
+  },
+  "WhoWeAre": {
+    "headline": "Change that begins with assessment.",
+    "body1": "FE Training Center is more than a place to work out. Through systematic, assessment-driven training, we restore and elevate each member's physical function and performance.",
+    "body2": "Our FEARA-certified PCC coaching team — including former national-team trainers and licensed physical therapists — delivers personalized 1:1 training through FETC's own 4-stage Flowtics Method."
+  },
+  "FlowticsMethod": {
+    "subtitle": "From recovery to performance,<br></br>designed around a single team standard.",
+    "desc1": "The Flowtics Method is FETC's 4-stage training system, built on the training and care methods of Olympic-level athletes.",
+    "desc2": "Every week, our coaching team reviews each member's assessments and training records together — then determines the most suitable next stage based on their current state and progress.",
+    "stage1": "Body & nervous-system activation",
+    "stage2": "Exploring movement potential",
+    "stage3": "Integrating strength & movement",
+    "stage4": "Performance & daily vitality",
+    "programIntro": "FE Training Center's Flowtics Method",
+    "programOutro": "is applied across three programs."
+  },
+  "TeamCoaching": {
+    "subtitle": "One coach leads your sessions;<br></br>the full FETC coaching team manages your progress.",
+    "card1": "Assessment & training records per session",
+    "card2": "Joint review by the FE coaching team",
+    "card3": "Designing the next training program",
+    "caption": "Your coach records each session around your goals,<br></br>and the FE coaching team reviews it before designing your next direction."
+  },
+  "Equipment": {
+    "caption": "From precise assessment to pneumatic-resistance training and radiofrequency recovery — experience the six systems used by the world's top sports teams (NBA, EPL, PSG and more) at FETC Gangnam."
+  },
+  "Location": {
+    "address": "6, Dogok-ro 7-gil, Gangnam-gu, Seoul, 4F",
+    "transitLine": "Shinbundang Line",
+    "transit": "~15-min walk from Gangnam Stn. Exit 4",
+    "weekdays": "Weekdays",
+    "saturday": "Sat",
+    "closed": "Closed Sun & holidays",
+    "landmark1": "Behind Bodyfriend Yeoksam Tower",
+    "landmark2": "5-min walk from Bangbang Intersection",
+    "markerName": "FE Training Center<br/>Gangnam",
+    "directions": "Directions",
+    "call": "Call",
+    "book": "Book"
+  },
+  "Branches": {
+    "eyebrow": "Our Branches",
+    "current": "Current",
+    "gangnam": { "name": "Gangnam", "address": "6, Dogok-ro 7-gil, Gangnam-gu, Seoul" },
+    "songpa": { "name": "Songpa", "address": "177, Ogeum-ro, Songpa-gu, Seoul" },
+    "gongneung": { "name": "Gongneung", "address": "1055, Dongil-ro, Nowon-gu, Seoul" },
+    "cheonan": { "name": "Cheonan", "address": "236, Buldang 25-ro, Seobuk-gu, Cheonan-si, Chungcheongnam-do" }
+  },
+  "SubHero": {
+    "about": "Athletic Rehabilitation & Performance Training in Gangnam | FE Training Center Gangnam",
+    "programPerformance": "The standard in athlete training — the Flowtics Method | FE Training Center Gangnam",
+    "programTraining": "FEA assessment-based functional training | FE Training Center Gangnam",
+    "programRehab": "Post-surgery rehab · chronic pain · posture correction | FE Training Center Gangnam"
+  },
+  "AboutFETC": {
+    "intro1": "There's really only one reason we train:<br></br>to improve performance.",
+    "intro2": "You need to move faster, stronger, and more precisely.<br></br>We design how force is generated, through which structures it transfers,<br></br>and the path it should travel.",
+    "intro3": "We don't cling to a fixed method.<br></br>We draw on every means of creating meaningful change —<br></br>reading the context, choosing, and designing."
+  },
+  "WhyFETC": {
+    "item1": {
+      "title": "Former national-team athletic trainers and physical therapists —<br></br>every coach is FEARA-certified PCC",
+      "body": "Our coaching team — including the trainer for the 2018 PyeongChang Winter Olympics snowboarding national team, with experience training many national teams and elite athletes and caring for patients in clinical settings — guides you 1:1.",
+      "alt": "FETC coaching team group photo"
+    },
+    "item2": {
+      "title": "Evidence-based training that begins with precise assessment<br></br>using the FEA system, VALD and more",
+      "body": "Every member starts their program from an FEA assessment. We scientifically analyze movement patterns, joint mobility, strength asymmetry, posture, and neuromuscular coordination to identify the true cause of pain and injury, then design a tailored roadmap.",
+      "alt": "FEA precision assessment system"
+    },
+    "item3": {
+      "title": "The Flowtics Method —<br></br>a 4-stage program bridging recovery to performance",
+      "body": "FETC's own 4-stage program, designed on the training and management methods of Olympic-level athletes. Through Pre-Activation → Dynamic Preparation → Strength Integration → Performance, we wake up the body, prepare movement, integrate strength, and extend it into athletic performance.",
+      "alt": "Flowtics Method 4-stage program"
+    },
+    "item4": {
+      "title": "From pain rehab to peak performance —<br></br>season-based periodized management",
+      "body": "We don't stop at simple pain relief or short-term strengthening. Through a periodized program spanning injury recovery, return to daily function, and sports performance, we create systematic change tailored to each phase — recovery, pre-season, in-season, and post-season.",
+      "alt": "Season-based periodized management"
+    }
+  },
+  "FAQ": {
+    "q1": {
+      "q": "What kind of place is FE Training Center?",
+      "a": "FE Training Center (FETC) is a rehabilitation and performance training center trusted by national and professional athletes. FEARA-certified PCC coaches apply our in-house Flowtics Method to deliver a 4-stage personalized program that restores movement quality and physical function — not just exercise. We operate four branches — Gangnam, Songpa, Gongneung, and Cheonan — led directly by coaches who are former national-team trainers across various sports (including the 2018 PyeongChang Winter Olympics snowboarding team and the modern pentathlon national team) and former physical therapists."
+    },
+    "q2": {
+      "q": "Can non-athletes use FETC too?",
+      "a": "Absolutely. Many FETC members are non-athletes who visit for everyday pain rehab, posture correction, post-surgery recovery, body composition, and building fitness for hobby sports like golf and running. On your first visit, an FEA-based precision assessment analyzes your current physical state and movement patterns; we then design a personalized program applying the same scientific methodology we use with athletes, adapted to your lifestyle and goals. We adjust intensity and exercise type step by step so that those with no exercise experience, those recovering from injury, and those with chronic pain can start safely."
+    },
+    "q3": {
+      "q": "How is this different from regular gym PT?",
+      "a": "While typical PT focuses primarily on strength and body-shape change, FETC follows a systematic process of 'evidence-based assessment → functional recovery → performance integration.' Every session starts from an FEA assessment to identify movement limitations, and we run periodization programs by goal — recovery, base fitness, in-season performance, and more. Because all coaches hold FEARA-certified PCC credentials, you get the same assessment standards and coaching quality at any branch, with integrated management of pain, rehab, and performance rather than simple exercise prescription. As a result, you experience long-term improvement in movement ability rather than short-term muscle soreness."
+    },
+    "q4": {
+      "q": "What happens on the first visit?",
+      "a": "Every member's training begins after a consultation, which includes FETC's own movement-function assessment and a 1:1 interview with a coach.\nWe design a program based on your training purpose and goals. The consultation takes about 50 minutes.\nAfterward, we walk you through your training program, number of sessions, and schedule.\n\nTo ensure a smooth consultation, visits are by advance reservation."
+    },
+    "q5": {
+      "q": "How many sessions is a rehab program?",
+      "a": "The number of sessions varies with the severity of the injury, whether surgery was involved, and the recovery stage — ranging from around 8 sessions to multi-month long-term programs.\nEvery program follows a 4-stage process: ① precise assessment and root-cause analysis → ② mobility and sensory recovery → ③ functional integration → ④ return to daily function and performance, advancing to the next stage only after an assessment confirms the current one is complete.\n\nAt your first consultation, we give you a concrete plan for the sessions and schedule you need based on the assessment, and the program flexibly adjusts to your recovery pace along the way."
+    },
+    "q6": {
+      "q": "Where is the Gangnam branch, and is parking available?",
+      "a": "The Gangnam branch is on the 4th floor of Haneun Building, 6 Dogok-ro 7-gil, Gangnam-gu, Seoul, behind Bodyfriend Yeoksam Tower.\nIt's about a 5-minute walk from Bangbang Intersection, and about a 15-minute walk from Exit 4 of Gangnam Station (Shinbundang Line / Line 2).\nParking is available but space can be limited, so we recommend public transit when possible."
+    },
+    "q7": {
+      "q": "What are the operating hours?",
+      "a": "FETC Gangnam is open weekdays (Mon–Fri) 7 AM to 10 PM, and Saturdays 7 AM to 3 PM. We are closed on Sundays and public holidays, and all sessions are by advance reservation. Since the first visit takes about 50 minutes including assessment and consultation, please book in advance via Naver reservation or 010-3375-9911 (phone / KakaoTalk channel). A light workout and assessment may take place during the consultation, so bringing workout clothes will help the session go more smoothly."
+    }
+  },
+  "Coach": {
+    "subtitle": "Former physical therapists and national-team trainers —<br></br>1:1 training by our FEARA-certified PCC coaching team",
+    "backToList": "← Back to list"
+  },
+  "Facility": {
+    "subtitle": "A dedicated space for FEA-system precision assessment and 1:1 training",
+    "back": "Back",
+    "backToListAria": "Back to equipment list",
+    "listNav": "Equipment list",
+    "prevPhoto": "Previous photo",
+    "nextPhoto": "Next photo",
+    "equipNav": "Equipment navigation",
+    "prev": "← Prev",
+    "next": "Next →",
+    "backToList": "Back to list",
+    "viewDetail": "View {name} details",
+    "prevEquip": "Previous equipment: {name}",
+    "nextEquip": "Next equipment: {name}",
+    "noPrev": "No previous equipment",
+    "noNext": "No next equipment",
+    "detailAlt": "{name} detail"
+  },
+  "Carousel": {
+    "title": "FE Training Center — Interior",
+    "altPrefix": "FE Training Center",
+    "selectPhoto": "Select center photo",
+    "goTo": "Go to {caption}",
+    "photo1": "Panoramic view",
+    "photo2": "Consultation area",
+    "photo3": "Cardio zone",
+    "photo4": "Care zone",
+    "photo5": "Weight zone",
+    "photo6": "Training zone"
+  },
+  "ProgramPerformance": {
+    "intro1": "We provide personalized performance programs<br></br>tailored to the demands of each sport — baseball, soccer, golf, snowboard, ski, and more.",
+    "intro2": "Drawing on experience training national and elite athletes across many sports — from the PyeongChang Winter Olympics snowboarding team and the national freestyle ski reserve to figure skating, volleyball, soccer, and golf — we design periodization programs that comprehensively account for each athlete's seasonal condition, competition schedule, and injury history.",
+    "flowtics1": "The Flowtics Method is a 4-stage program built on the actual training and management methods of Olympic-level athletes.",
+    "flowtics2": "Following the training cycle, it wakes the body, prepares movement, and helps you find the movement that fits you while building strength and balance. It's designed to systematically manage an athlete's journey from recovery to peak performance.",
+    "rec1Title": "Pro and semi-pro athletes who need customized training that accounts for pre-, in-, and post-season conditioning and the demands of their sport",
+    "rec1Caption": "Baseball · soccer · golf · tennis · snowboard · ski, and more",
+    "rec2": "Athletes who want to raise measurable performance metrics — race times, driving distance, pitch speed, jump height —<br></br>or who, after a season or more out due to surgery or pain, are preparing a safe return without re-injury",
+    "rec3": "Serious amateur athletes with clear goals —<br></br>a single-digit golf handicap, a full marathon, amateur tennis tournaments, combat sports like boxing and jiu-jitsu, bodybuilding, and more",
+    "rec4": "Youth and adolescent student-athletes preparing for elite sports high schools, pro (semi-pro) teams, or going pro,<br></br>and teams, clubs, and groups that need a standardized conditioning system",
+    "card1": "A stage that wakes the body and nervous system through massage and stretching, reviving the sense you need to begin moving.",
+    "card2": "Explores movement possibilities through varied constraint-based movement, rhythm, and balance training, switching into performance mode.",
+    "card3": "A stage that integrates built-up strength into movement, connecting it to functional performance.",
+    "card4": "Extends the prepared body and movement into athletic performance and daily vitality. Every part of the training carries over into real performance."
+  },
+  "ProgramTraining": {
+    "intro1": "Functional Training is more than simple strength work —<br></br>it comprehensively restores your movement patterns, joint mobility, and neuromuscular coordination.",
+    "intro2": "After identifying your movement limitations with FETC's own FEA assessment,<br></br>we progressively strengthen the functions you need — from daily life to sports performance — through the 4 stages of the Flowtics Method.",
+    "rec1": "Those who've been through several gyms and PT but whose posture has broken down or who have recurring pain in the same area,<br></br>and want to objectively understand their body through accurate assessment and restart training",
+    "rec2": "Office workers who've developed forward head, rounded shoulders, pelvic asymmetry, or straight neck from long hours of sitting,<br></br>and want to correct their posture and build base fitness at the same time",
+    "rec3": "New mothers who need core and pelvic recovery after childbirth,<br></br>or those who want to manage declining strength, balance, and fitness after menopause",
+    "rec4": "Beginners with little exercise experience or a history of injury who want to start step by step at a manageable intensity,<br></br>and those who need base fitness for hobby sports like golf and running",
+    "card1Title": "Evidence-based assessment",
+    "card1Body": "All training begins with accurate assessment. Through FEARA's FEA system, we scientifically analyze movement and function and design a tailored roadmap for your current state.",
+    "card2Title": "Function-focused training",
+    "card2Body": "Rather than simple strength gains, we focus on improving movement quality and restoring the body's functional connections. The Flowtics Method addresses performance and recovery together.",
+    "card3Title": "A periodized growth journey",
+    "card3Body": "Training is a process, not repetition. Through distinct periodization programs, we drive systematic change from recovery to in-season performance.",
+    "card4Title": "A standardized coaching network",
+    "card4Body": "Led by FEARA-certified PCC coaches, FE Training delivers the same assessment standards and coaching quality everywhere. A trustworthy system is what builds real skill."
+  },
+  "ProgramRehab": {
+    "intro": "Exercise rehabilitation doesn't end with mere rest or a temporary fix after surgery or pain —<br></br>it's exercise designed to progressively restore your body's function and movement so you can safely return to daily life and sports.<br></br>FE Training Center covers post-orthopedic-surgery rehab, non-surgical rehab for chronic and joint pain,<br></br>and corrective rehab for posture-related pain, systematically managing everything from pain relief to a full return to daily life<br></br>through our own precise FEA assessment and the 4-stage Flowtics Method.",
+    "track1Badge": "Post-surgery rehab",
+    "track1Body": "A program for stage-by-stage mobility recovery and functional integration after surgery — rotator cuff, ACL, meniscus, Achilles tendon, and more",
+    "track2Badge": "Chronic joint & pain rehab",
+    "track2Body": "A program that assesses the cause of recurring pain in the shoulders, back, knees, ankles and more, and safely restores you to everyday movement",
+    "track3Badge": "Posture correction & non-surgical rehab",
+    "track3Body": "Resolves posture-related pain — forward head, rounded shoulders, pelvic asymmetry and more — by correcting movement patterns",
+    "rec1": "Those who need stage-by-stage mobility recovery and a return to daily life and sports after orthopedic surgery —<br></br>rotator cuff, ACL, meniscus, Achilles tendon, hip, and more",
+    "rec2": "Those with chronic shoulder, back, knee, ankle, or hip pain lasting six months or more,<br></br>or who — diagnosed with a herniated disc, spinal stenosis, frozen shoulder, rotator cuff impingement, golfer's/tennis elbow, and the like —<br></br>choose exercise rehab instead of surgery",
+    "rec3": "Those who've had physical or manual therapy for posture-related pain — forward head, rounded shoulders, pelvic asymmetry, scoliosis —<br></br>but keep hurting in the same area, or whose pain returns when they resume exercise",
+    "rec4": "Beginners with little exercise experience or a history of injury who want to start step by step at a manageable intensity,<br></br>and those who need base fitness for hobby sports like golf and running",
+    "card1Title": "Precise assessment & root-cause analysis",
+    "card1Body": "Based on a precise assessment, we analyze the cause of pain and movement limitations in daily life. It's the first step of a safe rehab roadmap tailored to your body.",
+    "card2Title": "Mobility & sensory recovery",
+    "card2Body": "Building on stabilizing the painful area, we restore a normal range of joint motion. We focus on safely restoring correct posture and movement sense by waking up stiff muscles and the nervous system.",
+    "card3Title": "Functional integration",
+    "card3Body": "Within the restored range of motion, we apply the Flowtics Method to strengthen base fitness and core coordination. By teaching the body correct movement patterns, we build functional stability for daily life.",
+    "card4Title": "Return to daily function & performance",
+    "card4Body": "Under FEARA-certified PCC coaches, you train the varied movements required in daily life and at work. You complete a full return to a vibrant life, free from fear of pain."
+  },
+  "Contact": {
+    "subtitle": "Partnership inquiries for institutions, groups & companies | FE Training Center Gangnam",
+    "channelTitle": "Business Inquiry Channels",
+    "channelSubtitle": "A page dedicated to institutional inquiries — partnerships, collaborations, media, and recruiting.",
+    "channelRedirect": "For member bookings and consultations, please use the <link>RESERVATION</link> page.",
+    "emailNote": "Preferred channel for partnership, collaboration, media, and recruiting inquiries",
+    "phoneNote": "Weekdays 10:00 - 22:00 · Sat 10:00 - 16:00",
+    "processTitle": "Partnership Inquiries",
+    "step1Title": "Institution & group partnerships",
+    "step1Body": "Propose assessment, training, and rehab partnership programs for teams, clubs, associations, and schools.",
+    "step2Title": "Corporate wellness & in-house training",
+    "step2Body": "We design custom in-house programs for employee posture correction, fitness, and injury prevention.",
+    "step3Title": "Media & press inquiries",
+    "step3Body": "We welcome media inquiries such as interviews, coverage, and material requests, arranging schedules after prior discussion.",
+    "step4Title": "Coach recruiting & guest instructors",
+    "step4Body": "We accept requests for FEARA-certified PCC coach recruiting and for guest lectures and workshops.",
+    "step5Title": "Education partnerships & lecture requests",
+    "step5Body": "We accept requests for trainer education, seminars, and collaborative lectures with academic societies and academies.",
+    "responseBody": "We reply <b>within 2-3 business days</b>.<br></br>For urgent matters, we recommend calling.",
+    "meetingBody": "After an initial consultation, we arrange a meeting.<br></br>Meetings are held online or in person at the Gangnam branch."
+  },
+  "Reservation": {
+    "subtitle": "A first visit that begins with FETC's own assessment and personalized consultation | FE Training Center Gangnam",
+    "phoneLabel": "Phone consultation",
+    "hoursLabel": "Consultation hours",
+    "weekdays": "Weekdays",
+    "saturday": "Saturday",
+    "naverEyebrow": "Book at FE Training Center Gangnam",
+    "naverTitle": "Naver Booking",
+    "naverCta": "Go to Naver Booking",
+    "naverNote": "A staff member will confirm and contact you to finalize your booking.",
+    "kakaoEyebrow": "Contact FE Training Center Gangnam",
+    "kakaoTitle": "KakaoTalk Channel",
+    "kakaoCta": "Go to KakaoTalk Chat",
+    "kakaoNote": "A staff member will review and respond in order.",
+    "processTitle": "Booking Inquiry",
+    "step1Title": "Book a consultation",
+    "step1Body": "Request a consultation via Naver booking, phone or text (010-3375-9911), or the KakaoTalk channel. The consultation takes about 50 minutes.",
+    "step2Title": "Precise assessment via FEA",
+    "step2Body": "Using FETC's own FEA system, we precisely measure movement patterns, joint mobility, and posture, and when needed use international-grade equipment like VALD to objectively identify the root cause of pain and injury.",
+    "step3Title": "Personalized program design",
+    "step3Body": "Based on your assessment results and following FETC's own 4-stage process, we design a program tailored to your goals (performance, rehab, functional training), season, and schedule.",
+    "step4Title": "1:1 training",
+    "step4Body": "Our FEARA-certified PCC coaching team guides you 1:1 based on your physical condition. It proceeds safely with periodization programs matched to each phase — recovery, base fitness, in-season performance, and more.",
+    "step5Title": "Sessions & progress tracking",
+    "step5Body": "You coordinate your training schedule with your coach, and through periodic reassessment, track your body's changes and performance metrics as objective numbers. Data-driven progress management builds consistent growth."
+  },
+  "News": {
+    "subtitle": "News & events at FETC Gangnam"
+  },
+  "Metadata": {
+    "siteName": "FE Training Center Gangnam",
+    "defaultTitle": "FE Training Center Gangnam",
+    "titleTemplate": "%s | FE Training Center Gangnam",
+    "defaultDescription": "Chosen by national athletes, FE Training Center Gangnam systematically provides post-surgery rehab PT, sports rehabilitation, and performance training.",
+    "aboutFETCDesc": "FE Training Center Gangnam — a space that improves performance through systematic, assessment-based training. A coaching team of former national-team trainers, FEARA-certified PCC, and the Flowtics Method.",
+    "coachDesc": "FE Training Center Gangnam coaching team — former physical therapists and national-team trainers, 1:1 training by a FEARA-certified PCC team.",
+    "facilityDesc": "FE Training Center Gangnam facilities — international-grade training equipment (VALD, KEISER, WINBACK, Speediance, Reaction Light, MATRIX S-DRIVE) and dedicated space.",
+    "locationDesc": "FE Training Center Gangnam location — 6 Dogok-ro 7-gil, Gangnam-gu, Seoul, 4F. About a 15-minute walk from Gangnam Station Exit 4.",
+    "performanceTitle": "Performance Training",
+    "performanceDesc": "A 4-stage Flowtics Method program built on Olympic-level athlete training. Strategic training for peak performance.",
+    "trainingTitle": "Functional Training",
+    "trainingDesc": "FETC Gangnam functional training — identify movement limitations with FEA assessment and progressively strengthen function through the 4-stage Flowtics Method.",
+    "rehabTitle": "Rehabilitation Program",
+    "rehabDesc": "FETC Gangnam rehabilitation program — post-surgery, chronic pain, and posture correction. Systematic management back to daily life with FEA assessment and the 4-stage Flowtics Method.",
+    "contactDesc": "FE Training Center Gangnam partnership inquiries for institutions, groups, and companies — a page dedicated to collaboration, partnerships, media, recruiting, and education.",
+    "reservationDesc": "FE Training Center Gangnam consultation & booking. Apply by phone, Naver booking, or KakaoTalk, and start FEA-assessment-based personalized training.",
+    "newsDesc": "News from FE Training Center Gangnam",
+    "coachTitleSuffix": " Coach"
+  },
+  "A11y": {
+    "switchLanguage": "Switch language (current: {label})",
+    "coachDetail": "View {name}'s profile",
+    "heroAlt": "FE Training Center Gangnam",
+    "mobileMenu": "Mobile menu",
+    "toggleMenu": "{label} menu, {state}",
+    "expand": "expand",
+    "collapse": "collapse",
+    "kakaoInquiry": "KakaoTalk inquiry",
+    "naverBooking": "Naver booking",
+    "consultBooking": "Book a consultation",
+    "prev": "Previous",
+    "next": "Next",
+    "newsLoading": "Loading FETC NEWS",
+    "equipmentAlt": "{name} - equipment at FETC Gangnam",
+    "videoAlt": "{title} - FETC video",
+    "blogAlt": "{title} - FETC blog",
+    "locationAlt": "Center location"
+  }
+}

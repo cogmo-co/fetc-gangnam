@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useState, useEffect, useCallback } from "react";
+import { useTranslations } from "next-intl";
 import styles from "./SlidesNav.module.css";
 
 interface SlidesNavProps {
@@ -9,6 +10,7 @@ interface SlidesNavProps {
 }
 
 export default function SlidesNav({ children, bgColor = "#1c1c1c" }: SlidesNavProps) {
+  const t = useTranslations("A11y");
   const rowRef = useRef<HTMLDivElement>(null);
   const [canLeft, setCanLeft] = useState(false);
   const [canRight, setCanRight] = useState(true);
@@ -54,7 +56,7 @@ export default function SlidesNav({ children, bgColor = "#1c1c1c" }: SlidesNavPr
           className={`${styles.navZone} ${styles.navLeft}`}
           style={{ background: `linear-gradient(to right, ${bgColor} 0%, transparent 100%)` }}
           onClick={() => scroll(-1)}
-          aria-label="이전"
+          aria-label={t("prev")}
         >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
         </button>
@@ -67,7 +69,7 @@ export default function SlidesNav({ children, bgColor = "#1c1c1c" }: SlidesNavPr
           className={`${styles.navZone} ${styles.navRight}`}
           style={{ background: `linear-gradient(to left, ${bgColor} 0%, transparent 100%)` }}
           onClick={() => scroll(1)}
-          aria-label="다음"
+          aria-label={t("next")}
         >
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
         </button>

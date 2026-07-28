@@ -1,42 +1,19 @@
-import Link from "next/link";
+import { Link } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 import SubHero from "@/components/SubHero/SubHero";
 import { PHONE } from "@/lib/constants";
 import styles from "./ContactView.module.css";
 
-const STEPS = [
-  {
-    num: "01",
-    title: "기관 ∙ 단체 협력",
-    body: "선수단 ∙ 구단 ∙ 협회 ∙ 학교의 평가, 트레이닝 및 재활 협력 프로그램 운영을 제안하실 수 있습니다.",
-  },
-  {
-    num: "02",
-    title: "기업 복지 ∙ 사내 트레이닝",
-    body: "임직원 자세교정, 체력 증진, 부상 예방을 위한 맞춤형 사내 프로그램을 설계해드립니다.",
-  },
-  {
-    num: "03",
-    title: "미디어 ∙ 언론 문의",
-    body: "인터뷰, 취재, 자료 요청 등 미디어 관련 문의를 받습니다. 사전 협의 후 일정을 조율합니다.",
-  },
-  {
-    num: "04",
-    title: "코치 채용 ∙ 강사 초빙",
-    body: "FEARA 인증 PCC 코치 채용 및 외부강의, 워크숍 초빙 의뢰를 받습니다.",
-  },
-  {
-    num: "05",
-    title: "교육 협력 ∙ 강의 의뢰",
-    body: "트레이너 교육, 세미나, 학회 ∙ 아카데미 협력 강의 의뢰를 받습니다.",
-  },
-];
+const STEPS = [{ num: "01" }, { num: "02" }, { num: "03" }, { num: "04" }, { num: "05" }];
 
 export default function ContactView() {
+  const t = useTranslations("Contact");
+  const c = useTranslations("Common");
   return (
     <>
       <SubHero
         title="CONTACT"
-        subtitle="기관 ∙ 단체 ∙ 기업의 협업 문의 | FE트레이닝센터 강남점"
+        subtitle={t("subtitle")}
         image="/images/contact/hero.jpg"
         half
       />
@@ -44,29 +21,31 @@ export default function ContactView() {
       {/* 비즈니스 문의 채널 */}
       <section className={styles.channelSection}>
         <header className={styles.channelHeader}>
-          <h2 className={`${styles.channelTitle} sr`}>비즈니스 문의 채널</h2>
+          <h2 className={`${styles.channelTitle} sr`}>{t("channelTitle")}</h2>
           <p className={`${styles.channelSubtitle} sr sr-d1`}>
-            협업 ∙ 제휴 ∙ 미디어 ∙ 채용 등 기관 문의 전용 페이지입니다.
+            {t("channelSubtitle")}
           </p>
           <p className={`${styles.channelRedirect} sr sr-d1`}>
-            회원 예약·상담은{" "}
-            <Link href="/reservation" className={styles.channelRedirectLink}>
-              RESERVATION
-              <svg
-                width="12"
-                height="12"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2.5"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                aria-hidden="true"
-              >
-                <path d="M7 17L17 7M17 7H7M17 7V17" />
-              </svg>
-            </Link>{" "}
-            페이지를 이용해 주세요.
+            {t.rich("channelRedirect", {
+              link: (chunks) => (
+                <Link href="/reservation" className={styles.channelRedirectLink}>
+                  {chunks}
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    aria-hidden="true"
+                  >
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </Link>
+              ),
+            })}
           </p>
         </header>
         <div className={styles.channelGrid}>
@@ -96,7 +75,7 @@ export default function ContactView() {
                 official@feara.co.kr
               </a>
               <p className={styles.channelNote}>
-                협업∙제휴∙미디어∙채용 전용 문의 권장채널
+                {t("emailNote")}
               </p>
             </div>
           </div>
@@ -122,7 +101,7 @@ export default function ContactView() {
                 {PHONE.replace(/-/g, " - ")}
               </a>
               <p className={styles.channelNote}>
-                평일 10:00 - 22:00 ∙ 토 10:00 - 16:00
+                {t("phoneNote")}
               </p>
             </div>
           </div>
@@ -134,9 +113,9 @@ export default function ContactView() {
         <div className={styles.processInner}>
           <header className={styles.processHeader}>
             <div className={`${styles.processEyebrow} sr`}>
-              FE트레이닝센터 강남점
+              {c("brandFull")}
             </div>
-            <h2 className={`${styles.processTitle} sr sr-d1`}>협업 문의</h2>
+            <h2 className={`${styles.processTitle} sr sr-d1`}>{t("processTitle")}</h2>
           </header>
           <div className={styles.steps}>
             {STEPS.map((step, i) => (
@@ -146,8 +125,8 @@ export default function ContactView() {
               >
                 <div className={styles.stepNum}>{step.num}</div>
                 <div className={styles.stepContent}>
-                  <h3 className={styles.stepTitle}>{step.title}</h3>
-                  <p className={styles.stepBody}>{step.body}</p>
+                  <h3 className={styles.stepTitle}>{t(`step${i + 1}Title`)}</h3>
+                  <p className={styles.stepBody}>{t(`step${i + 1}Body`)}</p>
                 </div>
               </div>
             ))}
@@ -162,17 +141,16 @@ export default function ContactView() {
             <div className={`${styles.infoCard} sr`}>
               <h3 className={styles.infoEyebrow}>RESPONSE</h3>
               <p className={styles.infoBody}>
-                영업일 기준 <strong>2-3일 이내</strong> 회신드립니다.
-                <br />
-                긴급한 사안은 전화 문의를 권장드립니다.
+                {t.rich("responseBody", {
+                  b: (chunks) => <strong>{chunks}</strong>,
+                  br: () => <br />,
+                })}
               </p>
             </div>
             <div className={`${styles.infoCard} sr sr-d1`}>
               <h3 className={styles.infoEyebrow}>MEETING</h3>
               <p className={styles.infoBody}>
-                1차 상담 후, 미팅일정을 조율합니다.
-                <br />
-                온라인미팅 또는 강남점 방문 미팅으로 진행됩니다.
+                {t.rich("meetingBody", { br: () => <br /> })}
               </p>
             </div>
           </div>

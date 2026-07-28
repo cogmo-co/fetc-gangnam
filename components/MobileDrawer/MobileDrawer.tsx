@@ -1,8 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { Link, usePathname } from "@/i18n/navigation";
+import { useTranslations } from "next-intl";
 import styles from "./MobileDrawer.module.css";
 
 interface Props {
@@ -46,6 +46,7 @@ function isGroup(item: MenuItem): item is MenuGroup {
 }
 
 export default function MobileDrawer({ open, onClose }: Props) {
+  const t = useTranslations("A11y");
   const pathname = usePathname();
   // 다중 펼침 허용 — 1depth 그룹별 독립 토글
   const [expanded, setExpanded] = useState<Set<string>>(new Set());
@@ -110,7 +111,7 @@ export default function MobileDrawer({ open, onClose }: Props) {
       />
       <aside
         className={`${styles.drawer} ${open ? styles.drawerOpen : ""}`}
-        aria-label="모바일 메뉴"
+        aria-label={t("mobileMenu")}
         aria-hidden={!open}
       >
         <nav className={styles.nav}>
@@ -131,7 +132,7 @@ export default function MobileDrawer({ open, onClose }: Props) {
                       type="button"
                       className={styles.toggleBtn}
                       onClick={() => toggleGroup(item.label)}
-                      aria-label={`${item.label} 메뉴 ${isExpanded ? "접기" : "펼치기"}`}
+                      aria-label={t("toggleMenu", { label: item.label, state: isExpanded ? t("collapse") : t("expand") })}
                       aria-expanded={isExpanded}
                     >
                       <svg

@@ -1,34 +1,34 @@
+import { useTranslations } from "next-intl";
 import styles from "./TeamCoachingSystem.module.css";
 
 const CARDS = [
-  { title: "SESSION RECORD", desc: "세션별 평가·운동 기록" },
-  { title: "TEAM REVIEW", desc: "FE 코치팀 공동 검토" },
-  { title: "NEXT PLAN", desc: "다음 운동 프로그램 설계" },
+  { title: "SESSION RECORD" },
+  { title: "TEAM REVIEW" },
+  { title: "NEXT PLAN" },
 ];
 
 export default function TeamCoachingSystem() {
+  const t = useTranslations("TeamCoaching");
   return (
     <section className={styles.section}>
       <div className={styles.inner}>
         <span className={`${styles.badge} sr`}>TEAM COACHING SYSTEM</span>
 
         <p className={`${styles.subtitle} sr`}>
-          수업은 한 명의 코치가,
-          <br />관리는 FETC코치팀이 함께합니다.
+          {t.rich("subtitle", { br: () => <br /> })}
         </p>
 
         <div className={styles.cards}>
           {CARDS.map((card, i) => (
             <div key={card.title} className={`${styles.card} sr sr-d${i + 1}`}>
               <div className={styles.cardTitle}>{card.title}</div>
-              <div className={styles.cardDesc}>{card.desc}</div>
+              <div className={styles.cardDesc}>{t(`card${i + 1}`)}</div>
             </div>
           ))}
         </div>
 
         <p className={`${styles.caption} sr`}>
-          회원님의 목표에 맞춰 담당 코치가 세션을 기록하고,
-          <br /> FE코치팀이 검토한 뒤 다음 방향을 설계합니다.
+          {t.rich("caption", { br: () => <br /> })}
         </p>
       </div>
     </section>

@@ -8,3 +8,6 @@ export const REVALIDATE_INTERVAL = 3600;
 export const PHONE = "010-3375-9911";
 
 export const BASE_URL = "https://fetc.co.kr";
+
+// Google 지도 공유 단축링크 (영구·업체 상세로 열림) — Footer 오시는 길
+export const GOOGLE_MAP_URL = "https://maps.app.goo.gl/QUytV9E7bsvXQrf58";

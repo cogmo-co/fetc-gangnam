@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import type { Coach } from "@/lib/coaches";
+import { useTranslations } from "next-intl";
 import Body from "./Body";
 import styles from "./Modal.module.css";
 
@@ -15,6 +16,7 @@ const FOCUSABLE_SELECTOR =
   'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
 
 export default function Modal({ coach, onClose }: Props) {
+  const t = useTranslations("Common");
   const modalRef = useRef<HTMLDivElement>(null);
   const previousFocusRef = useRef<HTMLElement | null>(null);
 
@@ -74,7 +76,7 @@ export default function Modal({ coach, onClose }: Props) {
         aria-labelledby="coach-modal-title"
         onClick={(e) => e.stopPropagation()}
       >
-        <button className={styles.modalClose} onClick={onClose} aria-label="닫기">
+        <button className={styles.modalClose} onClick={onClose} aria-label={t("close")}>
           ×
         </button>
         <div className={styles.modal}>
@@ -102,7 +104,7 @@ export default function Modal({ coach, onClose }: Props) {
                 rel="noopener noreferrer"
                 className={styles.moreBtn}
               >
-                더보기
+                {t("more")}
                 <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                   <path d="M7 17L17 7M17 7H7M17 7V17" />
                 </svg>
