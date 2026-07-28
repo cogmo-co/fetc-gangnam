@@ -4,6 +4,7 @@ import { getTranslations, setRequestLocale } from "next-intl/server";
 import { useTranslations, useMessages, NextIntlClientProvider } from "next-intl";
 import { pickMessages } from "@/i18n/pick";
 import WhyFETC from "@/components/WhyFETC/WhyFETC";
+import AboutCoaching from "@/components/AboutCoaching/AboutCoaching";
 import FAQSection from "@/components/FAQSection/FAQSection";
 import styles from "./page.module.css";
 
@@ -38,6 +39,8 @@ export default function FETCPage({
       </section>
 
       <WhyFETC />
+
+      <AboutCoaching />
 
       <NextIntlClientProvider messages={pickMessages(messages, ["FAQ"])}>
         <FAQSection />

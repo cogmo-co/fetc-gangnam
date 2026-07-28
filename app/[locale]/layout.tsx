@@ -129,7 +129,7 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   return (
-    <html lang={locale}>
+    <html lang={locale} data-scroll-behavior="smooth">
       <head>
         {/* 외부 이미지 도메인 사전 연결 — viewport 진입 시 DNS/TLS 비용 제거 */}
         <link rel="dns-prefetch" href="https://img.youtube.com" />

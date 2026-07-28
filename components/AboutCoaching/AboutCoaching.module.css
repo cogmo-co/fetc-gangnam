@@ -1,0 +1,431 @@
+.section {
+  position: relative;
+  width: 100%;
+  padding: 6rem 5%;
+  background: #101010;
+  overflow: hidden;
+  isolation: isolate;
+  /* 홈에서 #team-coaching 앵커 이동 시 상단 고정바 여백 */
+  scroll-margin-top: 80px;
+}
+/* 그레인 텍스처 (홈 TeamCoaching / FlowticsMethod와 동일 톤) */
+.section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='200'%20height='200'%3E%3Cfilter%20id='n'%3E%3CfeTurbulence%20type='fractalNoise'%20baseFrequency='0.7'%20numOctaves='3'%20stitchTiles='stitch'/%3E%3C/filter%3E%3Crect%20width='200'%20height='200'%20filter='url(%23n)'%20opacity='0.5'/%3E%3C/svg%3E");
+  opacity: 0.35;
+  pointer-events: none;
+  z-index: 1;
+}
+.inner {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ======================================================
+   상단 헤딩 + 서브헤딩 + 인트로
+====================================================== */
+.heading {
+  font-family: var(--font-oswald), 'Oswald', sans-serif;
+  font-size: clamp(2.5rem, 5.5vw, 4rem);
+  font-weight: 700;
+  letter-spacing: 2px;
+  line-height: 1.1;
+  text-transform: uppercase;
+  color: #fff;
+  text-align: center;
+  margin: 0 0 3rem;
+}
+.subtitle {
+  font-family: var(--font-pretendard), sans-serif;
+  font-size: clamp(1.35rem, 3vw, 1.9rem);
+  font-weight: 400;
+  line-height: 1.45;
+  letter-spacing: -0.5px;
+  color: #fff;
+  text-align: center;
+  margin: 0 0 2rem;
+}
+.subtitle b {
+  font-weight: 700;
+}
+.intro {
+  font-family: var(--font-pretendard), sans-serif;
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  font-weight: 300;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.72);
+  text-align: center;
+  margin: 0 0 4rem;
+}
+
+/* ======================================================
+   PROCESS 3카드 (개별 글래스 카드) + 흐름 커넥터(→)
+====================================================== */
+.connector {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.4);
+}
+.processGrid {
+  display: flex;
+  gap: 0.8rem;
+  width: 100%;
+}
+.processCard {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2.75rem 1.75rem;
+  /* 홈 TeamCoachingSystem 카드와 동일한 옅은 글래스 배경 + 상단 하이라이트 */
+  background: linear-gradient(
+    160deg,
+    rgba(255, 255, 255, 0.07) 0%,
+    rgba(255, 255, 255, 0.025) 45%,
+    rgba(255, 255, 255, 0.01) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  border-radius: 16px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12), 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+.processStep {
+  font-family: var(--font-oswald), 'Oswald', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 2px;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 1.5rem;
+}
+.processIcon {
+  display: block;
+  width: 56px;
+  height: 56px;
+  margin-bottom: 0.9rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+.processIcon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+/* meeting 아이콘은 가로로 넓은 구도 → 폭만 키워 시각 크기 균형 */
+.iconMeeting {
+  width: 72px;
+}
+.processTitle {
+  font-family: var(--font-oswald), 'Oswald', sans-serif;
+  font-size: clamp(1.3rem, 2.2vw, 1.65rem);
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  color: #fff;
+}
+.processLine {
+  width: 42px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.28);
+  margin: 1.25rem 0;
+}
+.processDesc {
+  font-family: var(--font-pretendard), sans-serif;
+  font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+  font-weight: 300;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.68);
+  margin: 0;
+}
+
+/* ======================================================
+   "어떤 기준으로 관리하나요?" 아코디언 (트리거 우측 정렬)
+====================================================== */
+.disclosure {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin: 1.75rem 0 3.25rem;
+}
+.whyQuestion {
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 0.45rem;
+  background: none;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0 0 0.85rem;
+  cursor: pointer;
+  font-family: var(--font-pretendard), sans-serif;
+  font-size: clamp(1rem, 1.6vw, 1.2rem);
+  color: rgba(255, 255, 255, 0.75);
+  transition: color 0.2s;
+}
+.whyQuestion:hover {
+  color: #fff;
+}
+.whyChevron {
+  transition: transform 0.3s ease;
+}
+.whyQuestionOpen .whyChevron {
+  transform: rotate(180deg);
+}
+/* 펼침 애니메이션: grid-rows 0fr→1fr (auto height 부드럽게) */
+.panelWrap {
+  display: grid;
+  grid-template-rows: 0fr;
+  width: 100%;
+  transition: grid-template-rows 0.35s ease;
+}
+.panelWrapOpen {
+  grid-template-rows: 1fr;
+}
+.panelInner {
+  overflow: hidden;
+  min-height: 0;
+  /* 접힘 시 패널(테두리 포함) 완전 숨김 → 1px sliver 방지. 애니메이션 끝난 뒤 숨김 */
+  visibility: hidden;
+  transition: visibility 0.35s ease;
+}
+.panelWrapOpen .panelInner {
+  visibility: visible;
+}
+.tmPanel {
+  margin-top: 1.5rem;
+  padding: 0 0 1.5rem 1.5rem;
+  /* 박스 제거 → 콘텐츠를 상(트리거 border) · 하 divider 사이에 배치 (좌측 여백만 들여쓰기) */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+.tmLabel {
+  font-family: var(--font-oswald), 'Oswald', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 0.5rem;
+}
+.tmTitle {
+  font-family: var(--font-oswald), 'Oswald', sans-serif;
+  font-size: clamp(1.05rem, 1.7vw, 1.25rem);
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #fff;
+  margin-bottom: 1.5rem;
+}
+.tmFlow {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem 0.6rem;
+  width: fit-content;
+  max-width: 100%;
+  margin-bottom: 1rem;
+  padding: 0.6rem 1.2rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 999px;
+}
+/* 화살표+단계를 한 덩어리로 (단계명 중간 줄바꿈·화살표 분리 방지) */
+.tmStageWrap {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+}
+.tmStage {
+  font-family: var(--font-oswald), 'Oswald', sans-serif;
+  font-size: clamp(0.95rem, 1.5vw, 1.15rem);
+  font-weight: 700;
+  color: #fff;
+}
+.tmArrow {
+  color: rgba(255, 255, 255, 0.45);
+  margin-right: 0.6rem;
+}
+.tmNote {
+  font-family: var(--font-pretendard), sans-serif;
+  font-size: clamp(0.95rem, 1.4vw, 1.1rem);
+  font-weight: 300;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  word-break: keep-all;
+}
+
+/* ======================================================
+   WHY TEAM COACHING? 블록
+====================================================== */
+.whyBlock {
+  display: flex;
+  gap: 2.5rem;
+  width: fit-content;
+  max-width: 100%;
+  margin: 0 auto;
+  align-items: center;
+}
+.whyLabel {
+  position: relative;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  padding: 2rem 2.75rem;
+}
+/* 말풍선 셰이프 (아웃라인 + 우측 꼬리) — 텍스트 뒤 레이어 */
+.whyBubble {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  z-index: 0;
+  color: rgba(255, 255, 255, 0.18);
+  filter: drop-shadow(0 8px 24px rgba(0, 0, 0, 0.25));
+}
+.whyLabelLine {
+  position: relative;
+  z-index: 1;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  font-family: var(--font-oswald), 'Oswald', sans-serif;
+  font-size: clamp(1.8rem, 3.2vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: 1px;
+  line-height: 1.05;
+  color: rgba(255, 255, 255, 0.9);
+}
+.whyList {
+  flex: 0 1 auto;
+  list-style: none;
+  margin: 0;
+  padding: 0.25rem 0 0.25rem 1.75rem;
+  border-left: 2px solid rgba(255, 255, 255, 0.22);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+.whyItem {
+  display: grid;
+  grid-template-columns: 220px auto;
+  align-items: baseline;
+  gap: 1.5rem;
+}
+.whyTitle {
+  font-family: var(--font-oswald), 'Oswald', sans-serif;
+  font-size: clamp(1.15rem, 1.9vw, 1.4rem);
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  color: #fff;
+}
+.whyDesc {
+  font-family: var(--font-pretendard), sans-serif;
+  font-size: clamp(1rem, 1.5vw, 1.15rem);
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.72);
+}
+
+/* ======================================================
+   하단 캡션
+====================================================== */
+.caption {
+  font-family: var(--font-pretendard), sans-serif;
+  font-size: clamp(1.35rem, 3vw, 1.9rem);
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  margin: 4.5rem 0 0;
+}
+.caption b {
+  font-weight: 700;
+  color: #fff;
+}
+
+/* ======================================================
+   모바일
+====================================================== */
+@media (max-width: 640px) {
+  .section {
+    padding: 4.5rem 5%;
+  }
+  .heading {
+    margin-bottom: 2.25rem;
+  }
+  .intro {
+    margin-bottom: 2.75rem;
+  }
+  .processGrid {
+    flex-direction: column;
+    gap: 0.85rem;
+  }
+  .processCard {
+    padding: 2rem 1.5rem;
+  }
+  .connector {
+    justify-content: center;
+    transform: rotate(90deg);
+  }
+  .processStep {
+    margin-bottom: 1rem;
+  }
+  .whyBlock {
+    width: 100%;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .whyBubble {
+    display: none;
+  }
+  .whyLabel {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 1.25rem;
+  }
+  /* TEAM METHOD 패널: 모바일 폰트 상향 (clamp min이 작아 보이는 문제) */
+  .tmTitle {
+    font-size: 1.2rem;
+  }
+  .tmStage {
+    font-size: 1.05rem;
+  }
+  .tmNote {
+    font-size: 1rem;
+    white-space: pre-line;
+  }
+  /* TEAM METHOD 흐름: 가로 줄바꿈(→ 시작) 대신 세로 스택 */
+  .tmFlow {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.45rem;
+    /* 세로 스택에선 pill(999px)이 타원 → 라운드 사각 박스로 */
+    border-radius: 16px;
+    padding: 0.9rem 1.3rem;
+  }
+  .tmArrow {
+    display: inline-block;
+    transform: rotate(90deg);
+    margin-right: 0.5rem;
+  }
+  .whyLabel {
+    min-width: 0;
+    width: 100%;
+  }
+  .whyList {
+    width: 100%;
+    padding-left: 1.25rem;
+  }
+  .whyItem {
+    grid-template-columns: 1fr;
+    gap: 0.35rem;
+  }
+  .caption {
+    margin-top: 3rem;
+    line-height: 1.6;
+  }
+}

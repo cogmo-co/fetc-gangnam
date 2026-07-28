@@ -45,7 +45,8 @@
     "card1": "Assessment & training records per session",
     "card2": "Joint review by the FE coaching team",
     "card3": "Designing the next training program",
-    "caption": "Your coach records each session around your goals,<br></br>and the FE coaching team reviews it before designing your next direction."
+    "caption": "Your coach records each session around your goals,<br></br>and the FE coaching team reviews it before designing your next direction.",
+    "detailLink": "Learn more"
   },
   "Equipment": {
     "caption": "From precise assessment to pneumatic-resistance training and radiofrequency recovery — experience the six systems used by the world's top sports teams (NBA, EPL, PSG and more) at FETC Gangnam."
@@ -104,6 +105,19 @@
       "body": "We don't stop at simple pain relief or short-term strengthening. Through a periodized program spanning injury recovery, return to daily function, and sports performance, we create systematic change tailored to each phase — recovery, pre-season, in-season, and post-season.",
       "alt": "Season-based periodized management"
     }
+  },
+  "AboutCoaching": {
+    "subtitle": "Not one coach, but<br></br><b>the entire FETC team manages you.</b>",
+    "intro": "The FE coaching team reviews your plan every week.<br></br>We analyze your current state by combining assessments and session records,<br></br>and refine your training plan to reflect your changes.",
+    "process1": "Your coach records assessment results, training details,<br></br>and condition, along with any changes<br></br>that appear during the session.",
+    "process2": "The FETC coaching team combines your assessments<br></br>and session records to review<br></br>your current state and progress.",
+    "process3": "Based on the review, we design<br></br>the next step and training direction<br></br>best suited to each member.",
+    "whyQuestion": "How do we decide your care?",
+    "teamMethodNote": "The same team management standard applies to every stage of the Flowtics Method.",
+    "why1": "Goes beyond one person's experience.",
+    "why2": "Connects every session into one continuous process.",
+    "why3": "Adapts the plan to each individual's changes.",
+    "caption": "Your next step, <b>charted together by our team.</b>"
   },
   "FAQ": {
     "q1": {
