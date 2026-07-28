@@ -1,4 +1,4 @@
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import SubHero from "@/components/SubHero/SubHero";
 import NewsGrid from "@/components/NewsGrid/NewsGrid";
 import { supabase } from "@/lib/supabase";
@@ -10,7 +10,13 @@ export const revalidate = 3600;
 
 const LIMIT = NEWS_PAGE_SIZE;
 
-export default async function NewsPage() {
+export default async function NewsPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  setRequestLocale(locale);
   const t = await getTranslations("News");
   const { data } = await supabase
     .from("posts")

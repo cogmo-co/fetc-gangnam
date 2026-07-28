@@ -1,6 +1,7 @@
+import { use } from "react";
 import type { Metadata } from "next";
 import Image from "next/image";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { useTranslations } from "next-intl";
 import CardGrid from "@/components/CardGrid/CardGrid";
 import RecommendedFor, { RecommendedItem } from "@/components/RecommendedFor/RecommendedFor";
@@ -22,7 +23,13 @@ const TRACK_IMAGES = [
   "/images/program/rehabilitation/non_op_rehab.jpg",
 ];
 
-export default function RehabilitationPage() {
+export default function RehabilitationPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = use(params);
+  setRequestLocale(locale);
   const t = useTranslations("ProgramRehab");
 
   const tracks = [

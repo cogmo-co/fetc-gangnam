@@ -31,7 +31,6 @@ export default function Topbar({ menuOpen, onToggleMenu }: TopbarProps) {
   return (
     <header className={`${styles.topbar} ${alwaysSolid || solid ? styles.solid : ""}`}>
       <div className={styles.left}>
-        <LanguageSwitcher />
         <button
           className={`${styles.hamburger} ${menuOpen ? styles.hamburgerOpen : ""}`}
           aria-label={t("menu")}
@@ -41,6 +40,7 @@ export default function Topbar({ menuOpen, onToggleMenu }: TopbarProps) {
           <span />
           <span />
         </button>
+        <LanguageSwitcher />
       </div>
 
       <Link href="/" className={styles.logo}>

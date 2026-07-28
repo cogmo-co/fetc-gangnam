@@ -1,7 +1,8 @@
 import Image from "next/image";
 import NaverMapClient from "./NaverMapClient";
 import { PHONE } from "@/lib/constants";
-import { useTranslations } from "next-intl";
+import { useTranslations, useMessages, NextIntlClientProvider } from "next-intl";
+import { pickMessages } from "@/i18n/pick";
 import styles from "./LocationInfoSection.module.css";
 
 interface Props {
@@ -14,6 +15,7 @@ interface Props {
 export default function LocationInfoSection({ isMobile, centerTitle, plain }: Props) {
   const t = useTranslations("Location");
   const a = useTranslations("A11y");
+  const messages = useMessages();
   return (
     <section id="location" className={`${styles.section} ${plain ? styles.plain : ""}`}>
       {!plain && (
@@ -30,7 +32,9 @@ export default function LocationInfoSection({ isMobile, centerTitle, plain }: Pr
       <div className={styles.inner}>
         <div className={`${styles.container} ${plain ? "sr sr-d1" : ""}`}>
           {/* 왼쪽: 지도 + 내부 CTA */}
-          <NaverMapClient isMobile={isMobile} />
+          <NextIntlClientProvider messages={pickMessages(messages, ["Location"])}>
+            <NaverMapClient isMobile={isMobile} />
+          </NextIntlClientProvider>
 
           {/* 오른쪽: 정보 카드 */}
           <div className={styles.infoCard}>

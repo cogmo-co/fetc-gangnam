@@ -1,5 +1,6 @@
+import { use } from "react";
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { useTranslations } from "next-intl";
 import CardGrid from "@/components/CardGrid/CardGrid";
 import RecommendedFor, { RecommendedItem } from "@/components/RecommendedFor/RecommendedFor";
@@ -15,7 +16,13 @@ export async function generateMetadata({
   return { title: t("trainingTitle"), description: t("trainingDesc") };
 }
 
-export default function TrainingPage() {
+export default function TrainingPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = use(params);
+  setRequestLocale(locale);
   const t = useTranslations("ProgramTraining");
 
   const recommended: RecommendedItem[] = [

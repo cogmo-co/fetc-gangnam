@@ -1,6 +1,8 @@
+import { use } from "react";
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
-import { useTranslations } from "next-intl";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { useTranslations, useMessages, NextIntlClientProvider } from "next-intl";
+import { pickMessages } from "@/i18n/pick";
 import EquipmentGrid from "@/components/FacilityEquipment/EquipmentGrid";
 import CenterCarousel from "@/components/CenterCarousel/CenterCarousel";
 
@@ -14,12 +16,21 @@ export async function generateMetadata({
   return { title: "FACILITY", description: t("facilityDesc") };
 }
 
-export default function FacilityPage() {
+export default function FacilityPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = use(params);
+  setRequestLocale(locale);
   const t = useTranslations("Facility");
+  const messages = useMessages();
   return (
     <>
-      <EquipmentGrid subtitle={t("subtitle")} />
-      <CenterCarousel />
+      <NextIntlClientProvider messages={pickMessages(messages, ["Facility", "Carousel"])}>
+        <EquipmentGrid subtitle={t("subtitle")} />
+        <CenterCarousel />
+      </NextIntlClientProvider>
     </>
   );
 }

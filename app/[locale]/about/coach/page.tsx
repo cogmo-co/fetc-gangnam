@@ -1,5 +1,6 @@
+import { use } from "react";
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { useTranslations } from "next-intl";
 import CoachRow from "@/components/CoachRow/CoachRow";
 import { getAllCoachesSchema } from "@/lib/coaches";
@@ -14,7 +15,13 @@ export async function generateMetadata({
   return { title: "COACH", description: t("coachDesc") };
 }
 
-export default function CoachPage() {
+export default function CoachPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = use(params);
+  setRequestLocale(locale);
   const t = useTranslations("Coach");
   return (
     <>

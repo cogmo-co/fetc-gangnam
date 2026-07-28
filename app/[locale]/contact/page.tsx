@@ -1,5 +1,6 @@
+import { use } from "react";
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import ContactView from "@/components/ContactView/ContactView";
 
 export async function generateMetadata({
@@ -12,7 +13,13 @@ export async function generateMetadata({
   return { title: "CONTACT", description: t("contactDesc") };
 }
 
-export default function ContactPage() {
+export default function ContactPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = use(params);
+  setRequestLocale(locale);
   return (
     <div className="sub-page">
       <ContactView />

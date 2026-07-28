@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useLocale, useTranslations } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/navigation";
 import styles from "./LanguageSwitcher.module.css";
@@ -14,6 +15,8 @@ export default function LanguageSwitcher() {
 
   const other = locale === "ko" ? "en" : "ko";
   const label = locale === "ko" ? "KR" : "EN";
+  // 파일명은 kr/en, 로케일 코드는 ko/en
+  const icon = locale === "ko" ? "kr-flag.png" : "en-flag.png";
 
   const switchLocale = () => {
     router.replace(pathname, { locale: other, scroll: false });
@@ -26,7 +29,14 @@ export default function LanguageSwitcher() {
       onClick={switchLocale}
       aria-label={t("switchLanguage", { label })}
     >
-      {label}
+      <Image
+        src={`/images/lang/${icon}`}
+        alt=""
+        width={20}
+        height={20}
+        className={styles.flag}
+      />
+      <span className={styles.label}>{label}</span>
     </button>
   );
 }

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import EquipmentGrid from "@/components/FacilityEquipment/EquipmentGrid";
 import Detail from "@/components/FacilityEquipment/Detail";
@@ -42,6 +42,7 @@ export default async function EquipmentPage({
   params: Promise<{ id: string; locale: string }>;
 }) {
   const { id, locale } = await params;
+  setRequestLocale(locale);
   const equipment = findEquipment(id, locale);
   if (!equipment) notFound();
 

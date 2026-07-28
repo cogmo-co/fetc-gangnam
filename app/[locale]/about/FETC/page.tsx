@@ -1,6 +1,8 @@
+import { use } from "react";
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
-import { useTranslations } from "next-intl";
+import { getTranslations, setRequestLocale } from "next-intl/server";
+import { useTranslations, useMessages, NextIntlClientProvider } from "next-intl";
+import { pickMessages } from "@/i18n/pick";
 import WhyFETC from "@/components/WhyFETC/WhyFETC";
 import FAQSection from "@/components/FAQSection/FAQSection";
 import styles from "./page.module.css";
@@ -15,8 +17,15 @@ export async function generateMetadata({
   return { title: "FE TRAINING CENTER", description: t("aboutFETCDesc") };
 }
 
-export default function FETCPage() {
+export default function FETCPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = use(params);
+  setRequestLocale(locale);
   const t = useTranslations("AboutFETC");
+  const messages = useMessages();
   return (
     <>
       <section id="intro" className={styles.intro}>
@@ -30,7 +39,9 @@ export default function FETCPage() {
 
       <WhyFETC />
 
-      <FAQSection />
+      <NextIntlClientProvider messages={pickMessages(messages, ["FAQ"])}>
+        <FAQSection />
+      </NextIntlClientProvider>
     </>
   );
 }

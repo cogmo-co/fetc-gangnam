@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import Script from "next/script";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
-import { setRequestLocale, getTranslations } from "next-intl/server";
+import { setRequestLocale, getTranslations, getMessages } from "next-intl/server";
 import { routing } from "@/i18n/routing";
+import { pickMessages } from "@/i18n/pick";
 import { oswald, pretendard } from "@/lib/fonts";
 import AppShell from "@/components/AppShell/AppShell";
 import Footer from "@/components/Footer/Footer";
@@ -125,6 +126,7 @@ export default async function LocaleLayout({
     notFound();
   }
   setRequestLocale(locale);
+  const messages = await getMessages();
 
   return (
     <html lang={locale}>
@@ -172,7 +174,9 @@ export default async function LocaleLayout({
             style={{ display: "none", visibility: "hidden" }}
           />
         </noscript>
-        <NextIntlClientProvider>
+        <NextIntlClientProvider
+          messages={pickMessages(messages, ["Common", "Topbar", "A11y", "SubHero"])}
+        >
           <AppShell>{children}</AppShell>
           <Footer />
           <NaverBookingFloat />

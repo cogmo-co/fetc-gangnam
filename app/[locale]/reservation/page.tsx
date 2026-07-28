@@ -1,6 +1,7 @@
+import { use } from "react";
 import type { Metadata } from "next";
 import Image from "next/image";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { useTranslations } from "next-intl";
 import SubHero from "@/components/SubHero/SubHero";
 import BookingLink from "@/components/BookingLink/BookingLink";
@@ -20,7 +21,13 @@ export async function generateMetadata({
 
 const STEPS = [{ num: "01" }, { num: "02" }, { num: "03" }, { num: "04" }, { num: "05" }];
 
-export default function ReservationPage() {
+export default function ReservationPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = use(params);
+  setRequestLocale(locale);
   const t = useTranslations("Reservation");
   const c = useTranslations("Common");
   return (

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { getTranslations } from "next-intl/server";
+import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import CoachRow from "@/components/CoachRow/CoachRow";
 import Detail from "@/components/CoachInfo/Detail";
@@ -39,6 +39,7 @@ export default async function CoachPage({
   params: Promise<{ id: string; locale: string }>;
 }) {
   const { id, locale } = await params;
+  setRequestLocale(locale);
   const coach = findCoach(id, locale);
   if (!coach) notFound();
 
