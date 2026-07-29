@@ -63,7 +63,9 @@
     "markerName": "FE Training Center<br/>Gangnam",
     "directions": "Directions",
     "call": "Call",
-    "book": "Book"
+    "book": "Book",
+    "googleMap": "Google Maps",
+    "kakaoMap": "Kakao Map"
   },
   "Branches": {
     "eyebrow": "Our Branches",

@@ -63,7 +63,9 @@
     "markerName": "FE트레이닝센터<br/>강남점",
     "directions": "길찾기",
     "call": "전화",
-    "book": "예약"
+    "book": "예약",
+    "googleMap": "구글 지도",
+    "kakaoMap": "카카오맵"
   },
   "Branches": {
     "eyebrow": "지점 안내",

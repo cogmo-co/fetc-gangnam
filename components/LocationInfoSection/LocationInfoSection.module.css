@@ -207,6 +207,36 @@
   text-decoration: underline;
 }
 
+/* 지도 링크 칩 (주소행 하단) */
+.mapLinks {
+  display: flex;
+  gap: 8px;
+  margin-top: 10px;
+  flex-wrap: wrap;
+}
+.mapLinkChip {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 6px;
+  padding: 6px 11px;
+  border-radius: 7px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;
+  line-height: 1;
+  transition: background 0.2s, border-color 0.2s;
+}
+.mapLinkChip:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+.mapLinkChip svg {
+  flex-shrink: 0;
+}
+
 /* 모바일 */
 @media (max-width: 640px) {
   .section {

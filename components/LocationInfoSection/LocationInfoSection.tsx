@@ -1,6 +1,7 @@
 import Image from "next/image";
 import NaverMapClient from "./NaverMapClient";
-import { PHONE } from "@/lib/constants";
+import { PHONE, GOOGLE_MAP_URL, KAKAO_MAP_URL } from "@/lib/constants";
+import { GoogleMapLogoIcon, KakaoMapLogoIcon } from "@/components/Icons";
 import { useTranslations, useMessages, NextIntlClientProvider } from "next-intl";
 import { pickMessages } from "@/i18n/pick";
 import styles from "./LocationInfoSection.module.css";
@@ -48,6 +49,16 @@ export default function LocationInfoSection({ isMobile, centerTitle, plain }: Pr
                     <span className={styles.lineShin}>{t("transitLine")}</span>
                   </div>
                   <div>{t("transit")}</div>
+                </div>
+                <div className={styles.mapLinks}>
+                  <a href={GOOGLE_MAP_URL} target="_blank" rel="noopener noreferrer" className={styles.mapLinkChip}>
+                    <GoogleMapLogoIcon width={16} height={16} />
+                    {t("googleMap")}
+                  </a>
+                  <a href={KAKAO_MAP_URL} target="_blank" rel="noopener noreferrer" className={styles.mapLinkChip}>
+                    <KakaoMapLogoIcon width={16} height={16} />
+                    {t("kakaoMap")}
+                  </a>
                 </div>
               </div>
             </div>
