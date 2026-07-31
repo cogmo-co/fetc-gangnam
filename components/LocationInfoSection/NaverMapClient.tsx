@@ -3,7 +3,7 @@
 import Script from "next/script";
 import { useEffect, useRef, useState } from "react";
 import { PHONE } from "@/lib/constants";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import styles from "./LocationInfoSection.module.css";
 
 const MAP_CENTER = { lat: 37.491092, lng: 127.035055 };
@@ -22,8 +22,10 @@ export default function NaverMapClient({ isMobile }: Props) {
   const [mapLoaded, setMapLoaded] = useState(false);
 
   const t = useTranslations("Location");
+  const locale = useLocale();
   const directionsUrl = isMobile ? DIRECTIONS_MOBILE : DIRECTIONS_PC;
-  const bookingUrl = isMobile ? BOOKING_MOBILE : BOOKING_PC;
+  // lang: 현재 로케일(ko/en)에 맞춰 네이버 예약 UI 언어 전달 (BookingLink와 동일 정책)
+  const bookingUrl = `${isMobile ? BOOKING_MOBILE : BOOKING_PC}?lang=${locale}`;
   const markerName = t("markerName");
   const labelDirections = t("directions");
   const labelCall = t("call");
